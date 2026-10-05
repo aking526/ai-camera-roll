@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai-camera-roll"
+version = "0.1.0"
+description = "Turn a fictional life story into a consistent, structured camera roll."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["httpx>=0.28,<1", "pydantic>=2.11,<3"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ai_camera_roll"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
