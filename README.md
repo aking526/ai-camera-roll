@@ -2,7 +2,8 @@
 
 A small Python library that turns a seed about a fictional person into a life
 story, then extracts a structured camera roll. Defaults: five years, ten photo
-ideas per year, and two LLM requests. It produces text and JSON, not images.
+ideas per year, and two LLM requests for the text stages. The text example saves
+readable YAML; a separate image pipeline generates references and scene images.
 
 ## Setup
 
@@ -10,10 +11,20 @@ Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
 uv sync
-export OPENCODE_GO_API_KEY='your-key'
-export OPENCODE_GO_MODEL='glm-5.2'
+cp .env.example .env
+```
+
+Set `OPENCODE_GO_API_KEY` in `.env` to your OpenCode Go API key, then run:
+
+```bash
 uv run python examples/generate.py
 ```
+
+The adapter automatically loads `.env` from the current working directory, so run
+the example from the project root. `.env.example` is only a template; `.env` is
+already ignored by Git. Explicit `api_key=` values take priority over environment
+variables, which take priority over `.env` values. The example also reads
+`OPENCODE_GO_MODEL` from `.env` or the environment before constructing the adapter.
 
 Choose a model listed for **Chat Completions** in the
 [OpenCode Go documentation](https://opencode.ai/docs/go/#endpoints). Supply the
@@ -24,6 +35,108 @@ Go currently describes its intended usage as coding-agent traffic. Creative
 generation support is unverified. This library identifies itself as
 `ai-camera-roll/0.1.0`, sends a stable session header per LLM instance, and surfaces
 service errors without disguising the application or switching providers.
+
+## Image generation
+
+Set `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, and `CLOUDFLARE_IMAGE_MODEL`
+in `.env` alongside the OpenCode Go credentials. The token needs Cloudflare
+Workers AI Read and Edit permissions. The image adapter currently supports
+`@cf/black-forest-labs/flux-2-klein-4b`.
+
+Generate images from an existing complete result without regenerating its story:
+
+```bash
+uv run python examples/generate_images.py \
+  --source output/camera_roll.yaml --output output/images --seed 42
+```
+
+The pipeline makes one LLM call per person, object, and photo to write image
+prompts. It first generates photorealistic, waist-up character portraits and
+isolated objects on blank white backgrounds. It then uses those canonical assets
+to generate the photo scenes. Photos that need more than four references are
+completed through additional edits: the current scene occupies the first input
+slot, followed by up to three new asset references. Only entities listed as
+visible in the photo are supplied. Prompts describe their scene-specific poses,
+clothes, placement, and condition, and ask subsequent edits to preserve existing
+subjects and composition. The image model may still introduce visual drift.
+
+Outputs live under the selected directory:
+
+- `manifest.yaml`: prompts, source/model settings, entity IDs, deterministic seeds,
+  ordered input-slot mappings, image paths, and completion checkpoints.
+- `references/people/` and `references/objects/`: 1024×1024 canonical assets and
+  white-padded 448×448 `_input.png` copies for Cloudflare's reference input limit.
+- `photos/`: final 1024×1024 photos, with intermediate passes in numbered folders.
+
+Generated data and images can be committed to Git to share the full run. Credentials
+in `.env` files, virtual environments, and local caches remain ignored; `.env.example`
+is safe to share.
+
+Rerun the same command to resume: completed prompts and image requests are reused.
+Provider failures stop the run and identify the failing item while preserving
+completed work. A completed image that is missing or corrupted raises an error
+instead of silently changing an established identity. If source data, models,
+prompt instructions, or seed change, choose a fresh output directory. Existing
+story and camera-roll YAML files are not edited, and the web viewer remains text-only.
+
+The stages are also callable independently:
+
+```python
+import yaml
+from pathlib import Path
+from ai_camera_roll import (
+    CloudflareImageModel, GenerationResult, OpenCodeGoLLM,
+    generate_character_prompt, generate_object_prompt,
+    generate_scene_prompts, generate_images,
+)
+
+result = GenerationResult.model_validate(
+    yaml.safe_load(Path("output/camera_roll.yaml").read_text(encoding="utf-8"))
+)
+llm = OpenCodeGoLLM(model="deepseek-v4.1-flash", timeout=300, max_tokens=8192)
+portrait_prompt = generate_character_prompt(
+    result.camera_roll.people[0], story=result.story, llm=llm
+)
+manifest = generate_images(
+    result, llm=llm, image_model=CloudflareImageModel(),
+    output_dir="output/images", seed=42,
+)
+```
+
+To add an image provider, subclass `ImageModel` and implement
+`generate(prompt, *, references=(), width=1024, height=1024, seed=None) -> bytes`,
+where references are image bytes in the specified slot order. Provider adapters
+own any input resizing. The prompt instructions are packaged as
+`image_character.md`, `image_object.md`, and `image_scene.md` alongside the text prompts.
+
+## Web visualizer
+
+Start the local viewer from the project root:
+
+```bash
+uv run python -m ai_camera_roll.viewer
+```
+
+Open **http://127.0.0.1:8000**. It reads `output/camera_roll.yaml` by default.
+The horizontal timeline connects each photo event to people above and objects
+below. Select a moment to open its full description and scene-specific appearances
+in a modal, with previous/next controls. Close it with Escape, the close button,
+or a click outside. The timeline uses the full page width;
+click a person or object to explore its shared description and connected moments.
+The **People** and **Objects** tabs provide searchable catalogs. Use the year and
+connection filters to narrow the timeline, or **Read the story** for the narrative.
+Records display exact field names, value types, and zero-based paths into the saved
+data. Photo details distinguish `PersonAppearance` / `ObjectAppearance` entries
+from shared `Person` / `PersonalObject` records; click `person_id` or `object_id`
+to follow the reference. Catalogs show every field, including IDs and significance.
+
+Use **Open YAML** to preview another complete result (`.yaml`, `.yml`, or `.json`)
+without changing the saved file. The viewer runs locally and makes no LLM calls.
+You can also choose a source file and port at startup:
+
+```bash
+uv run python -m ai_camera_roll.viewer path/to/result.yml --port 8001
+```
 
 ## Python API
 
@@ -52,20 +165,26 @@ Both stages are independently callable, so you can save or edit the story first:
 
 ```python
 from pathlib import Path
+import yaml
 from ai_camera_roll import LifeStory, generate_photos, generate_story
 
 story = generate_story("Maya, a student who loves cycling and cooking.", llm=llm)
-Path("story.json").write_text(story.model_dump_json(indent=2), encoding="utf-8")
+Path("story.yaml").write_text(
+    yaml.safe_dump(story.model_dump(mode="json"), allow_unicode=True, sort_keys=False, width=100),
+    encoding="utf-8",
+)
 
 # Edit the saved narrative if desired, then validate and load it again.
-story = LifeStory.model_validate_json(Path("story.json").read_text(encoding="utf-8"))
+story = LifeStory.model_validate(yaml.safe_load(Path("story.yaml").read_text(encoding="utf-8")))
 roll = generate_photos(story, llm=llm, photos_per_year=10)
 ```
 
-Load a complete saved result with `GenerationResult.model_validate_json(...)`.
+Load a complete saved result with `GenerationResult.model_validate(yaml.safe_load(...))`.
 The original seed is preserved at `result.story.seed`; generation does not ask
 the LLM to reproduce it. The library returns Pydantic objects and leaves file
-storage to the caller. The example writes to `output/camera_roll.json`.
+storage to the caller. The example writes to `output/camera_roll.yaml`, preserving
+field order and Unicode text and wrapping long prose for readability. The LLM
+still returns JSON internally for schema validation before the result is saved as YAML.
 
 ## Output and continuity
 
@@ -112,7 +231,7 @@ text, and raise on transport errors or incomplete output. The inherited
 JSON validation. No provider SDK types enter the pipeline or domain models.
 
 There are no automatic retries or JSON repair calls. Successful end-to-end
-generation makes exactly two requests. Invalid JSON, invalid references,
+text generation makes exactly two requests. Invalid JSON, invalid references,
 unexpected counts, or incomplete output raise `LLMResponseError`. Input errors
 raise `ValueError` or Pydantic `ValidationError`; HTTP failures propagate HTTPX
 exceptions. An `httpx.HTTPStatusError` exposes the service's response through

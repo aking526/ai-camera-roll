@@ -1,0 +1,47 @@
+scope: Manual visual review of the first generation pass; no automatic repair calls.
+model: '@cf/black-forest-labs/flux-2-klein-4b'
+seed: 42
+technical_validation:
+  references_completed: 8
+  final_photos_completed: 5
+  image_artifacts_completed: 17
+  all_photo_entity_references_supplied: true
+  completed_resume_provider_calls: 0
+  canonical_dimensions:
+  - 1024
+  - 1024
+  reference_input_dimensions:
+  - 448
+  - 448
+reference_observations:
+- All three character portraits and five objects have white backgrounds.
+- Broad visual features are recognizable; fine details such as the skillet pour spout and object wear
+  are simplified.
+photo_observations:
+- photo_index: 0
+  path: photos/000_year_1_month_01.png
+  issues:
+  - Two blue mugs are visible; the story describes one.
+  - The sketchbook is closed, with a drawing on its cover, rather than open to the cornice sketch.
+- photo_index: 1
+  path: photos/001_year_1_month_02.png
+  issues:
+  - The edit did not add a visible blue mug on the radiator.
+  - The skillet has two loop handles rather than the canonical short main handle.
+- photo_index: 2
+  path: photos/002_year_1_month_05.png
+  issues: []
+  notes: Broad scene and all four referenced entities are visible. Small wear details remain approximate.
+- photo_index: 3
+  path: photos/003_year_1_month_08.png
+  issues:
+  - The green cap is on Priya rather than Maya, despite the prompt assigning it to Maya.
+  - The open sketchbook has spiral binding instead of matching the canonical hardcover design.
+- photo_index: 4
+  path: photos/004_year_1_month_10.png
+  issues:
+  - Only one woman is visible; the scene should include both Maya and Priya alongside Jonah.
+  - The blue mug is not correctly placed on the windowsill; a different-looking cup appears on the coffee
+    table.
+  - Cornbread is rendered as a loose pile in a small pan rather than baked cornbread in the canonical
+    skillet.

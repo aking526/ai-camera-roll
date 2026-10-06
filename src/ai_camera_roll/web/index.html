@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Camera Roll</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="view-bar">
+        <nav class="tabs" aria-label="Views">
+          <button data-view="timeline" aria-current="page">
+            Timeline <span id="count-timeline">0</span>
+          </button>
+          <button data-view="people">People <span id="count-people">0</span></button>
+          <button data-view="objects">Objects <span id="count-objects">0</span></button>
+        </nav>
+        <div class="file-actions">
+          <button id="read-story" class="quiet" disabled>Read the story</button>
+          <button id="open-file">Open YAML</button>
+          <input id="file-input" type="file" accept=".yaml,.yml,.json" hidden />
+        </div>
+      </div>
+      <div id="notice" role="alert" hidden></div>
+      <section id="timeline-view">
+        <div class="toolbar">
+          <div class="filters">
+            <label
+              >Year
+              <select id="year-filter">
+                <option value="all">All years</option>
+              </select></label
+            ><label
+              >Connections
+              <select id="entity-filter">
+                <option value="all">Everyone & everything</option>
+              </select></label
+            >
+          </div>
+          <div class="legend">
+            <span class="person-dot"></span> People <span class="object-dot"></span> Objects
+          </div>
+        </div>
+        <section class="timeline-panel" aria-label="Connected event timeline">
+          <div class="panel-heading">
+            <span id="event-count">Your timeline</span><span id="roll-reference"></span>
+          </div>
+          <div
+            id="timeline-scroll"
+            tabindex="0"
+            aria-label="Timeline, scroll horizontally to explore events"
+          >
+            <div id="timeline"></div>
+          </div>
+          <div class="timeline-footer">
+            <span
+              ><span class="person-text">↑ people → person_id</span> &nbsp; · &nbsp;
+              <span class="object-text">↓ objects → object_id</span></span
+            ><span>Array indices start at 0 · Click a photo to inspect fields</span>
+          </div>
+        </section>
+      </section>
+      <section id="catalog-view" hidden>
+        <div class="toolbar">
+          <p id="catalog-description"></p>
+          <label class="search-label"
+            >Search <input id="catalog-search" type="search" placeholder="Find in this collection…"
+          /></label>
+        </div>
+        <div id="catalog" class="catalog"></div>
+      </section>
+    </main>
+    <dialog id="moment-dialog" aria-labelledby="moment-heading">
+      <div class="dialog-toolbar">
+        <span class="eyebrow">Moment details</span>
+        <button id="close-moment" aria-label="Close moment">✕</button>
+      </div>
+      <div id="event-detail"></div>
+    </dialog>
+    <dialog id="reader" aria-labelledby="dialog-label">
+      <div class="dialog-toolbar">
+        <span id="dialog-label" class="eyebrow"></span
+        ><button id="close-dialog" aria-label="Close details">✕</button>
+      </div>
+      <div id="dialog-content"></div>
+    </dialog>
+  </body>
+</html>

@@ -1,0 +1,462 @@
+version: 1
+signature: ae152150ab0aa5de2223d9cc73ff161fdbeeb86cee654f3af5afa7968b118c4a
+settings:
+  source_sha256: 810c96842c51e77d28de088e23288ed15d8035917db146bd3f3d5d2e0428a262
+  llm_adapter: OpenCodeGoLLM
+  llm_model: deepseek-v4.1-flash
+  image_adapter: CloudflareImageModel
+  image_model: '@cf/black-forest-labs/flux-2-klein-4b'
+  instructions_sha256: d7f99d7745d4b3f58958de76c4e59816477a3ee39609329be7e0c07f9f8bf83b
+  seed: 42
+  width: 1024
+  height: 1024
+  reference_size: 448
+  pipeline_version: 1
+references:
+- entity_id: person_maya
+  kind: people
+  image:
+    path: references/people/000_person_maya.png
+    seed: 2846630021
+    prompt: 'Photorealistic waist-up reference portrait of exactly one person: Maya Chen, a 24-year-old
+      Chinese-American woman. Centered, facing the camera, neutral relaxed pose, arms resting naturally,
+      clearly visible face, hair, and identifying features. She has a slender build, shoulder-length dark
+      hair, and round wire-rimmed glasses. Her expression is calm and observant. She wears simple casual
+      studio clothing, a plain neutral top, with no logos or distracting patterns. Her hands are visible
+      enough to show faint graphite and model-glue staining on the fingers, without emphasizing any object.
+      Soft even studio lighting, blank pure white background, no shadows or scenery. No other people,
+      no furniture, no text or labels, no collage, and no separately cataloged possessions such as a cap,
+      bicycle, mug, or sketchbook. Preserve her ethnicity, age, build, hairstyle, glasses, and facial
+      features as described, keeping the portrait simple so it can guide identity in later scenes.'
+    inputs: []
+    completed: true
+  reference_path: references/people/000_person_maya_input.png
+- entity_id: person_priya
+  kind: people
+  image:
+    path: references/people/001_person_priya.png
+    seed: 2091659009
+    prompt: 'Photorealistic waist-up reference portrait of exactly one person: Priya, an Indian-American
+      woman, age 25 at the start of year 1. She is centered and facing the camera in a neutral relaxed
+      pose, with a clearly visible face, long wavy black hair, warm brown skin, and a tired but warm smile.
+      Preserve her ethnicity, natural adult build, hairstyle, facial features, and age. Use a blank pure
+      white background and soft even studio lighting. She wears a simple, plain, unbranded scrub-style
+      top or soft loungewear top in a neutral color, with no visible logos, text, or patterns; clothing
+      is incidental and should not lock her into a particular outfit. Do not include another person, a
+      scene, furniture, text, labels, a collage, or separately cataloged possessions such as a cap, bicycle,
+      mug, or sketchbook. No props. The image should serve as an identity reference for later scenes,
+      with neutral presentation and no biographical explanation.'
+    inputs: []
+    completed: true
+  reference_path: references/people/001_person_priya_input.png
+- entity_id: person_jonah
+  kind: people
+  image:
+    path: references/people/002_person_jonah.png
+    seed: 238398015
+    prompt: 'Photorealistic waist-up reference portrait of exactly one person: Jonah, a 26-year-old White
+      man with a lanky build, tousled sandy-brown hair, and a short beard. He is centered, facing the
+      camera directly, with a neutral relaxed expression and a natural upright posture. His face, hair,
+      and beard are clearly visible. He has a lean frame and simple clothing consistent with his record:
+      a plain flannel shirt in a muted color, with jeans and sneakers implied below the waist-up framing.
+      Use a blank pure white background and soft, even studio lighting with no harsh shadows. Do not include
+      any other person, scene, furniture, text, labels, collage, or separately cataloged possessions.
+      The portrait should capture identity only, without locking him into a specific dramatic pose or
+      narrative situation.'
+    inputs: []
+    completed: true
+  reference_path: references/people/002_person_jonah_input.png
+- entity_id: object_green_cap
+  kind: objects
+  image:
+    path: references/objects/000_object_green_cap.png
+    seed: 1415329799
+    prompt: 'Photorealistic product-reference photograph of exactly one isolated faded olive-green baseball
+      cap, centered and complete on a seamless pure white background. Three-quarter front-left view, slightly
+      elevated, showing the most recognizable features: the soft, washed-out olive-green fabric, a classic
+      six-panel crown, a slightly curved brim, and the small embroidered mountain patch centered on the
+      front. The cap is visibly worn and muted from repeated washing, with softened cotton twill, gentle
+      edge fading, a faint old grease smudge on the brim edge, and a sweat-stained inner band visible
+      along the lower inside edge near the opening. Preserve the cap''s exact shape and proportions: low-profile
+      but structured crown, slightly curved brim, small stitched mountain patch with simple peaks, no
+      added text, no labels, and no redesigned logo. Soft, even studio lighting with gentle highlights
+      and minimal shadows; at most a subtle contact shadow beneath the cap. No hands, no people, no head,
+      no other objects, no surroundings, no background context, no text overlays, no collage, not in use,
+      and no temporary scene conditions.'
+    inputs: []
+    completed: true
+  reference_path: references/objects/000_object_green_cap_input.png
+- entity_id: object_blue_bike
+  kind: objects
+  image:
+    path: references/objects/001_object_blue_bike.png
+    seed: 2089469453
+    prompt: 'Photorealistic studio reference image of exactly one isolated object: a vintage blue Schwinn
+      road bicycle, complete and uncropped, centered on a seamless pure white background. Show it in a
+      clear three-quarter view angled from slightly ahead and to the left, so the front wheel, rear wheel,
+      frame, chrome handlebars, left-handlebar bell, worn brown leather saddle, rear rack, and down-tube
+      sticker are all visible. The bicycle is a classic steel road bike with a faded vintage blue frame,
+      thin lugged steel tubing, narrow tires, spoked wheels, chain, pedals, and caliper brakes. The chrome
+      handlebars are slightly rusted and patinated. A small metal bell is mounted on the left handlebar.
+      A worn brown leather saddle is mounted on the seat post. A simple rear rack sits over the rear wheel.
+      On the down tube is a faded, worn sticker from a Philadelphia bike shop, with its original faded
+      colors and worn edges preserved; do not invent new inscriptions or redesign any logo. The bicycle
+      is supported only by its tires on an invisible ground plane, with no visible kickstand, stand, or
+      extra support. Soft even studio lighting, at most a subtle contact shadow beneath the tires. No
+      rider, no hands, no people, no other objects, no surroundings, no text overlays, labels, or collage.
+      Do not show the bicycle in use and do not add temporary scene conditions.'
+    inputs: []
+    completed: true
+  reference_path: references/objects/001_object_blue_bike_input.png
+- entity_id: object_sketchbook
+  kind: objects
+  image:
+    path: references/objects/002_object_sketchbook.png
+    seed: 777576104
+    prompt: 'Photorealistic reference image of exactly one isolated object: a closed black hardcover sketchbook,
+      roughly A5 size with tall rectangular proportions, shown in a clear three-quarter view from slightly
+      above. The sketchbook has a plain black hardcover with realistic scuffing, light wear, and slightly
+      bent corners from being carried in a bag. A black elastic closure wraps around the front cover near
+      the fore edge, keeping the book closed. A slim ribbon bookmark extends visibly from the page edge
+      at the bottom. The side page block is visible, with off-white pages and a straight closed edge.
+      The cover and spine are completely unmarked: no text, no title, no logo, no stickers, no inscriptions.
+      The object is complete and uncropped, centered on a blank pure white background. Soft, even studio
+      lighting with at most a subtle contact shadow beneath. No hands, people, props, surrounding environment,
+      text overlays, labels, collage, or additional objects. Do not show the sketchbook in use or add
+      temporary scene conditions.'
+    inputs: []
+    completed: true
+  reference_path: references/objects/002_object_sketchbook_input.png
+- entity_id: object_cast_iron_skillet
+  kind: objects
+  image:
+    path: references/objects/003_object_cast_iron_skillet.png
+    seed: 3298669211
+    prompt: 'A photorealistic reference image of exactly one isolated object: a heavy, black cast-iron
+      skillet, complete and uncropped, centered on a blank pure white background with soft, even studio
+      lighting and at most a subtle contact shadow. Show a clear three-quarter view from slightly above
+      so the circular pan body, short cast-iron handle, and small pour spout on one side are all visible
+      and recognizable. The skillet is solid black cast iron with a seasoned, slightly uneven surface,
+      gentle matte-to-satin sheen from use, and a faint rust spot near the handle from age. Preserve the
+      exact material, color, shape, proportions, and established wear: a thick, utilitarian pan, short
+      integrated handle, one small pouring spout, no food, no packaging, no stand, no stove, no added
+      inscriptions, no logo, no hands, no people, no surrounding objects, no text overlays, no labels,
+      no collage, and no scene context.'
+    inputs: []
+    completed: true
+  reference_path: references/objects/003_object_cast_iron_skillet_input.png
+- entity_id: object_blue_mug
+  kind: objects
+  image:
+    path: references/objects/004_object_blue_mug.png
+    seed: 1429821272
+    prompt: Photorealistic product-reference image of exactly one isolated ceramic coffee mug, complete
+      and uncropped, centered on a blank pure white seamless background with soft even studio lighting
+      and at most a subtle contact shadow directly beneath it. Use a clear three-quarter view from slightly
+      above tabletop level so the open top, rim, body, small handle, and glaze details are all clearly
+      readable. The mug is a classic cylindrical ceramic mug with a small curved loop handle on the right,
+      modest standard proportions, and a deep saturated blue glaze. It is empty. The glossy blue glaze
+      is slightly crazed with fine allover crackle lines, subtle thickness variation, and light realistic
+      wear from use. A single distinct irregular chip is missing from the front-left rim, exposing the
+      pale clay body beneath; this chip is a key recognizable feature and must remain exactly as described.
+      The interior is glazed in the same deep blue and shows faint, natural staining/aging. The handle
+      is intact, small, smoothly attached, and not redesigned. The underside is not visible in this angle,
+      but the mug has a faded maker's mark on the bottom that should not be exaggerated, invented, or
+      replaced. No text, labels, logos, decals, inscriptions, or extra marks. No hands, people, other
+      objects, props, tabletop edge, surroundings, collage, coffee, steam, or use context. The object
+      should look real and tactile, slightly used but intact except for the specified rim chip, with accurate
+      ceramic material and glaze crackle.
+    inputs: []
+    completed: true
+  reference_path: references/objects/004_object_blue_mug_input.png
+photos:
+- photo_index: 0
+  year: 1
+  month: 1
+  passes:
+  - path: photos/000/pass_00.png
+    seed: 2071050917
+    prompt: 'Create one candid, everyday phone photograph: late-night architecture studio under fluorescent
+      ceiling lights, cluttered studio desk with laptop, chipboard model, tape, pens, and chipboard scraps.
+      Use image 0 (Maya Chen) to establish Maya’s face and physical identity: a 24-year-old Chinese-American
+      woman with shoulder-length dark hair, wire-rimmed round glasses, and a slender build. She is seated
+      at the desk in the winter studio moment, wearing a gray hoodie, her glasses reflecting the laptop
+      screen, a graphite smudge on one cheek, and fingers stained with graphite or model glue. Image 2
+      (Faded green cap) is worn on Maya’s head, pulled low, with faded olive-green fabric, a small embroidered
+      mountain patch visible on the front, and a slightly dusty curved brim; do not show it as a separate
+      floating object. Image 3 (Black hardcover sketchbook) lies open on the desk in front of her, its
+      scuffed black cover and elastic closure visible at the edge, pages showing a half-finished pencil
+      sketch of a rowhouse cornice. Use image 1 (Jonah) to establish Jonah’s identity: a white man, 26,
+      with tousled sandy-brown hair, a short beard, and a lanky build. He sits at the adjacent studio
+      desk in a flannel shirt and jeans, leaning back in his chair with tired eyes, one hand rubbing an
+      eye. Preserve a candid phone-photo composition and late-night fluorescent lighting; do not copy
+      white reference backgrounds or studio portrait poses. Do not yet include the chipped blue mug; leave
+      clear desktop space beside the chipboard model for it to be added later.'
+    inputs:
+    - slot: 0
+      path: references/people/000_person_maya_input.png
+      entity_id: person_maya
+    - slot: 1
+      path: references/people/002_person_jonah_input.png
+      entity_id: person_jonah
+    - slot: 2
+      path: references/objects/000_object_green_cap_input.png
+      entity_id: object_green_cap
+    - slot: 3
+      path: references/objects/002_object_sketchbook_input.png
+      entity_id: object_sketchbook
+    completed: true
+  - path: photos/000/pass_01.png
+    seed: 3481668843
+    prompt: 'Edit image 0, the current scene, by adding exactly the object shown in image 1 (Chipped blue
+      mug). Preserve the current image’s camera viewpoint, composition, late-night fluorescent lighting,
+      cluttered architecture studio background, and all already-established subjects: Maya at the desk
+      with the faded green cap pulled low, wire-rimmed glasses reflecting the laptop screen, gray hoodie,
+      graphite cheek smudge, stained fingers, open black sketchbook showing the half-finished rowhouse
+      cornice, and Jonah leaning back in his chair rubbing his eyes. Use image 1 to match the mug’s deep
+      blue glazed ceramic, small handle, visible chip on the rim, slightly crazed glaze, and faded maker’s
+      mark on the bottom. Place the mug on the desktop beside the chipboard model and within Maya’s reach,
+      half-full of dark coffee, sitting naturally on the desk surface—not floating, not duplicated, and
+      not replacing the sketchbook. Make it look like an everyday phone photograph. The final image should
+      realize the full supplied PhotoIdea: late-night studio, Maya at a cluttered desk, green cap pulled
+      low, glasses reflecting her laptop screen, open sketchbook with a half-finished cornice sketch,
+      chipped blue mug of cold coffee beside a chipboard model, and Jonah leaning back rubbing his eyes.
+      Do not add extra people or extra cataloged possessions.'
+    inputs:
+    - slot: 0
+      path: photos/000/pass_00.png
+      entity_id: null
+    - slot: 1
+      path: references/objects/004_object_blue_mug_input.png
+      entity_id: object_blue_mug
+    completed: true
+  final_path: photos/000_year_1_month_01.png
+- photo_index: 1
+  year: 1
+  month: 2
+  passes:
+  - path: photos/001/pass_00.png
+    seed: 102351684
+    prompt: 'Candid everyday phone photograph in a cramped Fishtown Philadelphia walk-up apartment in
+      February. Gray winter light from a window mixed with warm lamp light, lived-in room. Use image 0
+      for Maya Chen: a 24-year-old Chinese-American woman with shoulder-length dark hair loose, wire-rimmed
+      round glasses, slender build, graphite- or glue-stained fingers, no cap. Dress her in an oversized
+      casual sweater; pose her seated or kneeling at the low coffee table, holding a serving spoon, actively
+      spooning braised white beans from the skillet onto plates balanced on the coffee table. Use image
+      1 for Priya: a 25-year-old Indian-American woman with warm brown skin, long wavy black hair pulled
+      into a messy bun, tired warm smile; dress her in blue scrubs and pose her sitting cross-legged on
+      the floor near the coffee table. Use image 2 for Jonah: a 26-year-old white man with tousled sandy-brown
+      hair, short beard, lanky build; dress him in a flannel shirt, jeans, sneakers, sitting on the floor
+      and reaching for a wedge of cornbread. Use image 3 for the cast-iron skillet: heavy black cast-iron
+      skillet with a short handle, small pour spout, seasoned uneven surface, faint rust spot near the
+      handle; place it on the coffee table holding braised white beans, handle wrapped in a towel. Include
+      plates with beans, cornbread, and simple table and floor clutter. Behind them, the kitchen table
+      is buried under chipboard architecture models. Do not include the chipped blue mug yet; leave the
+      radiator visible and available. Preserve each person''s identity from their reference; do not copy
+      white studio backgrounds. Natural candid framing, slight motion, phone-photo grain, no captions
+      or text.'
+    inputs:
+    - slot: 0
+      path: references/people/000_person_maya_input.png
+      entity_id: person_maya
+    - slot: 1
+      path: references/people/001_person_priya_input.png
+      entity_id: person_priya
+    - slot: 2
+      path: references/people/002_person_jonah_input.png
+      entity_id: person_jonah
+    - slot: 3
+      path: references/objects/003_object_cast_iron_skillet_input.png
+      entity_id: object_cast_iron_skillet
+    completed: true
+  - path: photos/001/pass_01.png
+    seed: 1572146500
+    prompt: 'Image 0 is the current scene from the previous pass. Edit it by adding only the object shown
+      in image 1: the chipped blue mug. Place the mug resting on the radiator in the background, steaming,
+      with the rim chip clearly visible. It is a ceramic mug with deep blue glaze, a small handle, slightly
+      crazed glaze, and a faded maker''s mark on the bottom; do not preserve the white reference background
+      or any studio lighting. Keep the camera viewpoint, composition, February apartment lighting, background,
+      and all already-established people and objects exactly as they are: Maya Chen spooning braised white
+      beans with the serving spoon, Priya in blue scrubs seated cross-legged on the floor, Jonah in flannel
+      reaching for cornbread, and the black cast-iron skillet with beans and towel-wrapped handle on the
+      coffee table. Do not duplicate any person or the skillet. The mug should sit naturally on the radiator
+      and be integrated into the scene, not floating.'
+    inputs:
+    - slot: 0
+      path: photos/001/pass_00.png
+      entity_id: null
+    - slot: 1
+      path: references/objects/004_object_blue_mug_input.png
+      entity_id: object_blue_mug
+    completed: true
+  final_path: photos/001_year_1_month_02.png
+- photo_index: 2
+  year: 1
+  month: 5
+  passes:
+  - path: photos/002/pass_00.png
+    seed: 254067404
+    prompt: A candid, everyday phone photograph, late afternoon in May along the Schuylkill River Trail
+      in Manayunk, Philadelphia. Maya Chen from image 0, a 24-year-old Chinese-American woman with shoulder-length
+      dark hair, wire-rimmed round glasses, and a slender build, sits on a wooden picnic bench outside
+      a small brewery. She has a relaxed smile, wears a denim jacket, and holds a glass of beer; her visible
+      fingers show faint graphite or model-glue stains. On her head is the faded olive-green baseball
+      cap from image 3, with its small embroidered mountain patch on the front, slightly curved brim,
+      worn soft fabric, and a dark grease smudge on the brim from the March bike tune-up. Across from
+      her, Jonah from image 1, a 26-year-old white man with tousled sandy-brown hair, short beard, and
+      lanky build, sits in a flannel shirt, laughing and holding his own beer glass. The vintage blue
+      Schwinn bicycle from image 2 leans against a nearby brick wall outside the brewery, rear wheel slightly
+      askew, bell catching the late light, with its steel frame, worn brown leather saddle, rear rack,
+      slightly rusted chrome handlebars, and faded Philadelphia bike shop sticker on the down tube. Behind
+      them, the Schuylkill River glints in soft late-afternoon light, with brick brewery wall, trail greenery,
+      and ordinary background details. Natural phone-camera perspective, casual framing, no posed studio
+      look, and do not copy the white reference backgrounds. Show only Maya, Jonah, the blue Schwinn,
+      and the green cap as cataloged entities.
+    inputs:
+    - slot: 0
+      path: references/people/000_person_maya_input.png
+      entity_id: person_maya
+    - slot: 1
+      path: references/people/002_person_jonah_input.png
+      entity_id: person_jonah
+    - slot: 2
+      path: references/objects/001_object_blue_bike_input.png
+      entity_id: object_blue_bike
+    - slot: 3
+      path: references/objects/000_object_green_cap_input.png
+      entity_id: object_green_cap
+    completed: true
+  final_path: photos/002_year_1_month_05.png
+- photo_index: 3
+  year: 1
+  month: 8
+  passes:
+  - path: photos/003/pass_00.png
+    seed: 68420788
+    prompt: 'Candid everyday phone photograph, golden hour at Penn Treaty Park, Philadelphia, August.
+      Use image 0 as Maya Chen: Chinese-American woman, now 25 at this birthday picnic, shoulder-length
+      dark hair, wire-rimmed round glasses, slender build, faint graphite or glue stains on fingers; she
+      sits cross-legged on a red-and-white checkered blanket, wearing a simple summer dress, shoulders
+      sunburned, laughing toward Priya. On Maya''s head, taken from image 3, is the faded olive-green
+      baseball cap: worn soft, muted olive-green fabric, small embroidered mountain patch on front, slightly
+      curved brim, faint grease smudge on brim, sweat-stained inner band. The cap must sit naturally on
+      her hair, not floating. Use image 1 as Priya: Indian-American woman, 25, long wavy black hair down,
+      warm brown skin, in a sundress; she leans in from the blanket edge, presenting a slightly lopsided
+      chocolate cake with one lit candle toward Maya, warm smile. Use image 2 as Jonah: white man, 26,
+      tousled sandy-brown hair, short beard, lanky build; he wears a t-shirt and shorts, barefoot, and
+      is in the mid-background on the grass, mid-throw with a frisbee, body twisting, frisbee just leaving
+      his hand. Composition is a low candid phone angle near blanket level: Maya and Priya centered around
+      the blanket, Jonah behind and slightly right, open grass, a large tree trunk in the mid-background
+      left, warm golden-hour rim light and long shadows, natural colors, slight handheld imperfection.
+      Leave clear empty grass near the blanket and open space by the tree for later objects, but do not
+      include a bicycle or sketchbook in this pass. Do not copy any white studio background or posed reference
+      lighting.'
+    inputs:
+    - slot: 0
+      path: references/people/000_person_maya_input.png
+      entity_id: person_maya
+    - slot: 1
+      path: references/people/001_person_priya_input.png
+      entity_id: person_priya
+    - slot: 2
+      path: references/people/002_person_jonah_input.png
+      entity_id: person_jonah
+    - slot: 3
+      path: references/objects/000_object_green_cap_input.png
+      entity_id: object_green_cap
+    completed: true
+  - path: photos/003/pass_01.png
+    seed: 4048585532
+    prompt: 'Edit image 0, the current scene. Preserve the exact candid phone camera viewpoint, composition,
+      golden-hour lighting, Penn Treaty Park background, checkered blanket, and all already established
+      entities: Maya Chen with the faded green cap, Priya presenting the lopsided chocolate cake with
+      lit candle, and Jonah barefoot mid-throw with the frisbee. Do not change their identities, poses,
+      clothes, or positions except as needed for natural overlap. Add the blue Schwinn bicycle from image
+      1: lean it against the large tree in the mid-background left, resting on the ground with believable
+      weight, rear rack empty, not floating and not on a white background. Match the reference design:
+      vintage blue steel Schwinn frame, slightly rusted chrome handlebars, worn brown leather saddle,
+      rear rack, small bell on the left handlebar, faded Philadelphia bike-shop sticker on the down tube.
+      Add the sketchbook from image 2: place it open or half-open on the grass near the blanket edge in
+      the lower foreground, not held and not floating. Match the reference: black hardcover A5 sketchbook,
+      black elastic closure and ribbon bookmark visible, scuffed cover, slightly bent corners; the open
+      pages show a pencil sketch of the park''s trees. Keep all existing people and objects exactly once;
+      do not add extra people, extra cap, extra cake, extra frisbee, or extra cataloged possessions. Final
+      image should be the full photo idea: golden-hour picnic, Maya laughing in the green cap on the checkered
+      blanket, Priya presenting the cake, Jonah mid-throw in the background, blue bike leaning against
+      the tree, open sketchbook on the grass.'
+    inputs:
+    - slot: 0
+      path: photos/003/pass_00.png
+      entity_id: null
+    - slot: 1
+      path: references/objects/001_object_blue_bike_input.png
+      entity_id: object_blue_bike
+    - slot: 2
+      path: references/objects/002_object_sketchbook_input.png
+      entity_id: object_sketchbook
+    completed: true
+  final_path: photos/003_year_1_month_08.png
+- photo_index: 4
+  year: 1
+  month: 10
+  passes:
+  - path: photos/004/pass_00.png
+    seed: 4196222530
+    prompt: 'Candid everyday phone photograph, October evening in a small third-floor Philadelphia apartment
+      kitchen. Use the reference subjects without copying their white backgrounds. Image 0 is Maya Chen,
+      now 25, a Chinese-American woman with shoulder-length dark hair, wire-rimmed round glasses, and
+      a slender build; here her hair is in a braid and she wears an apron over a sweater, her fingers
+      faintly stained with graphite/model glue, standing at the stove stirring a big pot of chili. Image
+      1 is Priya, a 25-year-old Indian-American woman with long wavy black hair, warm brown skin, and
+      a tired but warm smile; she is in scrubs, holding a bowl, smiling, near the coffee table. Image
+      2 is Jonah, a 26-year-old white man with tousled sandy-brown hair, a short beard, and a lanky build;
+      he wears a flannel shirt and sits on the floor with a bowl, crowded around the coffee table with
+      Priya. Image 3 is the cast-iron skillet: a heavy black skillet with a short handle and a small pour
+      spout, seasoned and slightly uneven surface, and a faint rust spot near the handle; it sits on the
+      stove with golden cornbread in it, the handle slightly greasy. Composition: handheld eye-level phone
+      snapshot from the kitchen entry, Maya at the stove, Priya and Jonah around the coffee table in the
+      foreground/right, the skillet on the stove in the midground. Warm apartment lighting, fall evening,
+      ordinary kitchen clutter, and a bare hook by the door with an empty windowsill visible but nothing
+      yet hanging or resting there. Do not show Maya''s green cap, the blue mug, or any other cataloged
+      possession in this pass.'
+    inputs:
+    - slot: 0
+      path: references/people/000_person_maya_input.png
+      entity_id: person_maya
+    - slot: 1
+      path: references/people/001_person_priya_input.png
+      entity_id: person_priya
+    - slot: 2
+      path: references/people/002_person_jonah_input.png
+      entity_id: person_jonah
+    - slot: 3
+      path: references/objects/003_object_cast_iron_skillet_input.png
+      entity_id: object_cast_iron_skillet
+    completed: true
+  - path: photos/004/pass_01.png
+    seed: 3888579059
+    prompt: 'Starting from image 0, the current scene, make a precise edit to complete the same candid
+      October apartment-kitchen phone photo. Preserve the camera viewpoint, composition, lighting, background,
+      and all already established subjects: Maya Chen at the stove, hair in a braid, apron over a sweater,
+      wire-rimmed glasses, stirring a big pot of chili; Priya in scrubs, smiling, holding a bowl by the
+      coffee table; Jonah in a flannel shirt sitting on the floor with a bowl; and the cast-iron skillet
+      with golden cornbread on the stove, handle slightly greasy. Add image 1, the chipped blue mug: a
+      deep blue ceramic mug with a chip on the rim, a small handle, slightly crazed glaze, and a faded
+      maker''s mark. Place it empty and upright on the windowsill, visible and not in anyone''s hand.
+      Add image 2, the faded green cap: an olive-green baseball cap with a small embroidered mountain
+      patch on the front, curved brim, sweat-stained inner band, worn soft and muted, with a faint grease
+      smudge on the brim. Hang it naturally on the hook by the door, not floating and not on Maya''s head.
+      Do not add any extra people or extra cataloged possessions, and do not copy studio white backgrounds
+      from the references. Keep everything else unchanged.'
+    inputs:
+    - slot: 0
+      path: photos/004/pass_00.png
+      entity_id: null
+    - slot: 1
+      path: references/objects/004_object_blue_mug_input.png
+      entity_id: object_blue_mug
+    - slot: 2
+      path: references/objects/000_object_green_cap_input.png
+      entity_id: object_green_cap
+    completed: true
+  final_path: photos/004_year_1_month_10.png

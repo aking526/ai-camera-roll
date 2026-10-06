@@ -3,10 +3,14 @@
 import os
 from pathlib import Path
 
+import yaml
+from dotenv import load_dotenv
+
 from ai_camera_roll import OpenCodeGoLLM, generate_camera_roll
 
 
 def main() -> None:
+    load_dotenv(".env", override=False)
     llm = OpenCodeGoLLM(model=os.environ["OPENCODE_GO_MODEL"])
     result = generate_camera_roll(
         "Maya is a 24-year-old architecture student in Philadelphia. She loves "
@@ -14,9 +18,18 @@ def main() -> None:
         "buildings. She wears a faded green cap with a mountain patch.",
         llm=llm,
     )
-    destination = Path("output/camera_roll.json")
+    destination = Path("output/camera_roll.yaml")
     destination.parent.mkdir(parents=True, exist_ok=True)
-    destination.write_text(result.model_dump_json(indent=2), encoding="utf-8")
+    destination.write_text(
+        yaml.safe_dump(
+            result.model_dump(mode="json"),
+            allow_unicode=True,
+            sort_keys=False,
+            default_flow_style=False,
+            width=100,
+        ),
+        encoding="utf-8",
+    )
     print(f"Saved {len(result.camera_roll.photos)} photo ideas to {destination}")
 
 

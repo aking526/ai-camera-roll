@@ -6,6 +6,7 @@ from abc import ABC, abstractmethod
 from uuid import uuid4
 
 import httpx
+from dotenv import load_dotenv
 from pydantic import BaseModel, ValidationError
 
 
@@ -48,10 +49,11 @@ class OpenCodeGoLLM(LLM):
         timeout: float = 180.0,
         max_tokens: int = 32768,
     ) -> None:
+        load_dotenv(".env", override=False)
         self.model = model
         self.api_key = api_key or os.environ.get("OPENCODE_GO_API_KEY")
         if not self.api_key:
-            raise ValueError("Pass api_key or set OPENCODE_GO_API_KEY.")
+            raise ValueError("Pass api_key or set OPENCODE_GO_API_KEY in .env or the environment.")
         if not model.strip():
             raise ValueError("Specify an OpenCode Go Chat Completions model ID.")
         self.timeout = timeout

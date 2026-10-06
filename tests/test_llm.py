@@ -1,10 +1,22 @@
 import json
+import os
+import runpy
 from contextlib import ExitStack
+from pathlib import Path
 
 import httpx
 import pytest
+import yaml
 
-from ai_camera_roll import LLMResponseError, OpenCodeGoLLM, StoryYear
+from ai_camera_roll import GenerationResult, LLMResponseError, OpenCodeGoLLM, StoryYear
+
+
+@pytest.fixture(autouse=True)
+def isolated_environment(monkeypatch, tmp_path):
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(os, "environ", os.environ.copy())
+    for name in ("OPENCODE_GO_API_KEY", "OPENCODE_GO_MODEL", "PYTHON_DOTENV_DISABLED"):
+        monkeypatch.delenv(name, raising=False)
 
 
 def completion(content='{"year": 1, "narrative": "Maya cycles."}', reason="stop"):
@@ -73,6 +85,44 @@ def test_missing_key(monkeypatch):
     monkeypatch.delenv("OPENCODE_GO_API_KEY", raising=False)
     with pytest.raises(ValueError, match="OPENCODE_GO_API_KEY"):
         OpenCodeGoLLM("test-model")
+
+
+@pytest.mark.parametrize(
+    "environment_key,explicit_key,expected",
+    [
+        (None, None, "file-key"),
+        ("environment-key", None, "environment-key"),
+        ("environment-key", "explicit-key", "explicit-key"),
+    ],
+)
+def test_dotenv_key_and_precedence(environment_key, explicit_key, expected, monkeypatch, mock_go):
+    Path(".env").write_text("OPENCODE_GO_API_KEY=file-key\n", encoding="utf-8")
+    if environment_key is not None:
+        monkeypatch.setenv("OPENCODE_GO_API_KEY", environment_key)
+    requests = mock_go([completion()])
+    generate(OpenCodeGoLLM("test-model", api_key=explicit_key))
+    assert requests[0].headers["authorization"] == f"Bearer {expected}"
+
+
+def test_example_loads_key_and_model_from_dotenv(mock_go, story_payload, roll_payload):
+    Path(".env").write_text(
+        "OPENCODE_GO_API_KEY=file-key\nOPENCODE_GO_MODEL=file-model\n", encoding="utf-8"
+    )
+    requests = mock_go([
+        completion(json.dumps(story_payload())),
+        completion(json.dumps(roll_payload())),
+    ])
+    example = Path(__file__).resolve().parents[1] / "examples" / "generate.py"
+    runpy.run_path(str(example), run_name="__main__")
+    assert len(requests) == 2
+    for request in requests:
+        assert request.headers["authorization"] == "Bearer file-key"
+        assert json.loads(request.content)["model"] == "file-model"
+    result = yaml.safe_load(Path("output/camera_roll.yaml").read_text(encoding="utf-8"))
+    assert len(result["camera_roll"]["photos"]) == 50
+    validated = GenerationResult.model_validate(result)
+    assert validated.camera_roll.model_dump() == roll_payload()
+    assert validated.story.background == story_payload()["background"]
 
 
 @pytest.mark.parametrize("status", [401, 403, 429, 500])
