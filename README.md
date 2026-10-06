@@ -5,6 +5,61 @@ story, then extracts a structured camera roll. Defaults: five years, ten photo
 ideas per year, and two LLM requests for the text stages. The text example saves
 readable YAML; a separate image pipeline generates references and scene images.
 
+## Web visualizer
+
+Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/). From the project root,
+install the dependencies and start the local viewer:
+
+```bash
+uv sync
+uv run python -m ai_camera_roll.viewer
+```
+
+Open **http://127.0.0.1:8000**. The included example loads from
+`output/camera_roll.yaml`, with its images in `output/images/`. Viewing saved output
+requires no API keys. Press **Ctrl+C** in the terminal to stop the server.
+
+The horizontal timeline connects each photo event to people above and objects
+below. Timeline cards show generated photo thumbnails. Select a moment to open its
+photo, full description, and scene-specific appearances in a modal, with previous/next
+controls. Photos with multiple generation passes open on the final image; select an
+earlier pass in the thumbnail strip to inspect how the image evolved. Incomplete runs
+show the latest available pass and mark remaining passes as pending. Each pass lists
+its input references in slot order, marking new and reused people/object references.
+Later passes also show the previous scene input and the references carried forward
+through it. You can select a pending pass to inspect its planned references. Expand
+**Show prompt** to read the selected pass's generation prompt; switching passes updates
+the prompt and preserves whether it is expanded. Reference popups also include their
+generation prompts. Popups use a wider layout on desktop and fit smaller screens.
+Close it with Escape, the close button,
+or a click outside. The timeline uses the full page width;
+click a person or object to explore its shared description and connected moments.
+The **People** and **Objects** tabs provide searchable catalogs with canonical
+reference images. References also appear beside scene-specific appearances and in
+each person's or object's detail popup. Use the year and
+connection filters to narrow the timeline, or **Read the story** for the narrative.
+Records display exact field names, value types, and zero-based paths into the saved
+data. Photo details distinguish `PersonAppearance` / `ObjectAppearance` entries
+from shared `Person` / `PersonalObject` records; click `person_id` or `object_id`
+to follow the reference. Catalogs show every field, including IDs and significance.
+
+Use **Open YAML** to preview another complete result (`.yaml`, `.yml`, or `.json`)
+without changing the saved file. Images are loaded from `images/` beside the source
+file and shown when the manifest's source fingerprint matches the loaded result,
+including uploaded previews. Rolls without matching images remain browsable.
+The viewer runs locally and makes no LLM calls.
+You can also choose a source file and port at startup:
+
+```bash
+uv run python -m ai_camera_roll.viewer path/to/result.yml --port 8001
+```
+
+If you generated images in a different directory, select it explicitly:
+
+```bash
+uv run python -m ai_camera_roll.viewer path/to/result.yml --images path/to/images
+```
+
 ## Setup
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
@@ -109,56 +164,6 @@ To add an image provider, subclass `ImageModel` and implement
 where references are image bytes in the specified slot order. Provider adapters
 own any input resizing. The prompt instructions are packaged as
 `image_character.md`, `image_object.md`, and `image_scene.md` alongside the text prompts.
-
-## Web visualizer
-
-Start the local viewer from the project root:
-
-```bash
-uv run python -m ai_camera_roll.viewer
-```
-
-Open **http://127.0.0.1:8000**. It reads `output/camera_roll.yaml` by default.
-The horizontal timeline connects each photo event to people above and objects
-below. Timeline cards show generated photo thumbnails. Select a moment to open its
-photo, full description, and scene-specific appearances in a modal, with previous/next
-controls. Photos with multiple generation passes open on the final image; select an
-earlier pass in the thumbnail strip to inspect how the image evolved. Incomplete runs
-show the latest available pass and mark remaining passes as pending. Each pass lists
-its input references in slot order, marking new and reused people/object references.
-Later passes also show the previous scene input and the references carried forward
-through it. You can select a pending pass to inspect its planned references. Expand
-**Show prompt** to read the selected pass's generation prompt; switching passes updates
-the prompt and preserves whether it is expanded. Reference popups also include their
-generation prompts. Popups use a wider layout on desktop and fit smaller screens.
-Close it with Escape, the close button,
-or a click outside. The timeline uses the full page width;
-click a person or object to explore its shared description and connected moments.
-The **People** and **Objects** tabs provide searchable catalogs with canonical
-reference images. References also appear beside scene-specific appearances and in
-each person's or object's detail popup. Use the year and
-connection filters to narrow the timeline, or **Read the story** for the narrative.
-Records display exact field names, value types, and zero-based paths into the saved
-data. Photo details distinguish `PersonAppearance` / `ObjectAppearance` entries
-from shared `Person` / `PersonalObject` records; click `person_id` or `object_id`
-to follow the reference. Catalogs show every field, including IDs and significance.
-
-Use **Open YAML** to preview another complete result (`.yaml`, `.yml`, or `.json`)
-without changing the saved file. Images are loaded from `images/` beside the source
-file and shown when the manifest's source fingerprint matches the loaded result,
-including uploaded previews. Rolls without matching images remain browsable.
-The viewer runs locally and makes no LLM calls.
-You can also choose a source file and port at startup:
-
-```bash
-uv run python -m ai_camera_roll.viewer path/to/result.yml --port 8001
-```
-
-If you generated images in a different directory, select it explicitly:
-
-```bash
-uv run python -m ai_camera_roll.viewer path/to/result.yml --images path/to/images
-```
 
 ## Python API
 
