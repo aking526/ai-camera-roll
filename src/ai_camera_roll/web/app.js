@@ -14,8 +14,10 @@ const months = [
   "December",
 ];
 let data = null;
+let images = { photos: [], references: [] };
 let view = "timeline";
 let selected = -1;
+let selectedPass = -1;
 let requestVersion = 0;
 const esc = (value) =>
   String(value).replace(
@@ -37,6 +39,101 @@ const appearances = (kind, id) =>
   data.camera_roll.photos
     .map((photo, index) => ({ photo, index }))
     .filter(({ photo }) => photo[kind].some((item) => item[key(kind)] === id));
+const photoImages = (index) => images.photos.find((photo) => photo.photo_index === index);
+const referenceImage = (kind, id) =>
+  images.references.find((asset) => asset.kind === kind && asset.entity_id === id);
+const passUrl = (photo, pass) =>
+  photo.complete && pass.pass_index === photo.passes.length - 1
+    ? photo.final_url || pass.url
+    : pass.url;
+const latestPass = (photo) =>
+  photo ? [...photo.passes].reverse().find((pass) => passUrl(photo, pass)) : null;
+const photoPreview = (index) => {
+  const photo = photoImages(index);
+  return photo?.final_url || latestPass(photo)?.url;
+};
+const passLabel = (photo, pass) =>
+  `Pass ${pass.pass_index + 1}${
+    photo.complete && pass.pass_index === photo.passes.length - 1 ? " · Final" : ""
+  }`;
+
+function imageFrame(url, alt, className = "", placeholder = "Image not generated yet", eager = false) {
+  return `<span class="image-frame ${className}">${
+    url
+      ? `<img src="${esc(url)}" alt="${esc(alt)}" loading="${eager ? "eager" : "lazy"}" decoding="async" />`
+      : ""
+  }<span class="image-placeholder" ${url ? "hidden" : ""}>${esc(placeholder)}</span></span>`;
+}
+
+function referencePreview(kind, id, className = "") {
+  const item = entity(kind, id);
+  const asset = referenceImage(kind, id);
+  return `<button class="reference-preview ${className}" data-kind="${kind}" data-entity="${esc(
+    id
+  )}" aria-label="View ${esc(item.name)} reference image">${imageFrame(
+    asset?.url,
+    `${item.name} reference image`,
+    "",
+    asset?.completed ? "Reference image unavailable" : "Reference not generated yet"
+  )}<span class="reference-caption">Reference image ↗</span></button>`;
+}
+
+function photoGallery(index) {
+  const photo = photoImages(index);
+  const pass = photo?.passes.find((step) => step.pass_index === selectedPass);
+  const missing = photo?.passes.some((step) => step.completed)
+    ? "Photo image unavailable"
+    : "Photo not generated yet";
+  return `<section class="photo-gallery" aria-label="Photo and generation passes">
+    <figure class="photo-figure"><div id="photo-preview">${imageFrame(
+      pass ? passUrl(photo, pass) : null,
+      `${date(data.camera_roll.photos[index])}, ${pass ? passLabel(photo, pass) : "photo"}: ${data.camera_roll.photos[index].description}`,
+      "photo-image",
+      missing,
+      true
+    )}</div><figcaption id="pass-caption" class="image-caption" aria-live="polite">${
+    pass ? esc(passLabel(photo, pass)) : "Generated photo"
+  }</figcaption></figure>
+    ${
+      photo && !photo.complete
+        ? '<p class="schema-note">Generation is incomplete. Showing available passes.</p>'
+        : ""
+    }
+    ${
+      photo?.passes.length > 1
+        ? `<div class="pass-strip" role="group" aria-label="Image evolution">${photo.passes
+            .map((step) => {
+              const url = passUrl(photo, step);
+              const state = step.completed ? "Unavailable" : "Pending";
+              return `<button class="pass-button" data-pass="${step.pass_index}" aria-pressed="${
+                step.pass_index === selectedPass
+              }" aria-label="View ${esc(passLabel(photo, step))}${url ? "" : `, ${state}`}" ${
+                url ? "" : "disabled"
+              }>${imageFrame(url, "", "", state)}<span>${esc(passLabel(photo, step))}</span></button>`;
+            })
+            .join("")}</div>`
+        : ""
+    }</section>`;
+}
+
+function selectPass(index) {
+  const photo = photoImages(selected);
+  const pass = photo?.passes.find((step) => step.pass_index === index);
+  if (!pass || !passUrl(photo, pass)) return;
+  selectedPass = index;
+  // Update only the image so the thumbnail's focus and popup scroll are retained.
+  $("#photo-preview").innerHTML = imageFrame(
+    passUrl(photo, pass),
+    `${date(data.camera_roll.photos[selected])}, ${passLabel(photo, pass)}: ${data.camera_roll.photos[selected].description}`,
+    "photo-image",
+    "Photo image unavailable",
+    true
+  );
+  $("#pass-caption").textContent = passLabel(photo, pass);
+  document.querySelectorAll("[data-pass]").forEach((button) =>
+    button.setAttribute("aria-pressed", String(Number(button.dataset.pass) === index))
+  );
+}
 
 const modelName = (kind) => (kind === "people" ? "Person" : "PersonalObject");
 const recordPath = (kind, id) =>
@@ -93,7 +190,11 @@ async function load(responsePromise, name) {
     if (version !== requestVersion) return;
     if (!response.ok) throw new Error(payload.error || "Unable to open this camera roll.");
     data = payload.result;
+    images = payload.images || { photos: [], references: [] };
     selected = -1;
+    selectedPass = -1;
+    document.querySelectorAll("dialog[open]").forEach((dialog) => dialog.close());
+    error(images.notice || "");
     const protagonist = entity("people", data.camera_roll.protagonist_id);
     $("#open-file").title = `Current file: ${name || payload.name}`;
     document.title = `${protagonist.name} · Camera Roll`;
@@ -170,6 +271,8 @@ function renderTimeline() {
     Math.max(0, ...events.map(({ photo }) => photo.people.length)) * 76 + 28
   );
   $("#timeline").style.setProperty("--people-height", `${height}px`);
+  const hasImages = events.some(({ index }) => photoPreview(index));
+  $("#timeline").style.setProperty("--event-height", hasImages ? "310px" : "136px");
   $("#timeline").innerHTML = events.length
     ? events
         .map(
@@ -184,6 +287,18 @@ function renderTimeline() {
       }" data-event="${index}" aria-haspopup="dialog" aria-controls="moment-dialog" aria-label="Event ${
             index + 1
           }, ${esc(date(photo))}">
+        ${
+          hasImages
+            ? imageFrame(
+                photoPreview(index),
+                `${date(photo)}: ${photo.description}`,
+                "event-thumbnail",
+                photoImages(index)?.passes.some((pass) => pass.completed)
+                  ? "Photo image unavailable"
+                  : "Photo not generated yet"
+              )
+            : ""
+        }
         <span class="event-meta"><span>${esc(
           date(photo)
         )}</span><span class="event-number">${String(index + 1).padStart(2, "0")}</span></span>
@@ -203,7 +318,11 @@ function appearanceDetails(photo, kind) {
       return `<section class="appearance-record ${kind}">${recordMeta(
         `${kind}[${index}]`,
         kind === "people" ? "PersonAppearance" : "ObjectAppearance"
-      )}${fields(appearance)}</section>`;
+      )}<div class="appearance-content">${referencePreview(
+        kind,
+        appearance[key(kind)],
+        "appearance-reference"
+      )}${fields(appearance)}</div></section>`;
     })
     .join("");
 }
@@ -226,6 +345,7 @@ function renderDetail() {
     position === events.length - 1 ? "disabled" : ""
   }>→</button></div></div>
     <h2 id="moment-heading">${esc(date(photo))}</h2>
+    ${photoGallery(selected)}
     ${recordMeta(`camera_roll.photos[${selected}]`, "PhotoIdea")}
     ${fields(photo)}
     ${arrayHeading("people", "PersonAppearance", photo.people.length)}
@@ -284,6 +404,7 @@ function renderCatalog() {
         .map((item) => {
           const count = appearances(view, item.id).length;
           return `<article class="catalog-card">
+          ${referencePreview(view, item.id, "catalog-reference")}
           ${recordMeta(recordPath(view, item.id), modelName(view))}
           ${fields(item)}
           <button class="foot" data-kind="${view}" data-entity="${esc(item.id)}"><span>${count} ${
@@ -307,6 +428,13 @@ function showEntity(kind, id) {
   showDialog(
     `${modelName(kind)} · Shared record`,
     `<h2>${esc(item.name)}</h2>
+    <figure class="reference-detail">${imageFrame(
+      referenceImage(kind, id)?.url,
+      `${item.name} reference image`,
+      "",
+      referenceImage(kind, id)?.completed ? "Reference image unavailable" : "Reference not generated yet",
+      true
+    )}<figcaption class="image-caption">Reference image</figcaption></figure>
     ${recordMeta(recordPath(kind, id), modelName(kind))}
     ${fields(item)}
     <h3>Referenced by ${events.length} ${events.length === 1 ? "photo" : "photos"}</h3>
@@ -332,6 +460,7 @@ function showEntity(kind, id) {
 
 function selectEvent(index, scroll = false) {
   selected = index;
+  selectedPass = latestPass(photoImages(index))?.pass_index ?? -1;
   document.querySelectorAll("[data-event]").forEach((button) => {
     const active = Number(button.dataset.event) === index;
     button.classList.toggle("selected", active);
@@ -345,6 +474,7 @@ document.addEventListener("click", (event) => {
   if (!target) return;
   if (target.dataset.view) switchView(target.dataset.view);
   if (target.dataset.event !== undefined) selectEvent(Number(target.dataset.event));
+  if (target.dataset.pass !== undefined) selectPass(Number(target.dataset.pass));
   if (target.dataset.entity) showEntity(target.dataset.kind, target.dataset.entity);
   if (target.dataset.step) {
     const events = visibleEvents();
@@ -363,6 +493,15 @@ document.addEventListener("click", (event) => {
     selectEvent(selected, true);
   }
 });
+// Files may disappear or be damaged after the manifest is loaded.
+document.addEventListener("error", (event) => {
+  const image = event.target;
+  if (!(image instanceof HTMLImageElement) || !image.closest(".image-frame")) return;
+  image.hidden = true;
+  const placeholder = image.closest(".image-frame").querySelector(".image-placeholder");
+  placeholder.textContent = "Image unavailable";
+  placeholder.hidden = false;
+}, true);
 $("#year-filter").addEventListener("change", renderTimeline);
 $("#entity-filter").addEventListener("change", renderTimeline);
 $("#catalog-search").addEventListener("input", renderCatalog);

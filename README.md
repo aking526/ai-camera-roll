@@ -77,7 +77,8 @@ Provider failures stop the run and identify the failing item while preserving
 completed work. A completed image that is missing or corrupted raises an error
 instead of silently changing an established identity. If source data, models,
 prompt instructions, or seed change, choose a fresh output directory. Existing
-story and camera-roll YAML files are not edited, and the web viewer remains text-only.
+story and camera-roll YAML files are not edited. The web viewer reads the generated
+manifest and images alongside the camera roll.
 
 The stages are also callable independently:
 
@@ -119,11 +120,17 @@ uv run python -m ai_camera_roll.viewer
 
 Open **http://127.0.0.1:8000**. It reads `output/camera_roll.yaml` by default.
 The horizontal timeline connects each photo event to people above and objects
-below. Select a moment to open its full description and scene-specific appearances
-in a modal, with previous/next controls. Close it with Escape, the close button,
+below. Timeline cards show generated photo thumbnails. Select a moment to open its
+photo, full description, and scene-specific appearances in a modal, with previous/next
+controls. Photos with multiple generation passes open on the final image; select an
+earlier pass in the thumbnail strip to inspect how the image evolved. Incomplete runs
+show the latest available pass and mark remaining passes as pending.
+Close it with Escape, the close button,
 or a click outside. The timeline uses the full page width;
 click a person or object to explore its shared description and connected moments.
-The **People** and **Objects** tabs provide searchable catalogs. Use the year and
+The **People** and **Objects** tabs provide searchable catalogs with canonical
+reference images. References also appear beside scene-specific appearances and in
+each person's or object's detail popup. Use the year and
 connection filters to narrow the timeline, or **Read the story** for the narrative.
 Records display exact field names, value types, and zero-based paths into the saved
 data. Photo details distinguish `PersonAppearance` / `ObjectAppearance` entries
@@ -131,11 +138,20 @@ from shared `Person` / `PersonalObject` records; click `person_id` or `object_id
 to follow the reference. Catalogs show every field, including IDs and significance.
 
 Use **Open YAML** to preview another complete result (`.yaml`, `.yml`, or `.json`)
-without changing the saved file. The viewer runs locally and makes no LLM calls.
+without changing the saved file. Images are loaded from `images/` beside the source
+file and shown when the manifest's source fingerprint matches the loaded result,
+including uploaded previews. Rolls without matching images remain browsable.
+The viewer runs locally and makes no LLM calls.
 You can also choose a source file and port at startup:
 
 ```bash
 uv run python -m ai_camera_roll.viewer path/to/result.yml --port 8001
+```
+
+If you generated images in a different directory, select it explicitly:
+
+```bash
+uv run python -m ai_camera_roll.viewer path/to/result.yml --images path/to/images
 ```
 
 ## Python API
