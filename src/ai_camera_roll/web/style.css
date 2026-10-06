@@ -715,6 +715,86 @@ code {
   background: #edf3e8;
   color: var(--green);
 }
+.prompt-disclosure {
+  margin: 18px 0;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  padding: 12px 16px;
+}
+.prompt-disclosure summary {
+  cursor: pointer;
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
+}
+.prompt-disclosure summary:focus-visible {
+  outline: 3px solid #91b8a3;
+  outline-offset: 3px;
+}
+.prompt-text {
+  margin: 14px 0 0;
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: #515e4b;
+}
+.pass-references {
+  margin-top: 20px;
+  border-top: 1px solid var(--line);
+  padding-top: 4px;
+}
+.pass-references h3 {
+  font-size: 13px;
+  margin: 14px 0;
+}
+.pass-input-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(116px, 1fr));
+  align-items: start;
+  gap: 14px;
+}
+.pass-input {
+  min-width: 0;
+  text-align: left;
+}
+.pass-input strong {
+  display: block;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.input-slot {
+  display: block;
+  margin: 8px 0 4px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.pass-reference-status {
+  display: inline-block;
+  margin-top: 5px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #edf0e7;
+  color: var(--muted);
+  font-size: 10px;
+}
+.pass-reference-status[data-new="true"] {
+  color: var(--green);
+  background: #e5efdf;
+}
+.carried-references {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.carried-references button {
+  padding: 5px 8px;
+  font-size: 11px;
+  color: var(--green);
+  background: #edf3e8;
+}
 .reference-preview {
   padding: 0;
   border: 0;
@@ -798,7 +878,7 @@ dialog {
   background: #fffefa;
   border-radius: 12px;
   padding: 28px 32px;
-  max-width: 680px;
+  max-width: 1120px;
   width: calc(100% - 32px);
   max-height: 85vh;
   color: #293b2c;

@@ -124,7 +124,13 @@ below. Timeline cards show generated photo thumbnails. Select a moment to open i
 photo, full description, and scene-specific appearances in a modal, with previous/next
 controls. Photos with multiple generation passes open on the final image; select an
 earlier pass in the thumbnail strip to inspect how the image evolved. Incomplete runs
-show the latest available pass and mark remaining passes as pending.
+show the latest available pass and mark remaining passes as pending. Each pass lists
+its input references in slot order, marking new and reused people/object references.
+Later passes also show the previous scene input and the references carried forward
+through it. You can select a pending pass to inspect its planned references. Expand
+**Show prompt** to read the selected pass's generation prompt; switching passes updates
+the prompt and preserves whether it is expanded. Reference popups also include their
+generation prompts. Popups use a wider layout on desktop and fit smaller screens.
 Close it with Escape, the close button,
 or a click outside. The timeline uses the full page width;
 click a person or object to explore its shared description and connected moments.
@@ -258,6 +264,7 @@ story without regenerating its narrative.
 
 ```bash
 uv run pytest
+node --test tests/test_viewer_web.cjs
 uv build
 ```
 
@@ -265,3 +272,6 @@ Tests use a fake LLM and mocked HTTP transport; they do not require credentials 
 make paid calls. The example above is the live smoke test. Review its output for
 believable everyday moments, object recurrence, visual consistency, and chronology
 in addition to the structural checks.
+
+The viewer's JavaScript tests use Node.js's built-in test runner with a simulated
+document; they do not open a browser or make network requests.

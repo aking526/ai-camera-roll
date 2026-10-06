@@ -7,7 +7,7 @@ import pytest
 import yaml
 from PIL import Image
 
-from ai_camera_roll.image_pipeline import _manifest
+from ai_camera_roll.image_pipeline import ImageArtifact, ImageInput, _manifest
 from ai_camera_roll.models import GenerationResult
 from ai_camera_roll.viewer import make_handler
 
@@ -177,21 +177,40 @@ def test_image_manifest_maps_photos_passes_and_canonical_references(image_run):
     images = json.loads(body)["images"]
     assert images["notice"] is None
     assert [len(photo["passes"]) for photo in images["photos"]] == [2, 1]
-    assert images["photos"][0] == {
-        "photo_index": 0,
-        "complete": True,
-        "final_url": "/images/" + manifest.photos[0].final_path,
-        "passes": [
-            {"pass_index": i, "completed": True, "url": "/images/" + step.path}
-            for i, step in enumerate(manifest.photos[0].passes)
-        ],
-    }
+    photo = images["photos"][0]
+    assert photo["photo_index"] == 0
+    assert photo["complete"] is True
+    assert photo["final_url"] == "/images/" + manifest.photos[0].final_path
+    assert [
+        (step["pass_index"], step["completed"], step["url"]) for step in photo["passes"]
+    ] == [
+        (i, True, "/images/" + step.path)
+        for i, step in enumerate(manifest.photos[0].passes)
+    ]
+    assert photo["passes"][0]["inputs"] == [
+        {"slot": 0, "kind": "people", "entity_id": "person_maya", "is_new": True},
+        {"slot": 1, "kind": "objects", "entity_id": "object_cap", "is_new": True},
+        {"slot": 2, "kind": "objects", "entity_id": "object_1", "is_new": True},
+        {"slot": 3, "kind": "objects", "entity_id": "object_2", "is_new": True},
+    ]
+    assert photo["passes"][0]["carried_forward"] == []
+    assert photo["passes"][1]["inputs"] == [
+        {"slot": 0, "kind": "scene", "source_pass_index": 0},
+        {"slot": 1, "kind": "objects", "entity_id": "object_3", "is_new": True},
+    ]
+    assert photo["passes"][1]["carried_forward"] == [
+        {"kind": "people", "entity_id": "person_maya"},
+        {"kind": "objects", "entity_id": "object_cap"},
+        {"kind": "objects", "entity_id": "object_1"},
+        {"kind": "objects", "entity_id": "object_2"},
+    ]
     assert images["references"] == [
         {
             "kind": asset.kind,
             "entity_id": asset.entity_id,
             "completed": True,
             "url": "/images/" + asset.image.path,
+            "prompt": asset.image.prompt,
         }
         for asset in manifest.references
     ]
@@ -259,7 +278,18 @@ def test_different_source_does_not_attach_unrelated_images(image_run, upload):
 
 @pytest.mark.parametrize(
     "problem",
-    ["yaml", "schema", "version", "photo-index", "photo-date", "duplicate-reference"],
+    [
+        "yaml",
+        "schema",
+        "version",
+        "photo-index",
+        "photo-date",
+        "duplicate-reference",
+        "unknown-input",
+        "wrong-input-path",
+        "duplicate-slot",
+        "future-scene",
+    ],
 )
 def test_invalid_image_manifest_preserves_text_details(image_run, problem):
     source, root, manifest = image_run
@@ -274,8 +304,18 @@ def test_invalid_image_manifest_preserves_text_details(image_run, problem):
             manifest.photos[0].photo_index = -1
         elif problem == "photo-date":
             manifest.photos[0].month = 12
-        else:
+        elif problem == "duplicate-reference":
             manifest.references.append(manifest.references[0])
+        elif problem == "unknown-input":
+            manifest.photos[0].passes[0].inputs[0].entity_id = "missing_person"
+        elif problem == "wrong-input-path":
+            manifest.photos[0].passes[0].inputs[0].path = "wrong_reference.png"
+        elif problem == "duplicate-slot":
+            manifest.photos[0].passes[0].inputs[1].slot = 0
+        else:
+            manifest.photos[0].passes[1].inputs[0].path = (
+                manifest.photos[0].passes[1].path
+            )
         save_manifest(root, manifest)
     status, body = request(source)
     assert status == 200
@@ -295,11 +335,16 @@ def test_incomplete_generation_exposes_only_completed_artifacts(image_run):
     assert images["photos"][0]["complete"] is False
     assert images["photos"][0]["final_url"] is None
     assert images["photos"][0]["passes"][0]["url"]
-    assert images["photos"][0]["passes"][1] == {
-        "pass_index": 1,
-        "completed": False,
-        "url": None,
-    }
+    pending = images["photos"][0]["passes"][1]
+    assert (pending["pass_index"], pending["completed"], pending["url"]) == (
+        1,
+        False,
+        None,
+    )
+    assert pending["inputs"] == [
+        {"slot": 0, "kind": "scene", "source_pass_index": 0},
+        {"slot": 1, "kind": "objects", "entity_id": "object_3", "is_new": True},
+    ]
     assert images["references"][0]["url"] is None
     for relative in [
         photo.final_path,
@@ -377,3 +422,89 @@ def test_corrupted_png_is_rejected_without_crashing_handler(image_run):
     content[45] ^= 1  # Break the IDAT checksum while retaining a valid PNG header.
     (root / relative).write_bytes(content)
     assert request(source, "/images/" + relative)[0] == 404
+
+
+def test_reused_reference_is_not_marked_new_or_carried_forward(image_run):
+    source, root, manifest = image_run
+    asset = next(
+        asset for asset in manifest.references if asset.entity_id == "object_cap"
+    )
+    repeated = manifest.photos[0].passes[1].inputs[1]
+    repeated.entity_id = asset.entity_id
+    repeated.path = asset.reference_path
+    save_manifest(root, manifest)
+    step = json.loads(request(source)[1])["images"]["photos"][0]["passes"][1]
+    assert step["inputs"][1] == {
+        "slot": 1,
+        "kind": "objects",
+        "entity_id": "object_cap",
+        "is_new": False,
+    }
+    assert [reference["entity_id"] for reference in step["carried_forward"]] == [
+        "person_maya",
+        "object_1",
+        "object_2",
+    ]
+
+
+@pytest.mark.parametrize("source_pass", [0, 1])
+def test_carried_references_follow_the_actual_scene_input(image_run, source_pass):
+    source, root, manifest = image_run
+    photo = manifest.photos[0]
+    asset = next(
+        asset for asset in manifest.references if asset.entity_id == "object_1"
+    )
+    photo.passes.append(
+        ImageArtifact(
+            path="photos/000/pass_02.png",
+            seed=1,
+            inputs=[
+                ImageInput(slot=0, path=photo.passes[source_pass].path),
+                ImageInput(
+                    slot=1, path=asset.reference_path, entity_id=asset.entity_id
+                ),
+            ],
+        )
+    )
+    save_manifest(root, manifest)
+    step = json.loads(request(source)[1])["images"]["photos"][0]["passes"][2]
+    assert step["inputs"][0]["source_pass_index"] == source_pass
+    assert step["inputs"][1]["is_new"] is False
+    expected = ["person_maya", "object_cap", "object_2"]
+    if source_pass == 1:
+        expected.append("object_3")
+    assert [reference["entity_id"] for reference in step["carried_forward"]] == expected
+
+
+def test_pass_inputs_are_displayed_in_slot_order(image_run):
+    source, root, manifest = image_run
+    for step in manifest.photos[0].passes:
+        step.inputs.reverse()
+    save_manifest(root, manifest)
+    steps = json.loads(request(source)[1])["images"]["photos"][0]["passes"]
+    assert [item["slot"] for item in steps[0]["inputs"]] == [0, 1, 2, 3]
+    assert [item["slot"] for item in steps[1]["inputs"]] == [0, 1]
+
+
+@pytest.mark.parametrize("upload", [False, True])
+def test_saved_image_prompts_are_available_in_viewer(image_run, upload):
+    source, root, manifest = image_run
+    manifest.references[0].image.prompt = "Portrait of Maya with round glasses."
+    manifest.photos[0].passes[
+        0
+    ].prompt = "Create a studio scene.\nUse image 0 for Maya's identity."
+    manifest.photos[0].passes[1].prompt = "Edit the previous scene to add the blue mug."
+    save_manifest(root, manifest)
+    status, body = (
+        request(source, "/api/preview", body=source.read_bytes())
+        if upload
+        else request(source)
+    )
+    assert status == 200
+    images = json.loads(body)["images"]
+    assert images["references"][0]["prompt"] == "Portrait of Maya with round glasses."
+    assert [step["prompt"] for step in images["photos"][0]["passes"]] == [
+        "Create a studio scene.\nUse image 0 for Maya's identity.",
+        "Edit the previous scene to add the blue mug.",
+    ]
+    assert images["photos"][1]["passes"][0]["prompt"] is None

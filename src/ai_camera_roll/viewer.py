@@ -73,6 +73,7 @@ def image_metadata(root: Path, result: dict) -> dict:
     # The source hash connects the runs; also validate the manifest's record mappings.
     roll = result["camera_roll"]
     reference_keys = {(asset.kind, asset.entity_id) for asset in manifest.references}
+    assets_by_id = {asset.entity_id: asset for asset in manifest.references}
     known_keys = {
         (kind, item["id"]) for kind in ("people", "objects") for item in roll[kind]
     }
@@ -89,7 +90,28 @@ def image_metadata(root: Path, result: dict) -> dict:
                 roll["photos"][photo.photo_index]["month"],
             )
             or not photo.passes
+            or len({step.path for step in photo.passes}) != len(photo.passes)
             for photo in manifest.photos
+        )
+        or any(
+            len({item.slot for item in step.inputs}) != len(step.inputs)
+            or any(
+                item.slot < 0
+                or (
+                    item.entity_id is not None
+                    and (
+                        item.entity_id not in assets_by_id
+                        or item.path != assets_by_id[item.entity_id].reference_path
+                    )
+                )
+                or (
+                    item.entity_id is None
+                    and item.path not in {prior.path for prior in photo.passes[:index]}
+                )
+                for item in step.inputs
+            )
+            for photo in manifest.photos
+            for index, step in enumerate(photo.passes)
         )
     ):
         images["notice"] = (
@@ -110,19 +132,66 @@ def image_metadata(root: Path, result: dict) -> dict:
             "entity_id": asset.entity_id,
             "completed": asset.image.completed,
             "url": url(asset.image.path, asset.image.completed),
+            "prompt": asset.image.prompt,
         }
         for asset in manifest.references
     ]
     for photo in manifest.photos:
         complete = all(step.completed for step in photo.passes)
-        passes = [
-            {
-                "pass_index": index,
-                "completed": step.completed,
-                "url": url(step.path, step.completed),
-            }
-            for index, step in enumerate(photo.passes)
-        ]
+        passes = []
+        seen_ids = set()
+        scene_references = []
+        for index, step in enumerate(photo.passes):
+            inputs = []
+            inherited = []
+            ordered_inputs = sorted(step.inputs, key=lambda item: item.slot)
+            current_references = [
+                item.entity_id for item in ordered_inputs if item.entity_id is not None
+            ]
+            current_ids = set(current_references)
+            for item in ordered_inputs:
+                if item.entity_id is None:
+                    source_index = next(
+                        i
+                        for i, prior in enumerate(photo.passes[:index])
+                        if prior.path == item.path
+                    )
+                    inputs.append(
+                        {
+                            "slot": item.slot,
+                            "kind": "scene",
+                            "source_pass_index": source_index,
+                        }
+                    )
+                    inherited.extend(scene_references[source_index])
+                else:
+                    asset = assets_by_id[item.entity_id]
+                    inputs.append(
+                        {
+                            "slot": item.slot,
+                            "kind": asset.kind,
+                            "entity_id": item.entity_id,
+                            "is_new": item.entity_id not in seen_ids,
+                        }
+                    )
+            inherited = list(dict.fromkeys(inherited))
+            carried_forward = [
+                {"kind": assets_by_id[identifier].kind, "entity_id": identifier}
+                for identifier in inherited
+                if identifier not in current_ids
+            ]
+            passes.append(
+                {
+                    "pass_index": index,
+                    "completed": step.completed,
+                    "url": url(step.path, step.completed),
+                    "prompt": step.prompt,
+                    "inputs": inputs,
+                    "carried_forward": carried_forward,
+                }
+            )
+            scene_references.append(list(dict.fromkeys(inherited + current_references)))
+            seen_ids.update(current_ids)
         final_url = url(photo.final_path, complete)
         if complete and not final_url:
             final_url = passes[-1]["url"]

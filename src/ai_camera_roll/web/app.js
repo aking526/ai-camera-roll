@@ -54,7 +54,9 @@ const photoPreview = (index) => {
 };
 const passLabel = (photo, pass) =>
   `Pass ${pass.pass_index + 1}${
-    photo.complete && pass.pass_index === photo.passes.length - 1 ? " · Final" : ""
+    !pass.completed
+      ? " · Pending"
+      : photo.complete && pass.pass_index === photo.passes.length - 1 ? " · Final" : ""
   }`;
 
 function imageFrame(url, alt, className = "", placeholder = "Image not generated yet", eager = false) {
@@ -78,6 +80,63 @@ function referencePreview(kind, id, className = "") {
   )}<span class="reference-caption">Reference image ↗</span></button>`;
 }
 
+function passReferences(photo, pass) {
+  if (!pass) return "";
+  const inputs = pass.inputs || [];
+  return `<section class="pass-references" aria-label="References used in Pass ${pass.pass_index + 1}">
+    <h3>Inputs for Pass ${pass.pass_index + 1}</h3>
+    ${
+      inputs.length
+        ? `<div class="pass-input-grid">${inputs.map((input) => {
+            if (input.kind === "scene") {
+              const source = photo.passes.find((step) => step.pass_index === input.source_pass_index);
+              return `<div class="pass-input scene-input">${imageFrame(
+                source ? passUrl(photo, source) : null,
+                `Scene from Pass ${input.source_pass_index + 1}`,
+                "",
+                source?.completed ? "Scene image unavailable" : "Scene not generated yet"
+              )}<span class="input-slot">Input ${input.slot}</span>
+              <strong>Scene from Pass ${input.source_pass_index + 1}</strong>
+              <span class="pass-reference-status">Previous scene</span></div>`;
+            }
+            const item = entity(input.kind, input.entity_id);
+            const asset = referenceImage(input.kind, input.entity_id);
+            return `<button class="pass-input reference-preview" data-kind="${input.kind}" data-entity="${esc(
+              input.entity_id
+            )}" aria-haspopup="dialog" aria-controls="reader" aria-label="View ${esc(item.name)} reference image">${imageFrame(
+              asset?.url,
+              `${item.name} reference image`,
+              "",
+              asset?.completed ? "Reference image unavailable" : "Reference not generated yet"
+            )}<span class="input-slot">Input ${input.slot} · ${input.kind === "people" ? "Person" : "Object"}</span>
+            <strong>${esc(item.name)} ↗</strong>
+            <span class="pass-reference-status" data-new="${input.is_new}">${
+              input.is_new ? "New this pass" : "Reused reference"
+            }</span></button>`;
+          }).join("")}</div>`
+        : '<p class="schema-note">No input references recorded for this pass.</p>'
+    }
+    ${
+      pass.carried_forward?.length
+        ? `<p class="schema-note">Carried forward in the scene image</p>
+          <div class="carried-references">${pass.carried_forward.map((reference) => {
+            const item = entity(reference.kind, reference.entity_id);
+            return `<button data-kind="${reference.kind}" data-entity="${esc(item.id)}">${esc(item.name)} ↗</button>`;
+          }).join("")}</div>`
+        : ""
+    }</section>`;
+}
+
+function promptDisclosure(prompt, expanded = false) {
+  return `<details class="prompt-disclosure" ${expanded ? "open" : ""}>
+    <summary>Show prompt</summary>
+    ${
+      typeof prompt === "string" && prompt.trim()
+        ? `<pre class="prompt-text">${esc(prompt)}</pre>`
+        : '<p class="schema-note">No prompt recorded for this image yet.</p>'
+    }</details>`;
+}
+
 function photoGallery(index) {
   const photo = photoImages(index);
   const pass = photo?.passes.find((step) => step.pass_index === selectedPass);
@@ -89,7 +148,7 @@ function photoGallery(index) {
       pass ? passUrl(photo, pass) : null,
       `${date(data.camera_roll.photos[index])}, ${pass ? passLabel(photo, pass) : "photo"}: ${data.camera_roll.photos[index].description}`,
       "photo-image",
-      missing,
+      pass && !pass.completed ? "Pass not generated yet" : missing,
       true
     )}</div><figcaption id="pass-caption" class="image-caption" aria-live="polite">${
     pass ? esc(passLabel(photo, pass)) : "Generated photo"
@@ -107,29 +166,32 @@ function photoGallery(index) {
               const state = step.completed ? "Unavailable" : "Pending";
               return `<button class="pass-button" data-pass="${step.pass_index}" aria-pressed="${
                 step.pass_index === selectedPass
-              }" aria-label="View ${esc(passLabel(photo, step))}${url ? "" : `, ${state}`}" ${
-                url ? "" : "disabled"
-              }>${imageFrame(url, "", "", state)}<span>${esc(passLabel(photo, step))}</span></button>`;
+              }" aria-label="View ${esc(passLabel(photo, step))}${!url && step.completed ? `, ${state}` : ""}">
+              ${imageFrame(url, "", "", state)}<span>${esc(passLabel(photo, step))}</span></button>`;
             })
             .join("")}</div>`
         : ""
-    }</section>`;
+    }<div id="pass-prompt">${promptDisclosure(pass?.prompt)}</div>
+    <div id="pass-references">${passReferences(photo, pass)}</div></section>`;
 }
 
 function selectPass(index) {
   const photo = photoImages(selected);
   const pass = photo?.passes.find((step) => step.pass_index === index);
-  if (!pass || !passUrl(photo, pass)) return;
+  if (!pass) return;
   selectedPass = index;
-  // Update only the image so the thumbnail's focus and popup scroll are retained.
+  // Keep the thumbnail buttons in place so focus and popup scroll are retained.
   $("#photo-preview").innerHTML = imageFrame(
     passUrl(photo, pass),
     `${date(data.camera_roll.photos[selected])}, ${passLabel(photo, pass)}: ${data.camera_roll.photos[selected].description}`,
     "photo-image",
-    "Photo image unavailable",
+    pass.completed ? "Photo image unavailable" : "Pass not generated yet",
     true
   );
   $("#pass-caption").textContent = passLabel(photo, pass);
+  const promptExpanded = $("#pass-prompt details")?.open || false;
+  $("#pass-prompt").innerHTML = promptDisclosure(pass.prompt, promptExpanded);
+  $("#pass-references").innerHTML = passReferences(photo, pass);
   document.querySelectorAll("[data-pass]").forEach((button) =>
     button.setAttribute("aria-pressed", String(Number(button.dataset.pass) === index))
   );
@@ -435,6 +497,7 @@ function showEntity(kind, id) {
       referenceImage(kind, id)?.completed ? "Reference image unavailable" : "Reference not generated yet",
       true
     )}<figcaption class="image-caption">Reference image</figcaption></figure>
+    ${promptDisclosure(referenceImage(kind, id)?.prompt)}
     ${recordMeta(recordPath(kind, id), modelName(kind))}
     ${fields(item)}
     <h3>Referenced by ${events.length} ${events.length === 1 ? "photo" : "photos"}</h3>
@@ -460,7 +523,7 @@ function showEntity(kind, id) {
 
 function selectEvent(index, scroll = false) {
   selected = index;
-  selectedPass = latestPass(photoImages(index))?.pass_index ?? -1;
+  selectedPass = latestPass(photoImages(index))?.pass_index ?? photoImages(index)?.passes[0]?.pass_index ?? -1;
   document.querySelectorAll("[data-event]").forEach((button) => {
     const active = Number(button.dataset.event) === index;
     button.classList.toggle("selected", active);
