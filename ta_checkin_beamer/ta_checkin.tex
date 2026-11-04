@@ -1,0 +1,195 @@
+% Compile with: tectonic ta_checkin.tex
+% Or: latexmk -pdf ta_checkin.tex
+% Speaker notes are included in the source but hidden in the presentation PDF.
+\documentclass[aspectratio=169,11pt]{beamer}
+\usetheme{Boadilla}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs,tabularx,array}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\definecolor{forest}{HTML}{24382D}
+\definecolor{rust}{HTML}{AF573D}
+\definecolor{muted}{HTML}{686D60}
+\setbeamercolor{normal text}{fg=forest,bg=white}
+\setbeamercolor{structure}{fg=forest}
+\setbeamercolor{alerted text}{fg=rust}
+\setbeamercolor{frametitle}{fg=forest,bg=white}
+\setbeamercolor{title}{fg=forest}
+\setbeamerfont{frametitle}{size=\Large,series=\bfseries}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamertemplate{footline}{\hspace{7mm}\color{muted}\scriptsize CIS 5810\hfill\insertframenumber/\inserttotalframenumber\hspace{7mm}\vspace{3mm}}
+\setbeamersize{text margin left=7mm,text margin right=7mm}
+\setbeameroption{hide notes}
+\newcommand{\source}[1]{\par\vfill{\fontsize{7}{8}\selectfont\color{muted}#1\par}}
+\newcommand{\repo}[2]{\href{https://github.com/aking526/ai-camera-roll/blob/b8c9014066ee32bb119df63ef75748cd3885bf5c/#1}{#2}}
+\hypersetup{pdftitle={CIS 5810: Making character consistency measurable},pdfauthor={Ethan Wei, Alistair King, Tanay Tandon},colorlinks=true,urlcolor=forest}
+
+\begin{document}
+
+\begin{frame}
+\begin{columns}[c,onlytextwidth]
+\begin{column}{.53\textwidth}
+{\small CIS 5810 TA check-in\par}
+\vspace{6mm}
+{\LARGE\bfseries Making character\\consistency measurable\par}
+\vspace{5mm}
+Post-proposal iteration 1\par
+\vspace{1mm}
+Scoring implemented.\\Improvement to test.\par
+\vspace{7mm}
+{\small Ethan Wei, Alistair King\\Tanay Tandon\par}
+\vspace{2mm}
+{\small November 2026}
+\end{column}
+\begin{column}{.44\textwidth}
+\includegraphics[width=\linewidth]{assets/maya_may.png}
+\end{column}
+\end{columns}
+\note{We already had a working reference-conditioned, multi-pass camera-roll pipeline at the proposal. This update makes its output measurable and inspectable. We have not yet demonstrated a quality improvement. The cover is an existing synthetic May scene, not a new generation. Sources: project proposal pages 1--3 and the saved Maya pilot.}
+\end{frame}
+
+\begin{frame}{What existed and what we added}
+\renewcommand{\arraystretch}{1.4}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Existing before this work} & \textbf{Added during this work}\\
+\midrule
+Story, scene prompts, canonical portraits and reference-conditioned editing & SCRFD and ArcFace scoring of all nine saved passes, with crops and candidate matches\\
+Saved passes, prompts and a technical camera-roll viewer & Story-first website with clearer pipeline inspection and score comparisons\\
+Human evaluation plan and proposed automated metrics & Frozen rating rounds, independent reviews, saved answers and exports\\
+\bottomrule
+\end{tabularx}\par
+\vspace{5mm}
+\normalsize\textbf{Existing Maya pilot:} five scenes, eight references, nine scene passes.
+\source{Sources: proposal pp. 1--3; \repo{evaluation/README.md}{evaluation documentation}; \repo{demo_site/RATING_GUIDE.txt}{rating guide}.}
+\note{The proposal described five text-only baseline images, followed by a reference-conditioned iteration with a prompt compiler, canonical references and editing passes. The displayed Maya pilot is that reference-conditioned version. We did not recover the original text-only images, so we do not claim a new quantified comparison with them. ArcFace was already proposed; this work implements that plan. CLIP and SAM remain proposed methods. The original technical viewer is established by repository evidence, not the proposal text. No independent rating result or new image-quality improvement is claimed.}
+\end{frame}
+
+\begin{frame}{How we measure face consistency}
+\raggedright
+\textbf{1. SCRFD finds faces.} It locates faces and landmarks such as the eyes and nose. We use these landmarks to crop and align each face consistently.\par
+\vspace{3mm}
+\textbf{2. ArcFace describes identity.} A pretrained recognition network converts each face into a compact set of numbers. Its training encourages images of the same person to have similar representations.\par
+\vspace{3mm}
+\textbf{3. Compare with the portrait.} We compare those numbers with the character's reference using cosine similarity. The score ranges from $-1$ to $1$. Higher means a closer model match.\par
+\vspace{2mm}
+\small\textbf{Why these tools?} Efficient face detection and identity-focused comparison, with pretrained models that run locally and score every pass consistently.
+\vspace{2mm}
+\par\alert{Human review checks whether score changes reflect identity changes.}
+\source{Sources: \href{https://arxiv.org/abs/2105.04714}{SCRFD paper}; \href{https://arxiv.org/abs/1801.07698}{ArcFace paper}; \repo{evaluation/score_faces.py}{local evaluator}.}
+\note{SCRFD is the face detector. Its efficient design makes local evaluation practical, and its landmarks support repeatable alignment. ArcFace is the recognition method: its pretrained network learns facial features useful for distinguishing identities. We chose face-specific comparison because character identity is the target, rather than overall scene similarity. Both are available together through InsightFace and require no generation API calls to score the saved images. The local setup uses SCRFD-10GF and ArcFace ResNet50 from buffalo\_l, with 112 by 112 aligned crops. Cosine similarity compares the learned numerical descriptions. The evaluator builds all reference-to-candidate comparisons and chooses a one-to-one assignment. Assigned candidates can still be weak matches. Scores are not identity probabilities, and we have no calibrated identity cutoff. Pose, visibility and alignment can affect them. Neither model was specifically trained or validated here for synthetic character identity.}
+\end{frame}
+
+\begin{frame}{Maya's score falls in all four edited scenes}
+\small First pass versus final pass. Higher similarity means a closer model match.
+\vspace{2mm}
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+ width=.95\textwidth,height=43mm,
+ybar=10pt,bar width=12pt,ymin=0,ymax=.52,
+ ytick={0,.1,.2,.3,.4,.5},
+ symbolic x coords={January,February,August,October},xtick=data,
+ enlarge x limits=.16,
+ axis lines*=left,ymajorgrids=true,grid style={gray!20},
+ tick label style={font=\small},
+ nodes near coords,point meta=y,
+ every node near coord/.append style={font=\scriptsize,/pgf/number format/fixed,/pgf/number format/precision=4,/pgf/number format/zerofill},
+ legend style={at={(.5,-.22)},anchor=north,legend columns=2,draw=none,font=\small},
+ ]
+\addplot[fill=forest,draw=forest] coordinates {(January,.4455871328864703) (February,.30807495358305204) (August,.34181872034847716) (October,.10911143299338712)};
+\addplot[fill=rust,draw=rust] coordinates {(January,.14525147558402593) (February,.06178808040049918) (August,.22305779596064895) (October,.05748159883324351)};
+\legend{First pass,Final pass}
+\end{axis}
+\end{tikzpicture}
+\end{center}
+\vspace{3mm}
+\small May: 0.3098, single pass. No before/after comparison.\par
+\vspace{1mm}
+\alert{Four observations motivate a test. They do not establish the cause.}
+\source{Source: \repo{evaluation/results/scores.json}{saved ArcFace results}. Scores compare assigned candidates with Maya's canonical portrait.}
+\note{January has the largest observed decrease: .4456 to .1453, a change of -.3003. All four edited scenes show lower assigned Maya similarity after the edit. May is single-pass and must not be treated as zero change. These are model observations, not independent human judgments or evidence of causality. The chart shows the observed positive range, while cosine similarity can range from -1 to 1. Pose, visibility, alignment and assignment can affect scores.}
+\end{frame}
+
+\begin{frame}{January: the edit does not resupply the portraits}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{.48\textwidth}
+\textbf{Pass 1: initial scene}\par\vspace{2mm}
+\centering\includegraphics[height=45mm]{assets/january_first.png}\par\vspace{2mm}
+\raggedright\small Inputs: Maya and Jonah portraits, cap, sketchbook.
+\end{column}
+\begin{column}{.48\textwidth}
+\textbf{\color{rust}Pass 2: mug edit}\par\vspace{2mm}
+\centering\includegraphics[height=45mm]{assets/january_final.png}\par\vspace{2mm}
+\raggedright\small Inputs: previous scene and mug.\\\alert{No portrait supplied directly again.}
+\end{column}
+\end{columns}
+\source{Source: saved January passes and exact input slots in \repo{output/images/manifest.yaml}{the generation manifest}.}
+\note{Show these passes in the live website if useful. The current multipass schedule accommodates the reference-input limit; it is not triggered by a bad score. For January, portraits are only supplied directly in pass one. Their omission in pass two is a plausible mechanism for drift, not a proven cause. The proposal already noted duplicate mugs and a closed sketchbook. Those observations are not new independent human labels.}
+\end{frame}
+
+\begin{frame}{January: the face crops behind the score}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{.31\textwidth}
+\centering\textbf{Canonical Maya}\par\vspace{3mm}
+\includegraphics[height=39mm]{assets/maya_reference.png}\par\vspace{3mm}
+\small Synthetic reference
+\end{column}
+\begin{column}{.31\textwidth}
+\centering\textbf{First-pass candidate}\par\vspace{3mm}
+\includegraphics[height=39mm]{assets/maya_first.png}\par\vspace{3mm}
+\Large\textbf{0.4456}
+\end{column}
+\begin{column}{.31\textwidth}
+\centering\textbf{Final-pass candidate}\par\vspace{3mm}
+\includegraphics[height=39mm]{assets/maya_final.png}\par\vspace{3mm}
+\Large\textbf{\color{rust}0.1453}
+\end{column}
+\end{columns}
+\vspace{5mm}
+\alert{January change: $-0.3003$ cosine similarity.}
+\source{Source: \repo{evaluation/results/crops/}{saved face crops} and \repo{evaluation/results/scores.json}{scores}. Aligned 112 by 112 crops enlarged for inspection.}
+\note{Give the TA time to inspect the faces. The final candidate is farther from the reference in ArcFace's learned representation. This alone does not prove identity loss or a worse photograph. Human review should judge whether the visible facial features still represent the same character, allowing expression and pose changes. The crops are the evaluator inputs, enlarged without adding detail.}
+\end{frame}
+
+\begin{frame}{Human judgments help interpret the scores}
+\raggedright
+\textbf{Same frozen image set.} Three real reviewers rate independently. Image order is shuffled, and model scores are hidden.\par
+\vspace{5mm}
+\textbf{Identity and scene requirements.} Compare faces with portraits. Check object count, appearance and state, plus setting and action.\par
+\vspace{5mm}
+\textbf{Uncertainty stays visible.} Allow unclear judgments. Retain raw votes, disagreements and prior-exposure disclosures.\par
+\vspace{3mm}
+\alert{Next: collect ratings and add paired first/final review.}\par
+\small The current round covers final photos only, so it cannot validate pass-to-pass drift.
+\source{Source: \repo{demo_site/RATING_GUIDE.txt}{human-rating guide}. No completed independent rating result is claimed here.}
+\note{Live demonstration: Rate photos, How to rate, then People, Objects and Scene. Three actual reviewers submit independently, with at least two agreeing for a strict majority. Do not fill in teammates' reviews or replace disagreements with consensus answers. Maya is familiar development material, not a held-out benchmark. The current workflow rates final images only; paired first/final or experimental A/B review is still a protocol extension to complete.}
+\end{frame}
+
+\begin{frame}{Next experiment: resupply Maya's portrait}
+\textbf{Hypothesis:} a direct portrait reference during the object edit helps preserve Maya's identity.\par
+\vspace{4mm}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{A: current edit} & \textbf{B: proposed edit}\\
+\midrule
+Saved first-pass scene and mug & Same scene and mug, plus Maya's canonical portrait\\
+\bottomrule
+\end{tabularx}\par
+\vspace{4mm}
+\small
+\textbf{Hold fixed:} scene, mug request, model, settings and seed. Change only the added reference and required slot instructions.\par
+\vspace{3mm}
+\textbf{Evaluate:} human identity first, ArcFace second. Check objects and action, and record calls and runtime.\par
+\vspace{3mm}
+\alert{Keep or reject the change, then choose the next experiment from the results.}
+\source{Proposed experiment. No new generation or measured quality improvement is claimed.}
+\note{This is one proposed experiment, not a predetermined sequence of three improvements. January currently uses two input slots during the edit, so adding one portrait fits the four-slot limit. Use the same saved first-pass image, mug reference and edit seed (3481668843). Keep the prompt fixed apart from necessary slot instructions. Seeds may not guarantee provider determinism. Human review should hide condition labels and scores and check mug count/state plus scene requirements, so identity gains do not conceal regressions. Later experiments should depend on the observed outcomes.}
+\end{frame}
+
+\end{document}
