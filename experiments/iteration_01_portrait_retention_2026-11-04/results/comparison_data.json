@@ -1,0 +1,974 @@
+{
+  "title": "Iteration 01 \u00b7 Retaining Maya\u2019s portrait",
+  "subtitle": "A controlled comparison of the original method and one proposed change.",
+  "summary": {
+    "decision": "Mixed results; keep experimental.",
+    "object_paired_control_mean": 0.3064335128619427,
+    "object_paired_modified_mean": 0.30447687034161575,
+    "object_paired_count": 10,
+    "image_requests": 13,
+    "text_requests": 0,
+    "maya_same_candidate_first_mean": 0.2031273650028905,
+    "maya_same_candidate_control_mean": 0.10630552171895614,
+    "maya_same_candidate_modified_mean": 0.1782053884515321
+  },
+  "scenes": [
+    {
+      "photo_index": 0,
+      "month": 1,
+      "name": "January",
+      "columns": [
+        {
+          "key": "original_first_pass",
+          "label": "Original method \u00b7 Pass 1",
+          "image": "images/control/january_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.3118621695228616,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.3829882975577295,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.3998512497878928,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_sketchbook",
+              "name": "Black hardcover sketchbook",
+              "similarity": 0.2811249995207109,
+              "candidate_count": 3
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.1153363872596227,
+              "candidate_count": 3
+            }
+          ],
+          "object_note": ""
+        },
+        {
+          "key": "original_second_pass",
+          "label": "Original method \u00b7 Pass 2",
+          "image": "images/control/january_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.15537906047585245,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.33151263726212754,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.4062430725725242,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_sketchbook",
+              "name": "Black hardcover sketchbook",
+              "similarity": 0.24577088080229056,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.4866070841102959,
+              "candidate_count": 4
+            }
+          ],
+          "object_note": ""
+        },
+        {
+          "key": "modified_second_pass",
+          "label": "Portrait retention \u00b7 Pass 2",
+          "image": "images/portrait_reference/january_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.24963688007191842,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.22839828721385735,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.4063943795722246,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_sketchbook",
+              "name": "Black hardcover sketchbook",
+              "similarity": 0.23768966088815321,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.4782473434320537,
+              "candidate_count": 3
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Identical first pass for both methods. Only the later portrait input and its instruction change.",
+      "warning": ""
+    },
+    {
+      "photo_index": 1,
+      "month": 2,
+      "name": "February",
+      "columns": [
+        {
+          "key": "original_first_pass",
+          "label": "Original method \u00b7 Pass 1",
+          "image": "images/control/february_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.1973150026638934,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.19839834159718822,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.19594128713746456,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_cast_iron_skillet",
+              "name": "Cast-iron skillet",
+              "similarity": 0.19079727115096198,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.06200257260242862,
+              "candidate_count": 1
+            }
+          ],
+          "object_note": ""
+        },
+        {
+          "key": "original_second_pass",
+          "label": "Original method \u00b7 Pass 2",
+          "image": "images/control/february_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.09096824172979402,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.14774595832586915,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.13722964737607368,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_cast_iron_skillet",
+              "name": "Cast-iron skillet",
+              "similarity": 0.2592858944974924,
+              "candidate_count": 2
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.5152777163556781,
+              "candidate_count": 2
+            }
+          ],
+          "object_note": ""
+        },
+        {
+          "key": "modified_second_pass",
+          "label": "Portrait retention \u00b7 Pass 2",
+          "image": "images/portrait_reference/february_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.17432939860925273,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.06863563408573745,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.19291231501290254,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_cast_iron_skillet",
+              "name": "Cast-iron skillet",
+              "similarity": 0.24147304100905004,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.3316730403998973,
+              "candidate_count": 1
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Identical first pass for both methods. Only the later portrait input and its instruction change. The mug moves from the requested radiator to Maya\u2019s hand.",
+      "warning": ""
+    },
+    {
+      "photo_index": 2,
+      "month": 5,
+      "name": "May",
+      "columns": [
+        {
+          "key": "original_first_pass",
+          "label": "Original method \u00b7 Pass 1",
+          "image": "images/control/may_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.16105177109264016,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.2826694273893933,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_blue_bike",
+              "name": "Blue Schwinn bicycle",
+              "similarity": 0.44883360134678696,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.32589065514275617,
+              "candidate_count": 1
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Single-pass control. This same image is used by both methods; there is no second pass or treatment gain.",
+      "warning": ""
+    },
+    {
+      "photo_index": 3,
+      "month": 8,
+      "name": "August",
+      "columns": [
+        {
+          "key": "original_first_pass",
+          "label": "Original method \u00b7 Pass 1",
+          "image": "images/control/august_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.10020492282191648,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.21816140144767576,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.08139641513160728,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.45357387066423765,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_bike",
+              "name": "Blue Schwinn bicycle",
+              "similarity": null,
+              "candidate_count": 0
+            },
+            {
+              "object_id": "object_sketchbook",
+              "name": "Black hardcover sketchbook",
+              "similarity": null,
+              "candidate_count": 0
+            }
+          ],
+          "object_note": ""
+        },
+        {
+          "key": "original_second_pass",
+          "label": "Original method \u00b7 Pass 2",
+          "image": "images/control/august_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.07256926295122199,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.11648037555289462,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.01562187397444701,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.2049539614120004,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_bike",
+              "name": "Blue Schwinn bicycle",
+              "similarity": 0.16413349104908323,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_sketchbook",
+              "name": "Black hardcover sketchbook",
+              "similarity": 0.26844399869828145,
+              "candidate_count": 1
+            }
+          ],
+          "object_note": ""
+        },
+        {
+          "key": "modified_second_pass",
+          "label": "Portrait retention \u00b7 Pass 2",
+          "image": "images/portrait_reference/august_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.11064988667342518,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 2,
+              "similarity": 0.04347636322436319,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.04713677920991947,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.31968739265329177,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_bike",
+              "name": "Blue Schwinn bicycle",
+              "similarity": 0.255010388739651,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_sketchbook",
+              "name": "Black hardcover sketchbook",
+              "similarity": 0.2628857336453113,
+              "candidate_count": 1
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Identical first pass for both methods. Only the later portrait input and its instruction change. Supporting-character face assignments also switch.",
+      "warning": ""
+    },
+    {
+      "photo_index": 4,
+      "month": 10,
+      "name": "October",
+      "columns": [
+        {
+          "key": "original_first_pass",
+          "label": "Original method \u00b7 Pass 1",
+          "image": "images/control/october_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.12768024673705022,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.29731112576521646,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.19424308096145412,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_cast_iron_skillet",
+              "name": "Cast-iron skillet",
+              "similarity": 0.4297965302977481,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.11898237432333701,
+              "candidate_count": 2
+            },
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": null,
+              "candidate_count": 0
+            }
+          ],
+          "object_note": ""
+        },
+        {
+          "key": "original_second_pass",
+          "label": "Original method \u00b7 Pass 2",
+          "image": "images/control/october_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.1283839719038638,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.08254955461750865,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": -0.004890926317161256,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_cast_iron_skillet",
+              "name": "Cast-iron skillet",
+              "similarity": 0.3591770908329816,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.15444193828879887,
+              "candidate_count": 5
+            },
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": null,
+              "candidate_count": 0
+            }
+          ],
+          "object_note": ""
+        },
+        {
+          "key": "modified_second_pass",
+          "label": "Portrait retention \u00b7 Pass 2",
+          "image": "images/portrait_reference/october_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 1,
+              "similarity": 0.20385121101415873,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 0,
+              "similarity": 0.05962712531224963,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.013806892615226538,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_cast_iron_skillet",
+              "name": "Cast-iron skillet",
+              "similarity": 0.40301048274682355,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.10869724032970086,
+              "candidate_count": 4
+            },
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": null,
+              "candidate_count": 0
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Identical first pass for both methods. Only the later portrait input and its instruction change.",
+      "warning": "Wrong-person warning: assigned Maya switches from the left cook to the center person. The left cook falls from 0.1284 to 0.0696 (post-hoc check)."
+    }
+  ],
+  "historical_scenes": [
+    {
+      "photo_index": 0,
+      "month": 1,
+      "name": "January",
+      "columns": [
+        {
+          "key": "historical_first_pass",
+          "label": "Historical pilot \u00b7 Pass 1",
+          "image": "images/historical/january_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.4455871328864703,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.15193154187864094,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [],
+          "object_note": "Historical first-pass object scores were not computed."
+        },
+        {
+          "key": "historical_second_pass",
+          "label": "Historical pilot \u00b7 Pass 2",
+          "image": "images/historical/january_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.14525147558402593,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.12157575290815173,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.3968864587498333,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_sketchbook",
+              "name": "Black hardcover sketchbook",
+              "similarity": 0.0893970757524625,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.4832212317564026,
+              "candidate_count": 4
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Earlier pilot preserved unchanged. Its starting image differs from the fresh controlled experiment.",
+      "warning": ""
+    },
+    {
+      "photo_index": 1,
+      "month": 2,
+      "name": "February",
+      "columns": [
+        {
+          "key": "historical_first_pass",
+          "label": "Historical pilot \u00b7 Pass 1",
+          "image": "images/historical/february_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.30807495358305204,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.09574330459477019,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.18801845696843256,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [],
+          "object_note": "Historical first-pass object scores were not computed."
+        },
+        {
+          "key": "historical_second_pass",
+          "label": "Historical pilot \u00b7 Pass 2",
+          "image": "images/historical/february_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.06178808040049918,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": -0.08744552028414711,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.13763010301233541,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_cast_iron_skillet",
+              "name": "Cast-iron skillet",
+              "similarity": 0.36512692507489175,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.05424320331222096,
+              "candidate_count": 2
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Earlier pilot preserved unchanged. Its starting image differs from the fresh controlled experiment.",
+      "warning": ""
+    },
+    {
+      "photo_index": 2,
+      "month": 5,
+      "name": "May",
+      "columns": [
+        {
+          "key": "historical_first_pass",
+          "label": "Historical pilot \u00b7 Pass 1",
+          "image": "images/historical/may_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.30976651626174007,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.30274964670663324,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_blue_bike",
+              "name": "Blue Schwinn bicycle",
+              "similarity": 0.5138889406631597,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.3443154492281416,
+              "candidate_count": 1
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Earlier pilot preserved unchanged. Its starting image differs from the fresh controlled experiment.",
+      "warning": ""
+    },
+    {
+      "photo_index": 3,
+      "month": 8,
+      "name": "August",
+      "columns": [
+        {
+          "key": "historical_first_pass",
+          "label": "Historical pilot \u00b7 Pass 1",
+          "image": "images/historical/august_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.34181872034847716,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.201900603582445,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.007209693796488122,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [],
+          "object_note": "Historical first-pass object scores were not computed."
+        },
+        {
+          "key": "historical_second_pass",
+          "label": "Historical pilot \u00b7 Pass 2",
+          "image": "images/historical/august_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.22305779596064895,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.0008129868744878414,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.023399536684058565,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.3569182564123459,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_bike",
+              "name": "Blue Schwinn bicycle",
+              "similarity": 0.5102235257802504,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_sketchbook",
+              "name": "Black hardcover sketchbook",
+              "similarity": 0.29651760152565204,
+              "candidate_count": 1
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Earlier pilot preserved unchanged. Its starting image differs from the fresh controlled experiment.",
+      "warning": ""
+    },
+    {
+      "photo_index": 4,
+      "month": 10,
+      "name": "October",
+      "columns": [
+        {
+          "key": "historical_first_pass",
+          "label": "Historical pilot \u00b7 Pass 1",
+          "image": "images/historical/october_pass_1.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.10911143299338712,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": null,
+              "similarity": null,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.12232976532518251,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [],
+          "object_note": "Historical first-pass object scores were not computed."
+        },
+        {
+          "key": "historical_second_pass",
+          "label": "Historical pilot \u00b7 Pass 2",
+          "image": "images/historical/october_pass_2.png",
+          "face_scores": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.05748159883324351,
+              "name": "Maya Chen"
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": null,
+              "similarity": null,
+              "name": "Priya"
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.011134796737350624,
+              "name": "Jonah"
+            }
+          ],
+          "object_scores": [
+            {
+              "object_id": "object_cast_iron_skillet",
+              "name": "Cast-iron skillet",
+              "similarity": 0.4419799075879186,
+              "candidate_count": 1
+            },
+            {
+              "object_id": "object_blue_mug",
+              "name": "Chipped blue mug",
+              "similarity": 0.16086610470874083,
+              "candidate_count": 2
+            },
+            {
+              "object_id": "object_green_cap",
+              "name": "Faded green cap",
+              "similarity": 0.4743306007546707,
+              "candidate_count": 1
+            }
+          ],
+          "object_note": ""
+        }
+      ],
+      "note": "Earlier pilot preserved unchanged. Its starting image differs from the fresh controlled experiment.",
+      "warning": ""
+    }
+  ],
+  "sources": {
+    "faces": "SCRFD + ArcFace cosine",
+    "objects": "Grounding DINO + DINOv2 cosine",
+    "record": "records/experiment_plan.json",
+    "data": "results/raw/",
+    "analysis": "ANALYSIS.md"
+  }
+}

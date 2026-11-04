@@ -1,0 +1,28 @@
+{
+  "type": "Assistant diagnostic review, not human ratings; no numerical scores overridden",
+  "checks": {
+    "tests_passed": {
+      "core_and_demo": 194,
+      "face_scoring": 11,
+      "object_scoring_and_report": 14
+    },
+    "canonical_reference_hashes_equal_across_conditions": true,
+    "model_weights_checked_against_published_sha256": true,
+    "repeat_reference_embedding_max_difference": 0.0,
+    "may_shared_image_and_object_results_identical": true,
+    "blank_gray_control_false_positive_categories": [
+      "book",
+      "frying pan"
+    ],
+    "api_calls": 0
+  },
+  "observations": [
+    "Reviewed contact sheets of all primary crops and additional candidates for all 15 photos.",
+    "Historical February mug candidates are indistinct background regions, illustrating false positive localization.",
+    "October mug candidates include a glass mug, bowls and dark handled vessels; these do not establish presence of the canonical blue mug.",
+    "October control cap is visible near the door but no candidate passes the frozen threshold.",
+    "Wide bicycle crops include a person and background; their cosine can change with composition, not only the bicycle.",
+    "Scores and the highest-detector-confidence selection rule were preserved; no handpicked replacement crops or manual scores were substituted."
+  ],
+  "decision": "Use as exploratory algorithmic object-reference similarity with candidate coverage and crop inspection. Do not call it object accuracy or count the new metric as a generation improvement."
+}

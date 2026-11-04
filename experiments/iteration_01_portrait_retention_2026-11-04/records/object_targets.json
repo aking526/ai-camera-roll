@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "method": "Grounding DINO localization and DINOv2 object-reference similarity",
+  "source_file": "frozen_source.yaml",
+  "source_sha256": "d198ad4423328e964895b565cc3098abfd669b6725446d10edfd13aceaba404d",
+  "scope": "Five recurring object types and thirteen required appearances, fixed from the saved source. Queries describe generic categories only so color and fine appearance remain features to compare with canonical reference images. Source requirements are shown for context; embedding similarity does not verify placement, count, ownership or exact state.",
+  "objects": [
+    {
+      "id": "object_green_cap",
+      "reference_id": "object_green_cap",
+      "name": "Faded green cap",
+      "query": "baseball cap.",
+      "visual_description": "A faded olive-green baseball cap with a small embroidered mountain patch on the front, a slightly curved brim, and a sweat-stained inner band. The fabric is worn soft and the color muted from washing."
+    },
+    {
+      "id": "object_blue_bike",
+      "reference_id": "object_blue_bike",
+      "name": "Blue Schwinn bicycle",
+      "query": "bicycle.",
+      "visual_description": "A vintage blue Schwinn road bike with a steel frame, slightly rusted chrome handlebars, a worn brown leather saddle, and a rear rack. A small bell on the left handlebar and a faded sticker from a Philadelphia bike shop on the down tube."
+    },
+    {
+      "id": "object_sketchbook",
+      "reference_id": "object_sketchbook",
+      "name": "Black hardcover sketchbook",
+      "query": "book.",
+      "visual_description": "A black hardcover sketchbook, roughly A5 size, with a black elastic closure and a ribbon bookmark. The cover is scuffed, and the corners are slightly bent from being carried in a bag."
+    },
+    {
+      "id": "object_cast_iron_skillet",
+      "reference_id": "object_cast_iron_skillet",
+      "name": "Cast-iron skillet",
+      "query": "frying pan.",
+      "visual_description": "A heavy, black cast-iron skillet with a short handle and a small pour spout on one side. The surface is seasoned and slightly uneven, with a faint rust spot near the handle from age."
+    },
+    {
+      "id": "object_blue_mug",
+      "reference_id": "object_blue_mug",
+      "name": "Chipped blue mug",
+      "query": "mug.",
+      "visual_description": "A ceramic mug with a deep blue glaze, a chip on the rim, and a small handle. The glaze is slightly crazed, and the bottom has a faded maker's mark."
+    }
+  ],
+  "scenes": [
+    {
+      "photo_index": 0,
+      "month": 1,
+      "objects": [
+        "object_green_cap",
+        "object_sketchbook",
+        "object_blue_mug"
+      ],
+      "requirements": {
+        "object_green_cap": "On Maya's head, brim slightly dusty, mountain patch visible.",
+        "object_sketchbook": "Open on the desk, pages showing pencil sketches of a cornice.",
+        "object_blue_mug": "On the desk beside a chipboard model, half-full of dark coffee, chip on rim visible."
+      }
+    },
+    {
+      "photo_index": 1,
+      "month": 2,
+      "objects": [
+        "object_cast_iron_skillet",
+        "object_blue_mug"
+      ],
+      "requirements": {
+        "object_cast_iron_skillet": "On the coffee table, holding braised white beans, handle wrapped in a towel.",
+        "object_blue_mug": "On the radiator, steaming, chip on rim visible."
+      }
+    },
+    {
+      "photo_index": 2,
+      "month": 5,
+      "objects": [
+        "object_blue_bike",
+        "object_green_cap"
+      ],
+      "requirements": {
+        "object_blue_bike": "Leaning against a brick wall, rear wheel slightly askew, bell catching the light.",
+        "object_green_cap": "On Maya's head, brim has a dark grease smudge from the March bike tune-up."
+      }
+    },
+    {
+      "photo_index": 3,
+      "month": 8,
+      "objects": [
+        "object_green_cap",
+        "object_blue_bike",
+        "object_sketchbook"
+      ],
+      "requirements": {
+        "object_green_cap": "On Maya's head, slightly faded, faint grease smudge on brim, mountain patch visible.",
+        "object_blue_bike": "Leaning against a tree, rear rack empty.",
+        "object_sketchbook": "On the grass, open to a sketch of the park's trees."
+      }
+    },
+    {
+      "photo_index": 4,
+      "month": 10,
+      "objects": [
+        "object_cast_iron_skillet",
+        "object_blue_mug",
+        "object_green_cap"
+      ],
+      "requirements": {
+        "object_cast_iron_skillet": "On the stove, cornbread golden, handle slightly greasy.",
+        "object_blue_mug": "On the windowsill, empty, chip on rim visible.",
+        "object_green_cap": "Hanging on a hook by the door, faded, faint grease smudge on brim, mountain patch visible."
+      }
+    }
+  ]
+}

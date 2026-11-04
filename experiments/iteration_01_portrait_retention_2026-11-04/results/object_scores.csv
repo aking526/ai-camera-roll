@@ -1,0 +1,49 @@
+condition,month,pass,object,similarity,candidate_count,image
+control,1,1,Faded green cap,0.3998512497878928,1,images/control/january_pass_1.png
+control,1,1,Black hardcover sketchbook,0.2811249995207109,3,images/control/january_pass_1.png
+control,1,1,Chipped blue mug,0.1153363872596227,3,images/control/january_pass_1.png
+control,1,2,Faded green cap,0.4062430725725242,1,images/control/january_pass_2.png
+control,1,2,Black hardcover sketchbook,0.24577088080229056,1,images/control/january_pass_2.png
+control,1,2,Chipped blue mug,0.4866070841102959,4,images/control/january_pass_2.png
+portrait_reference,1,2,Faded green cap,0.4063943795722246,1,images/portrait_reference/january_pass_2.png
+portrait_reference,1,2,Black hardcover sketchbook,0.23768966088815321,1,images/portrait_reference/january_pass_2.png
+portrait_reference,1,2,Chipped blue mug,0.4782473434320537,3,images/portrait_reference/january_pass_2.png
+historical,1,2,Faded green cap,0.3968864587498333,1,images/historical/january_pass_2.png
+historical,1,2,Black hardcover sketchbook,0.0893970757524625,1,images/historical/january_pass_2.png
+historical,1,2,Chipped blue mug,0.4832212317564026,4,images/historical/january_pass_2.png
+control,2,1,Cast-iron skillet,0.19079727115096198,1,images/control/february_pass_1.png
+control,2,1,Chipped blue mug,0.06200257260242862,1,images/control/february_pass_1.png
+control,2,2,Cast-iron skillet,0.2592858944974924,2,images/control/february_pass_2.png
+control,2,2,Chipped blue mug,0.5152777163556781,2,images/control/february_pass_2.png
+portrait_reference,2,2,Cast-iron skillet,0.24147304100905004,1,images/portrait_reference/february_pass_2.png
+portrait_reference,2,2,Chipped blue mug,0.3316730403998973,1,images/portrait_reference/february_pass_2.png
+historical,2,2,Cast-iron skillet,0.36512692507489175,1,images/historical/february_pass_2.png
+historical,2,2,Chipped blue mug,0.05424320331222096,2,images/historical/february_pass_2.png
+control,5,1,Blue Schwinn bicycle,0.44883360134678696,1,images/control/may_pass_1.png
+control,5,1,Faded green cap,0.32589065514275617,1,images/control/may_pass_1.png
+historical,5,1,Blue Schwinn bicycle,0.5138889406631597,1,images/historical/may_pass_1.png
+historical,5,1,Faded green cap,0.3443154492281416,1,images/historical/may_pass_1.png
+control,8,1,Faded green cap,0.45357387066423765,1,images/control/august_pass_1.png
+control,8,1,Blue Schwinn bicycle,,0,images/control/august_pass_1.png
+control,8,1,Black hardcover sketchbook,,0,images/control/august_pass_1.png
+control,8,2,Faded green cap,0.2049539614120004,1,images/control/august_pass_2.png
+control,8,2,Blue Schwinn bicycle,0.16413349104908323,1,images/control/august_pass_2.png
+control,8,2,Black hardcover sketchbook,0.26844399869828145,1,images/control/august_pass_2.png
+portrait_reference,8,2,Faded green cap,0.31968739265329177,1,images/portrait_reference/august_pass_2.png
+portrait_reference,8,2,Blue Schwinn bicycle,0.255010388739651,1,images/portrait_reference/august_pass_2.png
+portrait_reference,8,2,Black hardcover sketchbook,0.2628857336453113,1,images/portrait_reference/august_pass_2.png
+historical,8,2,Faded green cap,0.3569182564123459,1,images/historical/august_pass_2.png
+historical,8,2,Blue Schwinn bicycle,0.5102235257802504,1,images/historical/august_pass_2.png
+historical,8,2,Black hardcover sketchbook,0.29651760152565204,1,images/historical/august_pass_2.png
+control,10,1,Cast-iron skillet,0.4297965302977481,1,images/control/october_pass_1.png
+control,10,1,Chipped blue mug,0.11898237432333701,2,images/control/october_pass_1.png
+control,10,1,Faded green cap,,0,images/control/october_pass_1.png
+control,10,2,Cast-iron skillet,0.3591770908329816,1,images/control/october_pass_2.png
+control,10,2,Chipped blue mug,0.15444193828879887,5,images/control/october_pass_2.png
+control,10,2,Faded green cap,,0,images/control/october_pass_2.png
+portrait_reference,10,2,Cast-iron skillet,0.40301048274682355,1,images/portrait_reference/october_pass_2.png
+portrait_reference,10,2,Chipped blue mug,0.10869724032970086,4,images/portrait_reference/october_pass_2.png
+portrait_reference,10,2,Faded green cap,,0,images/portrait_reference/october_pass_2.png
+historical,10,2,Cast-iron skillet,0.4419799075879186,1,images/historical/october_pass_2.png
+historical,10,2,Chipped blue mug,0.16086610470874083,2,images/historical/october_pass_2.png
+historical,10,2,Faded green cap,0.4743306007546707,1,images/historical/october_pass_2.png

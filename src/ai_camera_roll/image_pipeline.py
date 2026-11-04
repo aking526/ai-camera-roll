@@ -74,7 +74,12 @@ def _seed(seed: int, name: str) -> int:
 
 
 def _manifest(
-    result: GenerationResult, llm: LLM, image_model: ImageModel, seed: int
+    result: GenerationResult,
+    llm: LLM,
+    image_model: ImageModel,
+    seed: int,
+    *,
+    retain_protagonist_reference: bool = False,
 ) -> ImageGenerationManifest:
     settings = {
         "source_sha256": _digest(result.model_dump(mode="json")),
@@ -91,6 +96,8 @@ def _manifest(
         "reference_size": 448,
         "pipeline_version": 1,
     }
+    if retain_protagonist_reference:
+        settings["retain_protagonist_reference"] = True
     assets = []
     for kind in ("people", "objects"):
         for index, record in enumerate(getattr(result.camera_roll, kind)):
@@ -111,7 +118,10 @@ def _manifest(
     photos = []
     for index, photo in enumerate(result.camera_roll.photos):
         steps = []
-        for step_index, ids in enumerate(reference_passes(result, index)):
+        groups = reference_passes(
+            result, index, retain_protagonist_reference=retain_protagonist_reference
+        )
+        for step_index, ids in enumerate(groups):
             inputs = []
             if step_index:
                 inputs.append(ImageInput(slot=0, path=steps[-1].path))
@@ -167,6 +177,7 @@ def generate_images(
     image_model: ImageModel,
     output_dir: Path | str,
     seed: int = 42,
+    retain_protagonist_reference: bool = False,
     progress: Callable[[str], None] = print,
 ) -> ImageGenerationManifest:
     """Generate all references, then photos; rerunning resumes the same manifest."""
@@ -177,7 +188,13 @@ def generate_images(
     if type(seed) is not int or not 0 <= seed < 2**32:
         raise ValueError("seed must be an integer between 0 and 2**32 - 1.")
     root = Path(output_dir)
-    expected = _manifest(result, llm, image_model, seed)
+    expected = _manifest(
+        result,
+        llm,
+        image_model,
+        seed,
+        retain_protagonist_reference=retain_protagonist_reference,
+    )
     manifest_path = root / "manifest.yaml"
     if manifest_path.exists():
         manifest = ImageGenerationManifest.model_validate(
@@ -273,7 +290,12 @@ def generate_images(
             label = f"photo {photo.photo_index} prompts"
             if any(step.prompt is None for step in photo.passes):
                 progress(f"Writing prompt plan for photo {photo.photo_index}...")
-                plan = generate_scene_prompts(result, photo.photo_index, llm=llm)
+                plan = generate_scene_prompts(
+                    result,
+                    photo.photo_index,
+                    llm=llm,
+                    retain_protagonist_reference=retain_protagonist_reference,
+                )
                 for step, prompt in zip(photo.passes, plan.prompts, strict=True):
                     step.prompt = prompt
                 checkpoint()

@@ -1,0 +1,661 @@
+{
+  "schema_version": 1,
+  "condition": "shared_first_pass",
+  "method": "Grounding DINO detection + DINOv2 cropped-reference cosine similarity",
+  "settings": {
+    "box_threshold": 0.3,
+    "text_threshold": 0.25,
+    "nms_iou": 0.5,
+    "selection": "highest detector confidence after per-query NMS; not highest similarity",
+    "embedding": "L2-normalized DINOv2-small CLS token, 384 dimensions",
+    "crop": "tight clamped bounding box; no segmentation or extra padding",
+    "resize": "aspect-preserving fit into 224x224, RGB (124,116,104) padding; no center crop",
+    "similarity": "raw cosine, not accuracy or probability; no calibrated cutoff",
+    "device": "cpu",
+    "dtype": "float32",
+    "threads": 4
+  },
+  "model_provenance": {
+    "detector": {
+      "model_id": "IDEA-Research/grounding-dino-tiny",
+      "revision": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "license": "Apache-2.0",
+      "files_sha256": {
+        "added_tokens.json": "909e96cb32d92ce728a01bc99850cbba26196d74115c17ebeb019275412588f2",
+        "config.json": "eec82c5ab66e16df12a9a212e68ac011779927c2536cf9078658e35d85f0c67a",
+        "model.safetensors": "1a2412ef99bd74bcd3c2a246fa1e48581f8889a1300c9051974741314fc042f3",
+        "preprocessor_config.json": "8454179ba95e2ad22947835aad7b45862a601fc0055ab88bf1ee70892d3aea60",
+        "special_tokens_map.json": "b6d346be366a7d1d48332dbc9fdf3bf8960b5d879522b7799ddba59e76237ee3",
+        "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66",
+        "tokenizer_config.json": "d40ab645b68211910b9170d22433d43186a6ec8ee6fd10ba170524b25bf4fb56",
+        "vocab.txt": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+      }
+    },
+    "encoder": {
+      "model_id": "facebook/dinov2-small",
+      "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "license": "Apache-2.0",
+      "files_sha256": {
+        "config.json": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+        "model.safetensors": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+        "preprocessor_config.json": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828"
+      }
+    }
+  },
+  "packages": {
+    "torch": "2.15.0",
+    "torchvision": "0.29.2",
+    "transformers": "5.22.1",
+    "numpy": "2.5.4",
+    "pillow": "13.0.0",
+    "safetensors": "0.8.0"
+  },
+  "source_sha256": "d198ad4423328e964895b565cc3098abfd669b6725446d10edfd13aceaba404d",
+  "target_sha256": "9e40133c6b4eaa54d485c9d57cc867b5c9ca6a257d1065a1f32d09eed8e14e6a",
+  "final_score_sha256": "f3b6577f5817b3720dddea954014265c784da86ace533b6d7bb3aff61e8e946c",
+  "base_scorer_sha256": "d6ad5d6c16bd2488b4e0044c0c1acc77265a679e64f1804b6274cfde2aeba6d0",
+  "scorer_sha256": "67794441b6bb0877e211d829d558e67b4ce0d4e15f9854705402b9da3fd6cc2c",
+  "references": [
+    {
+      "object_id": "object_green_cap",
+      "name": "Faded green cap",
+      "query": "baseball cap.",
+      "image": "control/images/references/objects/000_object_green_cap.png",
+      "crop": "object_evaluation/assets/object_green_cap_reference.png",
+      "bbox": [
+        63.317169189453125,
+        145.38983154296875,
+        938.23876953125,
+        864.4602661132812
+      ],
+      "confidence": 0.8920990228652954,
+      "candidate_count": 1
+    },
+    {
+      "object_id": "object_blue_bike",
+      "name": "Blue Schwinn bicycle",
+      "query": "bicycle.",
+      "image": "control/images/references/objects/001_object_blue_bike.png",
+      "crop": "object_evaluation/assets/object_blue_bike_reference.png",
+      "bbox": [
+        55.46807861328125,
+        139.29067993164062,
+        971.5828247070312,
+        931.0877685546875
+      ],
+      "confidence": 0.9515174031257629,
+      "candidate_count": 1
+    },
+    {
+      "object_id": "object_sketchbook",
+      "name": "Black hardcover sketchbook",
+      "query": "book.",
+      "image": "control/images/references/objects/002_object_sketchbook.png",
+      "crop": "object_evaluation/assets/object_sketchbook_reference.png",
+      "bbox": [
+        270.66094970703125,
+        121.30377197265625,
+        741.5408935546875,
+        891.675048828125
+      ],
+      "confidence": 0.8729569315910339,
+      "candidate_count": 1
+    },
+    {
+      "object_id": "object_cast_iron_skillet",
+      "name": "Cast-iron skillet",
+      "query": "frying pan.",
+      "image": "control/images/references/objects/003_object_cast_iron_skillet.png",
+      "crop": "object_evaluation/assets/object_cast_iron_skillet_reference.png",
+      "bbox": [
+        120.37274169921875,
+        225.3326416015625,
+        928.9983520507812,
+        752.1351928710938
+      ],
+      "confidence": 0.8860394954681396,
+      "candidate_count": 1
+    },
+    {
+      "object_id": "object_blue_mug",
+      "name": "Chipped blue mug",
+      "query": "mug.",
+      "image": "control/images/references/objects/004_object_blue_mug.png",
+      "crop": "object_evaluation/assets/object_blue_mug_reference.png",
+      "bbox": [
+        180.83660888671875,
+        168.42913818359375,
+        918.9515991210938,
+        861.7747192382812
+      ],
+      "confidence": 0.9402644634246826,
+      "candidate_count": 1
+    }
+  ],
+  "scenes": [
+    {
+      "photo_index": 0,
+      "month": 1,
+      "pass_index": 0,
+      "shared_with_treatment": true,
+      "has_second_pass": true,
+      "image": "object_evaluation/first_pass_assets/scene_0_pass_1.png",
+      "sha256": "8ffc9bc810f15da259fe82b14c6bf1a8aa0ad85ef43a2877d79a8d778acf10fc",
+      "detections_image": "object_evaluation/first_pass_assets/scene_0_detections.jpg",
+      "objects": [
+        {
+          "object_id": "object_green_cap",
+          "name": "Faded green cap",
+          "query": "baseball cap.",
+          "expected_count": 1,
+          "requirement": "On Maya's head, brim slightly dusty, mountain patch visible.",
+          "detections": [
+            {
+              "bbox": [
+                171.74191284179688,
+                205.8798065185547,
+                414.5106506347656,
+                332.0926208496094
+              ],
+              "confidence": 0.9338340759277344,
+              "crop_box": [
+                171,
+                205,
+                415,
+                333
+              ],
+              "similarity": 0.3998512497878928,
+              "crop": "object_evaluation/first_pass_assets/scene_0_object_green_cap_0.png"
+            }
+          ],
+          "candidate_count": 1,
+          "selected_index": 0,
+          "similarity": 0.3998512497878928,
+          "status": "detected"
+        },
+        {
+          "object_id": "object_sketchbook",
+          "name": "Black hardcover sketchbook",
+          "query": "book.",
+          "expected_count": 1,
+          "requirement": "Open on the desk, pages showing pencil sketches of a cornice.",
+          "detections": [
+            {
+              "bbox": [
+                159.4396514892578,
+                737.78125,
+                606.5885009765625,
+                982.52734375
+              ],
+              "confidence": 0.4174773693084717,
+              "crop_box": [
+                159,
+                737,
+                607,
+                983
+              ],
+              "similarity": 0.2811249995207109,
+              "crop": "object_evaluation/first_pass_assets/scene_0_object_sketchbook_0.png"
+            },
+            {
+              "bbox": [
+                608.3096313476562,
+                909.5472412109375,
+                829.0731811523438,
+                1023.622802734375
+              ],
+              "confidence": 0.3061002790927887,
+              "crop_box": [
+                608,
+                909,
+                830,
+                1024
+              ],
+              "similarity": 0.1178914379280557,
+              "crop": "object_evaluation/first_pass_assets/scene_0_object_sketchbook_1.png"
+            },
+            {
+              "bbox": [
+                908.2916870117188,
+                614.3515014648438,
+                1009.7756958007812,
+                654.2953491210938
+              ],
+              "confidence": 0.304922878742218,
+              "crop_box": [
+                908,
+                614,
+                1010,
+                655
+              ],
+              "similarity": 0.24133617958991677,
+              "crop": "object_evaluation/first_pass_assets/scene_0_object_sketchbook_2.png"
+            }
+          ],
+          "candidate_count": 3,
+          "selected_index": 0,
+          "similarity": 0.2811249995207109,
+          "status": "detected"
+        },
+        {
+          "object_id": "object_blue_mug",
+          "name": "Chipped blue mug",
+          "query": "mug.",
+          "expected_count": 1,
+          "requirement": "On the desk beside a chipboard model, half-full of dark coffee, chip on rim visible.",
+          "detections": [
+            {
+              "bbox": [
+                948.65673828125,
+                878.7322387695312,
+                1023.62158203125,
+                1023.4479370117188
+              ],
+              "confidence": 0.4848419725894928,
+              "crop_box": [
+                948,
+                878,
+                1024,
+                1024
+              ],
+              "similarity": 0.1153363872596227,
+              "crop": "object_evaluation/first_pass_assets/scene_0_object_blue_mug_0.png"
+            },
+            {
+              "bbox": [
+                0.20014190673828125,
+                821.3076171875,
+                120.91997528076172,
+                949.3001708984375
+              ],
+              "confidence": 0.3579230308532715,
+              "crop_box": [
+                0,
+                821,
+                121,
+                950
+              ],
+              "similarity": 0.028332609867454443,
+              "crop": "object_evaluation/first_pass_assets/scene_0_object_blue_mug_1.png"
+            },
+            {
+              "bbox": [
+                998.495361328125,
+                627.6862182617188,
+                1023.8726806640625,
+                695.7974243164062
+              ],
+              "confidence": 0.3537624180316925,
+              "crop_box": [
+                998,
+                627,
+                1024,
+                696
+              ],
+              "similarity": 0.06920972868758828,
+              "crop": "object_evaluation/first_pass_assets/scene_0_object_blue_mug_2.png"
+            }
+          ],
+          "candidate_count": 3,
+          "selected_index": 0,
+          "similarity": 0.1153363872596227,
+          "status": "detected"
+        }
+      ]
+    },
+    {
+      "photo_index": 1,
+      "month": 2,
+      "pass_index": 0,
+      "shared_with_treatment": true,
+      "has_second_pass": true,
+      "image": "object_evaluation/first_pass_assets/scene_1_pass_1.png",
+      "sha256": "5a706a606a8be9dd2000d1b0411e1dd668588e4bda8a1e2f2f98e2688715169a",
+      "detections_image": "object_evaluation/first_pass_assets/scene_1_detections.jpg",
+      "objects": [
+        {
+          "object_id": "object_cast_iron_skillet",
+          "name": "Cast-iron skillet",
+          "query": "frying pan.",
+          "expected_count": 1,
+          "requirement": "On the coffee table, holding braised white beans, handle wrapped in a towel.",
+          "detections": [
+            {
+              "bbox": [
+                264.121337890625,
+                531.2379760742188,
+                523.0836791992188,
+                719.5808715820312
+              ],
+              "confidence": 0.37436962127685547,
+              "crop_box": [
+                264,
+                531,
+                524,
+                720
+              ],
+              "similarity": 0.19079727115096198,
+              "crop": "object_evaluation/first_pass_assets/scene_1_object_cast_iron_skillet_0.png"
+            }
+          ],
+          "candidate_count": 1,
+          "selected_index": 0,
+          "similarity": 0.19079727115096198,
+          "status": "detected"
+        },
+        {
+          "object_id": "object_blue_mug",
+          "name": "Chipped blue mug",
+          "query": "mug.",
+          "expected_count": 1,
+          "requirement": "On the radiator, steaming, chip on rim visible.",
+          "detections": [
+            {
+              "bbox": [
+                1007.5551147460938,
+                343.4254150390625,
+                1023.9609985351562,
+                383.149169921875
+              ],
+              "confidence": 0.35572707653045654,
+              "crop_box": [
+                1007,
+                343,
+                1024,
+                384
+              ],
+              "similarity": 0.06200257260242862,
+              "crop": "object_evaluation/first_pass_assets/scene_1_object_blue_mug_0.png"
+            }
+          ],
+          "candidate_count": 1,
+          "selected_index": 0,
+          "similarity": 0.06200257260242862,
+          "status": "detected"
+        }
+      ]
+    },
+    {
+      "photo_index": 2,
+      "month": 5,
+      "pass_index": 0,
+      "shared_with_treatment": true,
+      "has_second_pass": false,
+      "image": "object_evaluation/first_pass_assets/scene_2_pass_1.png",
+      "sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196",
+      "detections_image": "object_evaluation/first_pass_assets/scene_2_detections.jpg",
+      "objects": [
+        {
+          "object_id": "object_blue_bike",
+          "name": "Blue Schwinn bicycle",
+          "query": "bicycle.",
+          "expected_count": 1,
+          "requirement": "Leaning against a brick wall, rear wheel slightly askew, bell catching the light.",
+          "detections": [
+            {
+              "bbox": [
+                451.0617980957031,
+                442.8619384765625,
+                750.492919921875,
+                750.413330078125
+              ],
+              "confidence": 0.5749425888061523,
+              "crop_box": [
+                451,
+                442,
+                751,
+                751
+              ],
+              "similarity": 0.44883360134678696,
+              "crop": "object_evaluation/first_pass_assets/scene_2_object_blue_bike_0.png"
+            }
+          ],
+          "candidate_count": 1,
+          "selected_index": 0,
+          "similarity": 0.44883360134678696,
+          "status": "detected"
+        },
+        {
+          "object_id": "object_green_cap",
+          "name": "Faded green cap",
+          "query": "baseball cap.",
+          "expected_count": 1,
+          "requirement": "On Maya's head, brim has a dark grease smudge from the March bike tune-up.",
+          "detections": [
+            {
+              "bbox": [
+                197.43734741210938,
+                272.8040466308594,
+                394.7057800292969,
+                384.9810485839844
+              ],
+              "confidence": 0.9405862092971802,
+              "crop_box": [
+                197,
+                272,
+                395,
+                385
+              ],
+              "similarity": 0.32589065514275617,
+              "crop": "object_evaluation/first_pass_assets/scene_2_object_green_cap_0.png"
+            }
+          ],
+          "candidate_count": 1,
+          "selected_index": 0,
+          "similarity": 0.32589065514275617,
+          "status": "detected"
+        }
+      ]
+    },
+    {
+      "photo_index": 3,
+      "month": 8,
+      "pass_index": 0,
+      "shared_with_treatment": true,
+      "has_second_pass": true,
+      "image": "object_evaluation/first_pass_assets/scene_3_pass_1.png",
+      "sha256": "ad1a5d73257a83dfc686220b4ef080a2938d445db69a38fb3586a351b0538606",
+      "detections_image": "object_evaluation/first_pass_assets/scene_3_detections.jpg",
+      "objects": [
+        {
+          "object_id": "object_green_cap",
+          "name": "Faded green cap",
+          "query": "baseball cap.",
+          "expected_count": 1,
+          "requirement": "On Maya's head, slightly faded, faint grease smudge on brim, mountain patch visible.",
+          "detections": [
+            {
+              "bbox": [
+                268.9356994628906,
+                303.4884338378906,
+                474.7561950683594,
+                413.3054504394531
+              ],
+              "confidence": 0.9170201420783997,
+              "crop_box": [
+                268,
+                303,
+                475,
+                414
+              ],
+              "similarity": 0.45357387066423765,
+              "crop": "object_evaluation/first_pass_assets/scene_3_object_green_cap_0.png"
+            }
+          ],
+          "candidate_count": 1,
+          "selected_index": 0,
+          "similarity": 0.45357387066423765,
+          "status": "detected"
+        },
+        {
+          "object_id": "object_blue_bike",
+          "name": "Blue Schwinn bicycle",
+          "query": "bicycle.",
+          "expected_count": 1,
+          "requirement": "Leaning against a tree, rear rack empty.",
+          "detections": [],
+          "candidate_count": 0,
+          "selected_index": null,
+          "similarity": null,
+          "status": "not_detected"
+        },
+        {
+          "object_id": "object_sketchbook",
+          "name": "Black hardcover sketchbook",
+          "query": "book.",
+          "expected_count": 1,
+          "requirement": "On the grass, open to a sketch of the park's trees.",
+          "detections": [],
+          "candidate_count": 0,
+          "selected_index": null,
+          "similarity": null,
+          "status": "not_detected"
+        }
+      ]
+    },
+    {
+      "photo_index": 4,
+      "month": 10,
+      "pass_index": 0,
+      "shared_with_treatment": true,
+      "has_second_pass": true,
+      "image": "object_evaluation/first_pass_assets/scene_4_pass_1.png",
+      "sha256": "2deb8209b51fd53eada1c2699c1add17164811d1dc588b6d580b153cff0a9daa",
+      "detections_image": "object_evaluation/first_pass_assets/scene_4_detections.jpg",
+      "objects": [
+        {
+          "object_id": "object_cast_iron_skillet",
+          "name": "Cast-iron skillet",
+          "query": "frying pan.",
+          "expected_count": 1,
+          "requirement": "On the stove, cornbread golden, handle slightly greasy.",
+          "detections": [
+            {
+              "bbox": [
+                249.67413330078125,
+                579.5288696289062,
+                522.3199462890625,
+                714.7321166992188
+              ],
+              "confidence": 0.6757120490074158,
+              "crop_box": [
+                249,
+                579,
+                523,
+                715
+              ],
+              "similarity": 0.4297965302977481,
+              "crop": "object_evaluation/first_pass_assets/scene_4_object_cast_iron_skillet_0.png"
+            }
+          ],
+          "candidate_count": 1,
+          "selected_index": 0,
+          "similarity": 0.4297965302977481,
+          "status": "detected"
+        },
+        {
+          "object_id": "object_blue_mug",
+          "name": "Chipped blue mug",
+          "query": "mug.",
+          "expected_count": 1,
+          "requirement": "On the windowsill, empty, chip on rim visible.",
+          "detections": [
+            {
+              "bbox": [
+                461.3243103027344,
+                731.7733764648438,
+                544.5897216796875,
+                804.8577270507812
+              ],
+              "confidence": 0.4828766882419586,
+              "crop_box": [
+                461,
+                731,
+                545,
+                805
+              ],
+              "similarity": 0.11898237432333701,
+              "crop": "object_evaluation/first_pass_assets/scene_4_object_blue_mug_0.png"
+            },
+            {
+              "bbox": [
+                523.7363891601562,
+                676.3246459960938,
+                614.4749145507812,
+                750.5131225585938
+              ],
+              "confidence": 0.30035752058029175,
+              "crop_box": [
+                523,
+                676,
+                615,
+                751
+              ],
+              "similarity": 0.16903672288653204,
+              "crop": "object_evaluation/first_pass_assets/scene_4_object_blue_mug_1.png"
+            }
+          ],
+          "candidate_count": 2,
+          "selected_index": 0,
+          "similarity": 0.11898237432333701,
+          "status": "detected"
+        },
+        {
+          "object_id": "object_green_cap",
+          "name": "Faded green cap",
+          "query": "baseball cap.",
+          "expected_count": 1,
+          "requirement": "Hanging on a hook by the door, faded, faint grease smudge on brim, mountain patch visible.",
+          "detections": [],
+          "candidate_count": 0,
+          "selected_index": null,
+          "similarity": null,
+          "status": "not_detected"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "expected_count": 13,
+    "detected_count": 10,
+    "multiple_candidate_count": 3,
+    "mean_similarity_detected": 0.2826189512096483
+  },
+  "input_sha256": {
+    "object_evaluation/first_pass_assets/scene_0_object_green_cap_0.png": "8c0d37e258472704dcfa0f985d784abc414340e7ac171b67c422380b049b4b39",
+    "object_evaluation/first_pass_assets/scene_0_object_sketchbook_0.png": "b6cb16e727ff06a037ba0d182316b490892023a1fa08ffbab020e5cfd89e2724",
+    "object_evaluation/first_pass_assets/scene_0_object_sketchbook_1.png": "22804d0bc66f69e2b1b8bc73ece4054c0f50cdd124b2a80d2c86e91eb277366f",
+    "object_evaluation/first_pass_assets/scene_0_object_sketchbook_2.png": "5cbfb26503ad3ec88e8357c3c2694ea9705a630cdfc2d0f1149aaea432ad561c",
+    "object_evaluation/first_pass_assets/scene_0_object_blue_mug_0.png": "2bd4ac86b07779e640aadd4be678fafdf43a91dc7406d590bc9b4e32b00c3ecc",
+    "object_evaluation/first_pass_assets/scene_0_object_blue_mug_1.png": "37bb571bf79bd6a578a7edb98024ed66a4800a440ef17ee676513bb7029f1a64",
+    "object_evaluation/first_pass_assets/scene_0_object_blue_mug_2.png": "549e6aa42109b4412ecbde18cf4234d2445d4b216655e895daf123aa2c5e6b45",
+    "object_evaluation/first_pass_assets/scene_0_pass_1.png": "8ffc9bc810f15da259fe82b14c6bf1a8aa0ad85ef43a2877d79a8d778acf10fc",
+    "object_evaluation/first_pass_assets/scene_0_detections.jpg": "0dc53357002ab37ed1f24dd7f723ccce1fc1033ddbc762f07fa5ef5cd7edc8f1",
+    "object_evaluation/first_pass_assets/scene_1_object_cast_iron_skillet_0.png": "5407035e5d38067b59b9d893170ec094e11c67cd8a6c12c3bac8fb50f0a93dae",
+    "object_evaluation/first_pass_assets/scene_1_object_blue_mug_0.png": "af66974022a6544289e007136ea48dc013a3cb43ba3678a7136f71c876cefd40",
+    "object_evaluation/first_pass_assets/scene_1_pass_1.png": "5a706a606a8be9dd2000d1b0411e1dd668588e4bda8a1e2f2f98e2688715169a",
+    "object_evaluation/first_pass_assets/scene_1_detections.jpg": "f236f25a602aac875b90e8baa69a63d910d6c8ca22cd477e1ad6fc46d3ca629a",
+    "object_evaluation/first_pass_assets/scene_2_object_blue_bike_0.png": "71f37a9f188672eebaa884ebb84f8d299b997ec4870d385eaa446151e2bfea6f",
+    "object_evaluation/first_pass_assets/scene_2_object_green_cap_0.png": "027d53a8f42bbe3c0c0578033e2357c279b8726cdb9c0ee81def75f65622dcfe",
+    "object_evaluation/first_pass_assets/scene_2_pass_1.png": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196",
+    "object_evaluation/first_pass_assets/scene_2_detections.jpg": "5f61bf93aa5b516193b7ce9446335884f7247b5aa90cc3c1d81d8fd14ddc79e2",
+    "object_evaluation/first_pass_assets/scene_3_object_green_cap_0.png": "17f8c8b2334df2b4d4b36eb188b2da20f3263601ba46eb31a123805938ba9d36",
+    "object_evaluation/first_pass_assets/scene_3_pass_1.png": "ad1a5d73257a83dfc686220b4ef080a2938d445db69a38fb3586a351b0538606",
+    "object_evaluation/first_pass_assets/scene_3_detections.jpg": "d6601f24b28d629ecbee04cb79647fe951d6d14fbf2844f2cacbdcd1c164762a",
+    "object_evaluation/first_pass_assets/scene_4_object_cast_iron_skillet_0.png": "b50bb2a1e749754ffcfc341d0c1f66c3c4cb9886d2d0a362a8e25453ce0164fe",
+    "object_evaluation/first_pass_assets/scene_4_object_blue_mug_0.png": "3c26a76519cbd4baccefa72da6c1f5796fe655198024c9f66cb6a45d22f21a6a",
+    "object_evaluation/first_pass_assets/scene_4_object_blue_mug_1.png": "e6f437267220651731a4d4784d3921fac20f827d5a8b715f1416cc02d07bad31",
+    "object_evaluation/first_pass_assets/scene_4_pass_1.png": "2deb8209b51fd53eada1c2699c1add17164811d1dc588b6d580b153cff0a9daa",
+    "object_evaluation/first_pass_assets/scene_4_detections.jpg": "e3435c8154fa283d2f1de5f2ee8c16954899d361f2175271649d6c083adf187d"
+  },
+  "verification": {
+    "shared_first_passes_identical": true,
+    "single_pass_scores_match_finals": true,
+    "settings_models_packages_match_finals": true,
+    "original_final_scores_unchanged": true
+  },
+  "api_calls": 0,
+  "new_local_image_query_inferences": 11,
+  "interpretation": "Scored against the final scene's object targets. Some objects are intentionally introduced only in pass 2. May has one pass; no second-pass result is invented.",
+  "limits": "No VQA, human ratings or generative judge. Similarity is not exact-object accuracy. Detection can miss small/occluded objects or confuse categories. Boxes retain background. Location, ownership, counts and fine attributes are not established by cosine similarity."
+}

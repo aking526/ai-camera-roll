@@ -1,0 +1,775 @@
+{
+  "purpose": "Exploratory face similarity for fictional generated characters.",
+  "identity_threshold": null,
+  "interpretation": "Candidate pairings maximize total cosine similarity; weak matches are still assigned. Scores are not probabilities or identity verdicts. No detected face does not establish absence.",
+  "settings": {
+    "model": "buffalo_l",
+    "detector": "SCRFD-10GF",
+    "recognition": "ArcFace ResNet50@WebFace600K",
+    "provider": "CPUExecutionProvider",
+    "det_size": [
+      640,
+      640
+    ],
+    "detection_threshold": 0.5,
+    "aligned_crop_size": [
+      112,
+      112
+    ]
+  },
+  "packages": {
+    "insightface": "2.1",
+    "onnxruntime": "1.31.1",
+    "numpy": "2.5.4",
+    "opencv-python": "5.0.0.93",
+    "scipy": "1.18.1"
+  },
+  "model_provenance": {
+    "source": "https://github.com/deepinsight/insightface/releases/download/model-zoo/buffalo_l.zip",
+    "archive_sha256": "80ffe37d8a5940d59a7384c201a2a38d4741f2f3c51eef46ebb28218a7b0ca2f",
+    "extracted_models_sha256": {
+      "det_10g.onnx": "5838f7fe053675b1c7a08b633df49e7af5495cee0493c7dcf6697200b85b5b91",
+      "w600k_r50.onnx": "4c06341c33c2ca1f86781dab0e829f88ad5b64be9fba56e56bc9ebdefc619e43"
+    },
+    "license": "Pretrained weights: non-commercial research only; library code: MIT."
+  },
+  "input_sha256": {
+    "output/camera_roll.yaml": "d198ad4423328e964895b565cc3098abfd669b6725446d10edfd13aceaba404d",
+    "output/images/manifest.yaml": "7fe9202b1640aae3265c213c5f0010d20563029392410a014ef265625d35baca",
+    "output/images/references/people/000_person_maya.png": "eb6b68fe16b5d25554d350fc62d209faf0d1f005d04543a3a1672eb00447891f",
+    "output/images/references/people/001_person_priya.png": "3b59f54e949ff8892effc593e98c13a64761f7b828911fec5a68e690d3af98b3",
+    "output/images/references/people/002_person_jonah.png": "72db9fc35377df81d247538dbe0b838916f1e6c7b48463a0f8f76c91c634337a",
+    "output/images/photos/000/pass_00.png": "25cc58c1b63691c01ccf1236641dc5f9529fe143d5eaffaca36d4863b8eaf632",
+    "output/images/photos/000/pass_01.png": "6aabcfee397eaeeb2bd0c4f73798bf7bd0e22803f522ade8d801d49102feae06",
+    "output/images/photos/000_year_1_month_01.png": "6aabcfee397eaeeb2bd0c4f73798bf7bd0e22803f522ade8d801d49102feae06",
+    "output/images/photos/001/pass_00.png": "fdc7fef7ad102dfa7442184993232b9892f82d302021921d77ebf6c8f8156dbf",
+    "output/images/photos/001/pass_01.png": "c68ed3e40d54b43213b2c0d915f5abbe534b19498c847834e2f521d7a081063d",
+    "output/images/photos/001_year_1_month_02.png": "c68ed3e40d54b43213b2c0d915f5abbe534b19498c847834e2f521d7a081063d",
+    "output/images/photos/002/pass_00.png": "6924aff52154ca1ea44b79478d48b915e09a269f2226c8d8032d5fbc2db2c3f4",
+    "output/images/photos/002_year_1_month_05.png": "6924aff52154ca1ea44b79478d48b915e09a269f2226c8d8032d5fbc2db2c3f4",
+    "output/images/photos/003/pass_00.png": "a8b1b18f279f5842b7459f51092f30cf238b2eae9fc0a45e2f16f6e88f562fd0",
+    "output/images/photos/003/pass_01.png": "dd5655b51ccbcb0faba24f7153cb14a6e2f75c6d450a2cf35fdcc55dcc560ab0",
+    "output/images/photos/003_year_1_month_08.png": "dd5655b51ccbcb0faba24f7153cb14a6e2f75c6d450a2cf35fdcc55dcc560ab0",
+    "output/images/photos/004/pass_00.png": "2526d9812750cacdf5cd3e236fccc964083738cf3ff1c0ad228fa5d0061adf09",
+    "output/images/photos/004/pass_01.png": "428c45b127fd9ac63df93d7e9e43df5e08bfc9947806cb66229c99255be0b562",
+    "output/images/photos/004_year_1_month_10.png": "428c45b127fd9ac63df93d7e9e43df5e08bfc9947806cb66229c99255be0b562"
+  },
+  "references": [
+    {
+      "id": "person_maya",
+      "name": "Maya Chen",
+      "source": "references/people/000_person_maya.png",
+      "face_index": 0,
+      "bbox": [
+        397.4143981933594,
+        140.68748474121094,
+        630.9942626953125,
+        434.9068908691406
+      ],
+      "detection_confidence": 0.8409839272499084,
+      "aligned_crop": "crops/person_maya_face_0.png"
+    },
+    {
+      "id": "person_priya",
+      "name": "Priya",
+      "source": "references/people/001_person_priya.png",
+      "face_index": 0,
+      "bbox": [
+        398.87445068359375,
+        115.47979736328125,
+        664.9962768554688,
+        473.6919860839844
+      ],
+      "detection_confidence": 0.8660029172897339,
+      "aligned_crop": "crops/person_priya_face_0.png"
+    },
+    {
+      "id": "person_jonah",
+      "name": "Jonah",
+      "source": "references/people/002_person_jonah.png",
+      "face_index": 0,
+      "bbox": [
+        444.9981384277344,
+        87.95264434814453,
+        574.7320556640625,
+        275.1007080078125
+      ],
+      "detection_confidence": 0.8659022450447083,
+      "aligned_crop": "crops/person_jonah_face_0.png"
+    }
+  ],
+  "matrix_row_order": [
+    "person_maya",
+    "person_priya",
+    "person_jonah"
+  ],
+  "reference_cosine_matrix": [
+    [
+      1.0000000000000002,
+      0.2587556419378701,
+      0.20788142731038017
+    ],
+    [
+      0.2587556419378701,
+      1.0,
+      0.05984257651397476
+    ],
+    [
+      0.20788142731038017,
+      0.05984257651397476,
+      1.0
+    ]
+  ],
+  "scenes": [
+    {
+      "photo_index": 0,
+      "month": 1,
+      "expected_people": [
+        "person_maya",
+        "person_jonah"
+      ],
+      "final_source": "photos/000_year_1_month_01.png",
+      "passes": [
+        {
+          "pass_index": 0,
+          "source": "photos/000/pass_00.png",
+          "detections_image": "scene_0_pass_0_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                212.91915893554688,
+                294.86181640625,
+                358.39202880859375,
+                477.4383239746094
+              ],
+              "detection_confidence": 0.8643940687179565,
+              "aligned_crop": "crops/scene_0_pass_0_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                761.4212646484375,
+                289.1572570800781,
+                852.0437622070312,
+                407.435791015625
+              ],
+              "detection_confidence": 0.842965841293335,
+              "aligned_crop": "crops/scene_0_pass_0_face_1.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.4455871328864703,
+              0.02705957785589442
+            ],
+            [
+              0.03483144175422979,
+              -0.02180413017654243
+            ],
+            [
+              0.11867392034216127,
+              0.15193154187864094
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.4455871328864703
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.15193154187864094
+            }
+          ],
+          "unassigned_face_indices": []
+        },
+        {
+          "pass_index": 1,
+          "source": "photos/000/pass_01.png",
+          "detections_image": "scene_0_pass_1_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                224.879150390625,
+                295.42864990234375,
+                374.6235046386719,
+                475.0472106933594
+              ],
+              "detection_confidence": 0.8634464144706726,
+              "aligned_crop": "crops/scene_0_pass_1_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                766.7008666992188,
+                289.8653259277344,
+                859.61767578125,
+                405.848876953125
+              ],
+              "detection_confidence": 0.8687557578086853,
+              "aligned_crop": "crops/scene_0_pass_1_face_1.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.14525147558402593,
+              -0.013784480163117403
+            ],
+            [
+              -0.009081529971418442,
+              -0.016046833529657988
+            ],
+            [
+              0.0486470485638275,
+              0.12157575290815173
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.14525147558402593
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.12157575290815173
+            }
+          ],
+          "unassigned_face_indices": []
+        }
+      ]
+    },
+    {
+      "photo_index": 1,
+      "month": 2,
+      "expected_people": [
+        "person_maya",
+        "person_priya",
+        "person_jonah"
+      ],
+      "final_source": "photos/001_year_1_month_02.png",
+      "passes": [
+        {
+          "pass_index": 0,
+          "source": "photos/001/pass_00.png",
+          "detections_image": "scene_1_pass_0_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                210.6425323486328,
+                284.8224792480469,
+                300.6155700683594,
+                398.89556884765625
+              ],
+              "detection_confidence": 0.8828408718109131,
+              "aligned_crop": "crops/scene_1_pass_0_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                556.7601318359375,
+                300.5008239746094,
+                627.9402465820312,
+                390.94049072265625
+              ],
+              "detection_confidence": 0.8710787296295166,
+              "aligned_crop": "crops/scene_1_pass_0_face_1.png"
+            },
+            {
+              "face_index": 2,
+              "bbox": [
+                774.1304931640625,
+                351.6377258300781,
+                865.88671875,
+                473.1077575683594
+              ],
+              "detection_confidence": 0.8852932453155518,
+              "aligned_crop": "crops/scene_1_pass_0_face_2.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.30807495358305204,
+              0.03753100806959568,
+              0.05064476795473945
+            ],
+            [
+              0.03381910459979899,
+              0.09574330459477019,
+              -0.01881513235565515
+            ],
+            [
+              0.03965149119943986,
+              0.0880837145661405,
+              0.18801845696843256
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.30807495358305204
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.09574330459477019
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.18801845696843256
+            }
+          ],
+          "unassigned_face_indices": []
+        },
+        {
+          "pass_index": 1,
+          "source": "photos/001/pass_01.png",
+          "detections_image": "scene_1_pass_1_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                225.0494384765625,
+                282.2523193359375,
+                314.6109313964844,
+                397.07977294921875
+              ],
+              "detection_confidence": 0.8801721930503845,
+              "aligned_crop": "crops/scene_1_pass_1_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                567.71923828125,
+                303.15826416015625,
+                637.3113403320312,
+                393.91552734375
+              ],
+              "detection_confidence": 0.8499981164932251,
+              "aligned_crop": "crops/scene_1_pass_1_face_1.png"
+            },
+            {
+              "face_index": 2,
+              "bbox": [
+                781.1451416015625,
+                347.9302673339844,
+                869.2496948242188,
+                465.5542907714844
+              ],
+              "detection_confidence": 0.8758947849273682,
+              "aligned_crop": "crops/scene_1_pass_1_face_2.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.06178808040049918,
+              -0.06740512020959176,
+              0.0292781238052765
+            ],
+            [
+              0.0073799929895598075,
+              -0.08744552028414711,
+              -0.022724337303609263
+            ],
+            [
+              0.05943153282306654,
+              -0.026676629795633663,
+              0.13763010301233541
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.06178808040049918
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": -0.08744552028414711
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.13763010301233541
+            }
+          ],
+          "unassigned_face_indices": []
+        }
+      ]
+    },
+    {
+      "photo_index": 2,
+      "month": 5,
+      "expected_people": [
+        "person_maya",
+        "person_jonah"
+      ],
+      "final_source": "photos/002_year_1_month_05.png",
+      "passes": [
+        {
+          "pass_index": 0,
+          "source": "photos/002/pass_00.png",
+          "detections_image": "scene_2_pass_0_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                261.3258972167969,
+                314.4443054199219,
+                362.7810974121094,
+                449.7019958496094
+              ],
+              "detection_confidence": 0.8932269811630249,
+              "aligned_crop": "crops/scene_2_pass_0_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                717.7081909179688,
+                310.85186767578125,
+                825.0614013671875,
+                483.65216064453125
+              ],
+              "detection_confidence": 0.7968353033065796,
+              "aligned_crop": "crops/scene_2_pass_0_face_1.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.30976651626174007,
+              0.06793154924782288
+            ],
+            [
+              0.14993253150831515,
+              0.10452609608975351
+            ],
+            [
+              0.04594580541608293,
+              0.30274964670663324
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.30976651626174007
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.30274964670663324
+            }
+          ],
+          "unassigned_face_indices": []
+        }
+      ]
+    },
+    {
+      "photo_index": 3,
+      "month": 8,
+      "expected_people": [
+        "person_maya",
+        "person_priya",
+        "person_jonah"
+      ],
+      "final_source": "photos/003_year_1_month_08.png",
+      "passes": [
+        {
+          "pass_index": 0,
+          "source": "photos/003/pass_00.png",
+          "detections_image": "scene_3_pass_0_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                329.0746765136719,
+                303.3116149902344,
+                432.8069763183594,
+                456.90838623046875
+              ],
+              "detection_confidence": 0.8737930059432983,
+              "aligned_crop": "crops/scene_3_pass_0_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                583.6696166992188,
+                332.7005920410156,
+                692.50390625,
+                477.6914978027344
+              ],
+              "detection_confidence": 0.8458296060562134,
+              "aligned_crop": "crops/scene_3_pass_0_face_1.png"
+            },
+            {
+              "face_index": 2,
+              "bbox": [
+                738.6114501953125,
+                133.6520538330078,
+                776.8990478515625,
+                186.3203125
+              ],
+              "detection_confidence": 0.8561761379241943,
+              "aligned_crop": "crops/scene_3_pass_0_face_2.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.34181872034847716,
+              0.13357125077612778,
+              -0.021151896260519255
+            ],
+            [
+              0.14031930623191732,
+              0.201900603582445,
+              -0.03135622304743096
+            ],
+            [
+              0.0883913166668151,
+              0.11510059025132696,
+              0.007209693796488122
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.34181872034847716
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.201900603582445
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.007209693796488122
+            }
+          ],
+          "unassigned_face_indices": []
+        },
+        {
+          "pass_index": 1,
+          "source": "photos/003/pass_01.png",
+          "detections_image": "scene_3_pass_1_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                349.8016662597656,
+                306.85272216796875,
+                448.07476806640625,
+                451.63861083984375
+              ],
+              "detection_confidence": 0.8742268085479736,
+              "aligned_crop": "crops/scene_3_pass_1_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                599.5296630859375,
+                332.55889892578125,
+                701.788330078125,
+                469.27490234375
+              ],
+              "detection_confidence": 0.8428289890289307,
+              "aligned_crop": "crops/scene_3_pass_1_face_1.png"
+            },
+            {
+              "face_index": 2,
+              "bbox": [
+                739.5570068359375,
+                137.2798309326172,
+                779.7954711914062,
+                191.60791015625
+              ],
+              "detection_confidence": 0.8585842847824097,
+              "aligned_crop": "crops/scene_3_pass_1_face_2.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.22305779596064895,
+              0.03098065383154558,
+              -0.03642725942911158
+            ],
+            [
+              0.045195439598786996,
+              0.0008129868744878414,
+              -0.12387878105702593
+            ],
+            [
+              0.002439005774986385,
+              0.04985433618917236,
+              0.023399536684058565
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.22305779596064895
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": 1,
+              "similarity": 0.0008129868744878414
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 2,
+              "similarity": 0.023399536684058565
+            }
+          ],
+          "unassigned_face_indices": []
+        }
+      ]
+    },
+    {
+      "photo_index": 4,
+      "month": 10,
+      "expected_people": [
+        "person_maya",
+        "person_priya",
+        "person_jonah"
+      ],
+      "final_source": "photos/004_year_1_month_10.png",
+      "passes": [
+        {
+          "pass_index": 0,
+          "source": "photos/004/pass_00.png",
+          "detections_image": "scene_4_pass_0_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                253.0402069091797,
+                200.2208251953125,
+                321.11492919921875,
+                279.9237976074219
+              ],
+              "detection_confidence": 0.7822248339653015,
+              "aligned_crop": "crops/scene_4_pass_0_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                759.6447143554688,
+                506.37335205078125,
+                819.8572387695312,
+                585.1682739257812
+              ],
+              "detection_confidence": 0.847502589225769,
+              "aligned_crop": "crops/scene_4_pass_0_face_1.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.10911143299338712,
+              -0.02584714115782506
+            ],
+            [
+              -0.05757984284108842,
+              0.03725223475158055
+            ],
+            [
+              0.05438413990053351,
+              0.12232976532518251
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.10911143299338712
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": null,
+              "similarity": null
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.12232976532518251
+            }
+          ],
+          "unassigned_face_indices": []
+        },
+        {
+          "pass_index": 1,
+          "source": "photos/004/pass_01.png",
+          "detections_image": "scene_4_pass_1_detections.jpg",
+          "faces": [
+            {
+              "face_index": 0,
+              "bbox": [
+                260.21258544921875,
+                202.27976989746094,
+                329.677001953125,
+                285.5260925292969
+              ],
+              "detection_confidence": 0.808204710483551,
+              "aligned_crop": "crops/scene_4_pass_1_face_0.png"
+            },
+            {
+              "face_index": 1,
+              "bbox": [
+                769.5557861328125,
+                513.684814453125,
+                827.6240234375,
+                590.1148681640625
+              ],
+              "detection_confidence": 0.8681085109710693,
+              "aligned_crop": "crops/scene_4_pass_1_face_1.png"
+            }
+          ],
+          "cosine_matrix": [
+            [
+              0.05748159883324351,
+              -0.11849128550302204
+            ],
+            [
+              -0.08460731189745269,
+              -0.0007778047278086393
+            ],
+            [
+              0.014771369683635287,
+              0.011134796737350624
+            ]
+          ],
+          "candidates": [
+            {
+              "person_id": "person_maya",
+              "face_index": 0,
+              "similarity": 0.05748159883324351
+            },
+            {
+              "person_id": "person_priya",
+              "face_index": null,
+              "similarity": null
+            },
+            {
+              "person_id": "person_jonah",
+              "face_index": 1,
+              "similarity": 0.011134796737350624
+            }
+          ],
+          "unassigned_face_indices": []
+        }
+      ]
+    }
+  ],
+  "inference_seconds": 1.5373304589993495,
+  "generation_calls": 0
+}

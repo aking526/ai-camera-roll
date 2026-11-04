@@ -32,6 +32,17 @@ Local credentials, generated runs, reviewer records, and pretrained weights are
 excluded from this repository. See the demo guide for limitations and AI-use
 attribution.
 
+## Documented pipeline iteration
+
+[Iteration 01: portrait retention](experiments/iteration_01_portrait_retention_2026-11-04/README.md)
+preserves the historical pilot, fresh control and modified results. Open its
+`index.html` for three-column pass comparisons, or use the high-resolution figures,
+CSV scores and analysis when preparing slides. Everything in the record works
+without generation calls. The change partially recovers assigned Maya similarity
+in three scenes, but October edits the wrong person and object resemblance has
+no average gain. It remains experimental. New iterations should use new folders;
+`output/` and `evaluation/results/` retain the earlier results unchanged.
+
 ## Web visualizer
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/). From the project root,
