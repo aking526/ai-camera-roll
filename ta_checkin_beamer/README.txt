@@ -1,9 +1,10 @@
 CIS 5810 TA check-in -- editable Beamer source
 
-The deck has nine slides. The course-expectation slide and three-cycle roadmap
-from the previous deck have been removed. The scoring slide now explains SCRFD,
-ArcFace, the numerical comparison and the reasons for choosing these tools.
-The final slide proposes one experiment; subsequent changes depend on its results.
+The deck has ten slides. It summarizes the project, explains SCRFD and ArcFace,
+and presents the controlled portrait-retention experiment, face and object
+results, limitations, and evidence-based next steps. Detailed images, prompts,
+manifests, scores and analysis are in the repository's
+experiments/iteration_01_portrait_retention_2026-11-04 package.
 
 BUILD
 Keep ta_checkin.tex and the assets directory together.
@@ -19,5 +20,5 @@ presentation. Change hide notes to show notes to compile a copy with notes pages
 
 SOURCES
 Sources are linked on slides and described in their speaker notes. Saved project
-evidence corresponds to repository commit b8c9014066ee32bb119df63ef75748cd3885bf5c.
+evidence corresponds to repository commit 84bd89bb9e947a0866aca6654ffc04a3a5d9119f.
 No new photographs were generated to make this presentation.

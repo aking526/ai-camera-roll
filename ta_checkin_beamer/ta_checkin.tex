@@ -24,7 +24,7 @@
 \setbeamersize{text margin left=7mm,text margin right=7mm}
 \setbeameroption{hide notes}
 \newcommand{\source}[1]{\par\vfill{\fontsize{7}{8}\selectfont\color{muted}#1\par}}
-\newcommand{\repo}[2]{\href{https://github.com/aking526/ai-camera-roll/blob/b8c9014066ee32bb119df63ef75748cd3885bf5c/#1}{#2}}
+\newcommand{\repo}[2]{\href{https://github.com/aking526/ai-camera-roll/blob/84bd89bb9e947a0866aca6654ffc04a3a5d9119f/#1}{#2}}
 \hypersetup{pdftitle={CIS 5810: Making character consistency measurable},pdfauthor={Ethan Wei, Alistair King, Tanay Tandon},colorlinks=true,urlcolor=forest}
 
 \begin{document}
@@ -36,9 +36,9 @@
 \vspace{6mm}
 {\LARGE\bfseries Making character\\consistency measurable\par}
 \vspace{5mm}
-Post-proposal iteration 1\par
+Iteration 01: portrait retention tested\par
 \vspace{1mm}
-Scoring implemented.\\Improvement to test.\par
+Scoring implemented.\\Mixed result; validate next.\par
 \vspace{7mm}
 {\small Ethan Wei, Alistair King\\Tanay Tandon\par}
 \vspace{2mm}
@@ -59,8 +59,8 @@ Scoring implemented.\\Improvement to test.\par
 \textbf{Existing before this work} & \textbf{Added during this work}\\
 \midrule
 Story, scene prompts, canonical portraits and reference-conditioned editing & SCRFD and ArcFace scoring of all nine saved passes, with crops and candidate matches\\
-Saved passes, prompts and a technical camera-roll viewer & Story-first website with clearer pipeline inspection and score comparisons\\
-Human evaluation plan and proposed automated metrics & Frozen rating rounds, independent reviews, saved answers and exports\\
+Saved passes, prompts and a technical camera-roll viewer & Story-first website with face and object score comparisons\\
+Proposed identity-retention experiment & Controlled portrait-reference comparison with preserved images, prompts and scoring evidence\\
 \bottomrule
 \end{tabularx}\par
 \vspace{5mm}
@@ -105,7 +105,7 @@ Encodes an aligned face as a numerical representation designed to distinguish id
 \note{SCRFD provides bounding boxes and landmarks; the landmarks allow consistent face alignment. ArcFace maps aligned faces into an embedding space where cosine similarity can be used to compare them. The resulting score is a model similarity, not a probability of identity.}
 \end{frame}
 
-\begin{frame}{Maya's score falls in all four edited scenes}
+\begin{frame}{Historical pilot: Maya's score fell in four edited scenes}
 \small First pass versus final pass. Higher similarity means a closer model match.
 \vspace{2mm}
 \begin{center}
@@ -131,86 +131,94 @@ ybar=10pt,bar width=12pt,ymin=0,ymax=.52,
 \vspace{3mm}
 \small May: 0.3098, single pass. No before/after comparison.\par
 \vspace{1mm}
-\alert{Four observations motivate a test. They do not establish the cause.}
+\alert{This historical signal motivated the controlled portrait-retention test.}
 \source{Source: \repo{evaluation/results/scores.json}{saved ArcFace results}. Scores compare assigned candidates with Maya's canonical portrait.}
 \note{January has the largest observed decrease: .4456 to .1453, a change of -.3003. All four edited scenes show lower assigned Maya similarity after the edit. May is single-pass and must not be treated as zero change. These are model observations, not independent human judgments or evidence of causality. The chart shows the observed positive range, while cosine similarity can range from -1 to 1. Pose, visibility, alignment and assignment can affect scores.}
 \end{frame}
 
-\begin{frame}{January: the edit does not resupply the portraits}
-\begin{columns}[t,onlytextwidth]
-\begin{column}{.48\textwidth}
-\textbf{Pass 1: initial scene}\par\vspace{2mm}
-\centering\includegraphics[height=45mm]{assets/january_first.png}\par\vspace{2mm}
-\raggedright\small Inputs: Maya and Jonah portraits, cap, sketchbook.
-\end{column}
-\begin{column}{.48\textwidth}
-\textbf{\color{rust}Pass 2: mug edit}\par\vspace{2mm}
-\centering\includegraphics[height=45mm]{assets/january_final.png}\par\vspace{2mm}
-\raggedright\small Inputs: previous scene and mug.\\\alert{No portrait supplied directly again.}
-\end{column}
-\end{columns}
-\source{Source: saved January passes and exact input slots in \repo{output/images/manifest.yaml}{the generation manifest}.}
-\note{Show these passes in the live website if useful. The current multipass schedule accommodates the reference-input limit; it is not triggered by a bad score. For January, portraits are only supplied directly in pass one. Their omission in pass two is a plausible mechanism for drift, not a proven cause. The proposal already noted duplicate mugs and a closed sketchbook. Those observations are not new independent human labels.}
+\begin{frame}{January: a controlled comparison of the portrait edit}
+\centering
+\includegraphics[width=.98\textwidth,height=.72\textheight,keepaspectratio]{../experiments/iteration_01_portrait_retention_2026-11-04/figures/01_01_comparison.png}
+\source{Same first-pass image in both conditions; only the portrait input and its instruction changed. Source: \repo{experiments/iteration_01_portrait_retention_2026-11-04/README.md}{Iteration 01 evidence package}.}
+\note{This is a fresh controlled replay, not a comparison against the older historical pilot. The original second pass reduces Maya's ArcFace cosine from 0.3119 to 0.1554. Supplying Maya's portrait again produces 0.2496, a partial recovery. Object resemblance values are model scores and do not verify placement or ownership.}
 \end{frame}
 
-\begin{frame}{January: the face crops behind the score}
+\begin{frame}{Portrait retention partly recovered face similarity}
+\small
+\begin{center}
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Scene} & \textbf{Shared pass 1} & \textbf{Original pass 2} & \textbf{Portrait pass 2}\\
+\midrule
+January & .3119 & .1554 & .2496\\
+February & .1973 & .0910 & .1743\\
+August & .1002 & .0726 & .1106\\
+October & .1277 & .1284 & .2039*\\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{3mm}
+\textbf{Same-candidate scenes:} mean .1063 $\rightarrow$ .1782 after the change; still below the shared first-pass mean (.2031).
+\vspace{3mm}
+\alert{October is a matcher failure: it selected another person. The intended person's score fell .1284 $\rightarrow$ .0696.}
+\source{ArcFace cosine similarities, not accuracy percentages. Three-scene subset is post-hoc. One five-scene run; no repeated trials or confidence intervals. Source: \repo{experiments/iteration_01_portrait_retention_2026-11-04/ANALYSIS.md}{analysis and limitations}.}
+\note{The three-scene mean uses January, February and August, where Maya keeps the same candidate index. This is a post-hoc subset, not a preregistered success rate. October's Hungarian assignment switched Maya from the left-hand cook to the center person in scrubs, so the assigned .2039 is not a valid improvement. Position-based diagnostic for the intended cook is .0696, down from .1284. Keep this caveat next to the headline result.}
+\end{frame}
+
+\begin{frame}{Object resemblance stayed essentially unchanged}
 \begin{columns}[t,onlytextwidth]
-\begin{column}{.31\textwidth}
-\centering\textbf{Canonical Maya}\par\vspace{3mm}
-\includegraphics[height=39mm]{assets/maya_reference.png}\par\vspace{3mm}
-\small Synthetic reference
+\begin{column}{.47\textwidth}
+\textbf{Matched edited-scene objects}\par
+\vspace{4mm}
+Same 10 appearances with candidates in both conditions; shared May excluded.\par
+\vspace{5mm}
+\Large\textbf{.3064 $\rightarrow$ .3045}\par
+Mean DINOv2 cosine similarity\par
+\vspace{3mm}
+Change: $-0.0020$.
 \end{column}
-\begin{column}{.31\textwidth}
-\centering\textbf{First-pass candidate}\par\vspace{3mm}
-\includegraphics[height=39mm]{assets/maya_first.png}\par\vspace{3mm}
-\Large\textbf{0.4456}
-\end{column}
-\begin{column}{.31\textwidth}
-\centering\textbf{Final-pass candidate}\par\vspace{3mm}
-\includegraphics[height=39mm]{assets/maya_final.png}\par\vspace{3mm}
-\Large\textbf{\color{rust}0.1453}
+\begin{column}{.47\textwidth}
+\textbf{What the score cannot tell us}\par
+\vspace{4mm}
+It measures resemblance to one reference view. It does not verify object placement, owner, count or state.\par
+\vspace{4mm}
+In February, the mug moved from the requested radiator to Maya's hand; its score fell .5153 $\rightarrow$ .3317.
 \end{column}
 \end{columns}
-\vspace{5mm}
-\alert{January change: $-0.3003$ cosine similarity.}
-\source{Source: \repo{evaluation/results/crops/}{saved face crops} and \repo{evaluation/results/scores.json}{scores}. Aligned 112 by 112 crops enlarged for inspection.}
-\note{Give the TA time to inspect the faces. The final candidate is farther from the reference in ArcFace's learned representation. This alone does not prove identity loss or a worse photograph. Human review should judge whether the visible facial features still represent the same character, allowing expression and pose changes. The crops are the evaluator inputs, enlarged without adding detail.}
+\source{Localization: Grounding DINO. Similarity: DINOv2 on selected crops. Source: \repo{experiments/iteration_01_portrait_retention_2026-11-04/ANALYSIS.md}{object results and caveats}.}
+\note{Object candidate coverage was 12/13 for both final sets, but this does not prove presence: the blank-image sanity check produced false positives. The fair comparison matches ten appearances with candidates in both conditions and excludes shared May. Average resemblance is essentially flat. Some individual objects improved while others declined. We should not claim an object-quality gain.}
 \end{frame}
 
 \begin{frame}{Human judgments help interpret the scores}
 \raggedright
-\textbf{Same frozen image set.} Three real reviewers rate independently. Image order is shuffled, and model scores are hidden.\par
+\textbf{Automated comparisons are reproducible.} The package preserves images, prompts, manifests, model outputs and matched scores.\par
 \vspace{5mm}
-\textbf{Identity and scene requirements.} Compare faces with portraits. Check object count, appearance and state, plus setting and action.\par
+\textbf{Human review is still needed.} Check identity, object count, placement and state, plus setting and action.\par
 \vspace{5mm}
 \textbf{Uncertainty stays visible.} Allow unclear judgments. Retain raw votes, disagreements and prior-exposure disclosures.\par
 \vspace{3mm}
-\alert{Next: collect ratings and add paired first/final review.}\par
-\small The current round covers final photos only, so it cannot validate pass-to-pass drift.
-\source{Source: \repo{demo_site/RATING_GUIDE.txt}{human-rating guide}. No completed independent rating result is claimed here.}
-\note{Live demonstration: Rate photos, How to rate, then People, Objects and Scene. Three actual reviewers submit independently, with at least two agreeing for a strict majority. Do not fill in teammates' reviews or replace disagreements with consensus answers. Maya is familiar development material, not a held-out benchmark. The current workflow rates final images only; paired first/final or experimental A/B review is still a protocol extension to complete.}
+\alert{No independent human ratings or repeated generation trials are included yet.}\par
+\small Keep portrait retention experimental; the evidence shows partial recovery and meaningful failure cases.
+\source{Source: \repo{experiments/iteration_01_portrait_retention_2026-11-04/ANALYSIS.md}{study limits}; \repo{demo_site/RATING_GUIDE.txt}{rating guide}.}
+\note{The evidence package includes assistant visual observations, not independent human ratings. The next validation step is blinded paired review of identity and scene requirements, plus repeated generations to estimate variability.}
 \end{frame}
 
-\begin{frame}{Next experiment: resupply Maya's portrait}
-\textbf{Hypothesis:} a direct portrait reference during the object edit helps preserve Maya's identity.\par
+\begin{frame}{Decision: keep portrait retention experimental}
+\textbf{Finding:} resupplying Maya's portrait improved assigned face similarity in three matched scenes, with an October wrong-person failure and no average object-resemblance gain.\par
 \vspace{4mm}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
 \toprule
-\textbf{A: current edit} & \textbf{B: proposed edit}\\
+\textbf{What to keep} & \textbf{What to test next}\\
 \midrule
-Saved first-pass scene and mug & Same scene and mug, plus Maya's canonical portrait\\
+Portrait input as a promising experimental option & Direct the edit to the intended person's region; run repeated generations and blinded paired human review\\
 \bottomrule
 \end{tabularx}\par
 \vspace{4mm}
 \small
-\textbf{Hold fixed:} scene, mug request, model, settings and seed. Change only the added reference and required slot instructions.\par
-\vspace{3mm}
-\textbf{Evaluate:} human identity first, ArcFace second. Check objects and action, and record calls and runtime.\par
-\vspace{3mm}
-\alert{Keep or reject the change, then choose the next experiment from the results.}
-\source{Proposed experiment. No new generation or measured quality improvement is claimed.}
-\note{This is one proposed experiment, not a predetermined sequence of three improvements. January currently uses two input slots during the edit, so adding one portrait fits the four-slot limit. Use the same saved first-pass image, mug reference and edit seed (3481668843). Keep the prompt fixed apart from necessary slot instructions. Seeds may not guarantee provider determinism. Human review should hide condition labels and scores and check mug count/state plus scene requirements, so identity gains do not conceal regressions. Later experiments should depend on the observed outcomes.}
+\source{Iteration 01 evidence: \repo{experiments/iteration_01_portrait_retention_2026-11-04/ANALYSIS.md}{full results, decisions and limitations}.}
+\note{This was one five-scene run with four edited scenes, no repeated generation trials, no confidence intervals and no completed independent human study. The practical decision is to keep portrait retention experimental, address wrong-person edits, and collect blinded human judgments before claiming overall improvement.}
 \end{frame}
 
 \end{document}
