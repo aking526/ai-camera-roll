@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fictional year, told through a camera roll. Explore Maya's life and the process behind every photograph.">
+  <title>A life in frames · Maya's camera roll</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23283d32'/%3E%3Crect x='7' y='7' width='18' height='18' rx='2' fill='none' stroke='%23f6f3e9' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%23c8d7aa'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="creation.css">
+  <link rel="stylesheet" href="ratings.css">
+  <link rel="stylesheet" href="workspace.css">
+  <link rel="stylesheet" href="scoring.css">
+  <script defer src="data.js"></script>
+  <script defer src="workspace.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="creation.js"></script>
+  <script defer src="ratings.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#album">Skip to the camera roll</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="A life in frames, home"><span class="brand-icon" aria-hidden="true"><i></i></span> a life in frames<span class="wordmark-period">.</span></a>
+    <div id="workspace-navigation"></div>
+    <button class="nav-create" data-create-action="new">New story <span aria-hidden="true">＋</span></button>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> One fictional life. A few familiar faces.</p>
+        <h1 id="hero-title">A year.<br>A life.<br><em>Five moments.</em></h1>
+        <p class="hero-intro">Meet Maya. Architecture student, weekend cyclist, keeper of a chipped blue mug. A year in Philadelphia, through the photos she might keep.</p>
+        <div class="hero-actions"><a class="button primary" href="#album">Open her camera roll <span aria-hidden="true">↓</span></a><button class="text-button" data-action="story">Read her story <span aria-hidden="true">↗</span></button></div>
+        <div class="hero-caption"><span class="tiny-rule"></span> A saved example from our visual consistency project.</div>
+      </div>
+      <div class="photo-stack" id="photo-stack" aria-label="A preview of Maya's year"></div>
+    </section>
+    <section id="album" class="album-section" aria-labelledby="album-title">
+      <div class="library-bar"><div class="library-selection"><label for="album-picker">Current album</label><select id="album-picker" aria-label="Choose an album"><option value="maya">Maya Chen · Original example</option></select></div><button class="text-button" data-action="story">Read the story</button><span id="library-status" role="status"></span></div>
+      <div class="section-heading">
+        <div><p class="eyebrow">Philadelphia · Year 1</p><h2 id="album-title">Maya's camera roll<span class="accent">.</span></h2><p class="muted">Ordinary days. The people and things that make them hers.</p></div>
+        <span class="album-count">01 year <span> / </span> 05 photographs</span>
+      </div>
+      <div class="month-index" aria-label="Jump to a month" id="month-index"></div>
+      <div class="album-grid" id="album-grid"></div>
+      <div class="album-end"><span></span><p>Five photographs. One unfolding story.</p><span></span></div>
+    </section>
+
+  </main>
+  <footer class="site-footer"><div><span class="footer-brand">a life in frames.</span><p>CIS 5810 · Personalized Photo Album Generation with Visual Consistency</p></div><div class="footer-meta"><span>Fictional characters · Saved images</span><button class="text-button" data-action="about">About this demo ↗</button></div></footer>
+  <dialog id="detail-dialog" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+  <dialog id="creation-dialog" class="creator-dialog" aria-labelledby="creation-title"><div id="creation-content"></div></dialog>
+  <dialog id="ratings-dialog" class="rating-dialog" aria-labelledby="rating-title"><div id="ratings-content"></div></dialog>
+  <noscript><p class="load-error">Please enable JavaScript to explore and create camera rolls.</p></noscript>
+</body>
+</html>

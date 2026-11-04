@@ -1,0 +1,308 @@
+{
+  "review_type": "assistant visual review; not independent human annotation or ground truth",
+  "review_date_local": "2026-11-02",
+  "scope": "Five saved final synthetic images compared with their scene descriptions and canonical synthetic references. No new generation. No automated face scores were consulted for these annotations.",
+  "rubric": {
+    "people": "Count visible actors separately from identity. Candidate associations are tentative role/reference matches; plausible is not a verified identity pass. Use uncertain for occlusion, small faces, ambiguous matches or possible drift.",
+    "objects": "Presence concerns the required object or a recognizable candidate. Score duplicates, canonical appearance, placement, owner and state separately; a generic mug or pan does not prove the same possession.",
+    "scene_alignment": "Judge broad setting and main action separately from detailed clothing, count and object-state requirements.",
+    "human_validation": "Team members should independently review shuffled outputs using the same rubric before reporting majority-human results. These five scenes are a debugging pilot, not a calibrated test set."
+  },
+  "summary": {
+    "expected_person_appearances": 13,
+    "visible_actor_count": 12,
+    "visible_actor_counts_by_scene": [
+      2,
+      3,
+      2,
+      3,
+      2
+    ],
+    "clear_count_failure": "October has one visible woman and one visible man although two women and one man are requested. This does not establish which canonical female identity the cook preserves.",
+    "clear_duplicate": "January contains two blue mugs where one cataloged mug is requested.",
+    "identity_pass_rate": null,
+    "identity_pass_rate_reason": "No independent human majority labels or calibrated identity threshold are available."
+  },
+  "scenes": [
+    {
+      "photo_index": 0,
+      "label": "January - studio",
+      "image_path": "images/photos/000_year_1_month_01.png",
+      "expected_people_count": 2,
+      "visible_people_count": 2,
+      "people": [
+        {
+          "person_id": "person_maya",
+          "position": "left foreground, cap and glasses",
+          "presence": "candidate_visible",
+          "identity": "plausible",
+          "note": "Hair length, glasses and general face structure resemble the canonical portrait. Face is angled downward; this remains a tentative visual match."
+        },
+        {
+          "person_id": "person_jonah",
+          "position": "right, hand over forehead",
+          "presence": "candidate_visible",
+          "identity": "uncertain",
+          "note": "Hair and beard broadly resemble the reference, but the hand and closed/downcast eyes obscure useful facial evidence."
+        }
+      ],
+      "objects": [
+        {
+          "object_id": "object_green_cap",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "consistent_broadly",
+          "placement_state": "match",
+          "note": "Olive cap with mountain motif is worn by the left character; fine wear details are not reliably resolved."
+        },
+        {
+          "object_id": "object_sketchbook",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "partial",
+          "placement_state": "mismatch",
+          "note": "Black hardcover book is visible, but closed with a building drawing on its cover instead of open to a page sketch."
+        },
+        {
+          "object_id": "object_blue_mug",
+          "presence": "present",
+          "visible_count": 2,
+          "appearance": "partial",
+          "placement_state": "mismatch",
+          "note": "Two blue mugs sit on the desk. At least the foreground mug has a visible rim chip; duplication violates the one recurring mug intent."
+        }
+      ],
+      "scene_alignment": {
+        "setting": "match",
+        "main_action": "match",
+        "note": "Cluttered fluorescent-lit workspace and seated tired characters are visible. Object-state and count details fail despite the broad scene match."
+      },
+      "key_issue": "Duplicate mug; sketchbook closed instead of open."
+    },
+    {
+      "photo_index": 1,
+      "label": "February - apartment meal",
+      "image_path": "images/photos/001_year_1_month_02.png",
+      "expected_people_count": 3,
+      "visible_people_count": 3,
+      "people": [
+        {
+          "person_id": "person_maya",
+          "position": "left, glasses and sweater, serving food",
+          "presence": "candidate_visible",
+          "identity": "plausible",
+          "note": "Hair, glasses and general face shape resemble the reference. Downward/profile angle limits certainty."
+        },
+        {
+          "person_id": "person_priya",
+          "position": "center, blue scrubs and tied-up hair",
+          "presence": "candidate_visible",
+          "identity": "uncertain",
+          "note": "Role and broad appearance are compatible, but downcast face and changed hairstyle make fine identity matching uncertain."
+        },
+        {
+          "person_id": "person_jonah",
+          "position": "right, flannel shirt, reaching toward food",
+          "presence": "candidate_visible",
+          "identity": "plausible",
+          "note": "Hair, beard and face outline resemble the reference at a downward angle. Not an independently verified match."
+        }
+      ],
+      "objects": [
+        {
+          "object_id": "object_cast_iron_skillet",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "mismatch",
+          "placement_state": "partial",
+          "note": "Dark pan of beans is on the coffee table, but it has two loop handles instead of the reference skillet's main handle. A towel lies on the table rather than wrapping the handle."
+        },
+        {
+          "object_id": "object_blue_mug",
+          "presence": "missing",
+          "visible_count": 0,
+          "appearance": "not_observable",
+          "placement_state": "mismatch",
+          "note": "No blue mug is visibly identifiable; the requested mug on the radiator is not shown."
+        }
+      ],
+      "scene_alignment": {
+        "setting": "match",
+        "main_action": "match",
+        "note": "Apartment meal, models on the back table, serving beans and reaching for bread are visible. Required mug is missing."
+      },
+      "key_issue": "Missing blue mug; skillet handle design changes."
+    },
+    {
+      "photo_index": 2,
+      "label": "May - riverside drinks",
+      "image_path": "images/photos/002_year_1_month_05.png",
+      "expected_people_count": 2,
+      "visible_people_count": 2,
+      "people": [
+        {
+          "person_id": "person_maya",
+          "position": "left, cap/glasses, holding beer",
+          "presence": "candidate_visible",
+          "identity": "plausible",
+          "note": "Hair, glasses and face outline resemble the reference. Broad smile and side angle should not themselves count as identity drift."
+        },
+        {
+          "person_id": "person_jonah",
+          "position": "right, flannel shirt, laughing",
+          "presence": "candidate_visible",
+          "identity": "plausible",
+          "note": "Hair and beard resemble the reference; smile and profile introduce legitimate appearance variation."
+        }
+      ],
+      "objects": [
+        {
+          "object_id": "object_blue_bike",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "consistent_broadly",
+          "placement_state": "match",
+          "note": "Blue bicycle with brown saddle and rear rack is beside the brick wall. Small bell, brand and wear details are not verified."
+        },
+        {
+          "object_id": "object_green_cap",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "consistent_broadly",
+          "placement_state": "partial",
+          "note": "Olive cap with front patch is on the left character. The specifically requested dark grease smudge is not clearly visible."
+        }
+      ],
+      "scene_alignment": {
+        "setting": "match",
+        "main_action": "match",
+        "note": "Riverside bench, brick wall, beer and laughter match the broad request. The specified denim jacket is absent; left character wears a short-sleeved shirt."
+      },
+      "key_issue": "Broadly successful composition; denim jacket absent; cap grease detail unclear."
+    },
+    {
+      "photo_index": 3,
+      "label": "August - birthday picnic",
+      "image_path": "images/photos/003_year_1_month_08.png",
+      "expected_people_count": 3,
+      "visible_people_count": 3,
+      "people": [
+        {
+          "person_id": "person_maya",
+          "position": "left foreground, glasses, seated on blanket",
+          "presence": "candidate_visible",
+          "identity": "plausible",
+          "note": "Glasses, straight shoulder-length hair and face outline resemble Maya. She is bareheaded; avoid using the cap alone to assign identity."
+        },
+        {
+          "person_id": "person_priya",
+          "position": "right foreground, long wavy hair, presenting cake",
+          "presence": "candidate_visible",
+          "identity": "plausible",
+          "note": "Long wavy hair and face/profile broadly resemble Priya, and cake-presenter role agrees with the prompt. This character wears the cap intended for Maya."
+        },
+        {
+          "person_id": "person_jonah",
+          "position": "background, near flying frisbee",
+          "presence": "candidate_visible",
+          "identity": "uncertain",
+          "note": "A third actor in a T-shirt is visible, but the smaller, less detailed face does not justify a confident identity judgment."
+        }
+      ],
+      "objects": [
+        {
+          "object_id": "object_green_cap",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "partial",
+          "placement_state": "mismatch",
+          "note": "Cap is worn by the right-hand cake presenter, tentatively Priya, while the left glasses-wearing character, tentatively Maya, is bareheaded."
+        },
+        {
+          "object_id": "object_blue_bike",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "consistent_broadly",
+          "placement_state": "match",
+          "note": "Blue bicycle with brown saddle and rear rack leans near the tree; fine details are not established."
+        },
+        {
+          "object_id": "object_sketchbook",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "mismatch",
+          "placement_state": "partial",
+          "note": "Open black book has conspicuous spiral binding, unlike the canonical hardcover bound book; it lies on the blanket, not grass. Tree-like drawing is visible."
+        }
+      ],
+      "scene_alignment": {
+        "setting": "match",
+        "main_action": "match",
+        "note": "Sunny picnic, cake with one candle and frisbee activity are present. Character/object ownership and sketchbook construction are inconsistent."
+      },
+      "key_issue": "Cap assigned to the other foreground character; sketchbook changes to spiral binding."
+    },
+    {
+      "photo_index": 4,
+      "label": "October - kitchen",
+      "image_path": "images/photos/004_year_1_month_10.png",
+      "expected_people_count": 3,
+      "visible_people_count": 2,
+      "people": [
+        {
+          "person_id": "person_maya",
+          "position": "left, cooking at stove",
+          "presence": "candidate_visible",
+          "identity": "uncertain",
+          "note": "The cook fills Maya's requested role, but the face is not a confident match to the canonical portrait. Glasses, braid and apron are absent; these attribute differences alone do not establish a different identity."
+        },
+        {
+          "person_id": "person_priya",
+          "position": null,
+          "presence": "no_distinct_candidate",
+          "identity": "not_assessable",
+          "note": "Only one woman is visible although Maya and Priya are both requested. There is no separate second-woman candidate; which female identity the cook preserves is uncertain."
+        },
+        {
+          "person_id": "person_jonah",
+          "position": "right, seated with bowl",
+          "presence": "candidate_visible",
+          "identity": "uncertain",
+          "note": "The seated man fills Jonah's requested role, but hair, beard and face differ noticeably from the canonical portrait. Treat as possible identity drift, not a verified mismatch."
+        }
+      ],
+      "objects": [
+        {
+          "object_id": "object_cast_iron_skillet",
+          "presence": "unclear",
+          "visible_count": null,
+          "appearance": "mismatch",
+          "placement_state": "partial",
+          "note": "A small dark pan is on the stove, but it is not clearly the same canonical skillet. Yellow loose food does not clearly resemble baked cornbread."
+        },
+        {
+          "object_id": "object_blue_mug",
+          "presence": "unclear",
+          "visible_count": null,
+          "appearance": "mismatch",
+          "placement_state": "mismatch",
+          "note": "A dark cup is on the coffee table, not the windowsill. Its color/shape do not clearly match the canonical chipped blue mug; no matching mug is visible on the sill."
+        },
+        {
+          "object_id": "object_green_cap",
+          "presence": "present",
+          "visible_count": 1,
+          "appearance": "consistent_broadly",
+          "placement_state": "match",
+          "note": "Olive cap with front mountain motif hangs near the door; this broad placement requirement is met."
+        }
+      ],
+      "scene_alignment": {
+        "setting": "match",
+        "main_action": "partial",
+        "note": "Kitchen cooking and one seated person with a bowl are visible. The requested third person, large chili pot and skillet of baked cornbread are not faithfully shown."
+      },
+      "key_issue": "Only two actors; uncertain canonical identities; mug placement and skillet/cornbread mismatch."
+    }
+  ]
+}

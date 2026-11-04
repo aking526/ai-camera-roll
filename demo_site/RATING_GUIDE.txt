@@ -1,0 +1,139 @@
+A LIFE IN FRAMES - HUMAN RATING GUIDE
+Local development round for CIS 5810
+
+OPEN THE REVIEW SECTION
+Keep Open_Demo.command running, then open:
+http://127.0.0.1:5812/#ratings
+Select Rate photos in the persistent navigation: Photos / Pipeline / Rate photos.
+
+This section reads saved images and saves human answers. It does not call the
+story or image-generation providers, so an expired generation key does not
+prevent rating. The local address works on this Mac; it is not a remote link
+that teammates can open on their own computers.
+
+ONE ROUND, THREE INDEPENDENT REVIEWS
+A round is a fixed image set and rubric. The first round contains Maya's five
+FINAL photographs, not all nine intermediate passes. Each actual teammate
+contributes one review of that same set using their own name or initials.
+Each reviewer gets a shuffled order that remains stable when they resume.
+Model scores, previous review notes and generation-method labels are hidden in
+the rating view. Maya is still familiar development material, not an unseen
+or fully blinded benchmark. Record prior exposure honestly.
+
+ADD YOUR FIRST REVIEW
+1. Select Maya's original album in Photos, then open Rate photos. Choose
+   "Start my review" on Maya's card, or "Continue my review" for a saved draft.
+   For any album with no round, including a fresh checkout, "Set up a rating round" freezes its final
+   photos and references without generating new images.
+2. Enter your own name or initials. Answer whether you have already seen these
+   photographs, their review notes or their scores. Check the independence
+   statement, then choose "Begin my review".
+3. Read "How to rate" before the first photograph. Compare what is actually
+   visible with the canonical portrait, object references and requested scene.
+4. Follow People -> Objects -> Scene for each photo. Each section shows only
+   the relevant questions. Use Next to continue, or the section tabs to go back.
+   Optional observations in Scene can explain a defect or uncertainty.
+5. Drafts save as you answer. Use "Save & exit" to pause. Wait for "Saved locally" before closing or
+   reloading. If saving fails, keep the page open and restore the local server;
+   do not assume an unsaved answer reached disk.
+6. After Scene, choose "Next photo". Repeat for all five photographs, then
+   choose "Check my answers". Review the summary and use "Edit photograph"
+   to correct a draft answer if needed. When all photos are complete, the
+   Scene step returns directly to the summary.
+7. Choose "Submit my 5 ratings" only when your review is complete. Submission
+   locks the answers so the original observations remain intact. You can then
+   select "Download my ratings" to keep your own exported copy.
+
+HOW TO MAKE EACH JUDGMENT
+Identity: compare the visible face with the protagonist's portrait.
+- Same person: facial features are consistent, allowing changes in expression,
+  viewing angle and appearance.
+- Different: a visible likely protagonist has clearly different features.
+- Unclear: the face is too small, obscured or ambiguous to judge confidently.
+- No identifiable candidate: you cannot locate a plausible protagonist.
+A hat, clothes, activity or position in the scene does not establish identity.
+Do not turn the lack of a confident comparison into a confident mismatch.
+
+Visible people: count people independently of who they are. If overlapping or
+ambiguous figures prevent a confident count, check that option rather than
+entering the number requested by the prompt.
+
+Required objects: evaluate each listed object separately.
+- Presence: Present, Absent or Unclear, based on a recognizable visible candidate.
+- Count: for a present object, count visible instances of the required type;
+  extras count as duplicates.
+- Appearance: compare its visible design with the canonical reference. Choose
+  Matches reference, Different, or Unclear.
+- State: compare placement, ownership and condition with the requested scene.
+  Correct meets the request; Partly meets some but not all details; Wrong
+  contradicts the request; Unclear lacks enough visible evidence.
+Absent automatically means zero instances and no appearance/state judgment.
+Unclear presence leaves those other judgments unassessed. These derived
+not-applicable values are not separate judgments that the object is correct.
+
+Setting and main action: judge these separately with Yes, Partly, No or Unclear.
+Partly means some requested elements are satisfied. Unclear means you cannot
+tell from the image. A convincing-looking photograph can still miss its request.
+
+RESUME AND FINISH THE TEAM ROUND
+Use Continue my review when shown. Otherwise choose Start my review (or
+Review as someone else) and enter your original name. The same name resumes that review; it does not add another vote.
+Do not submit under several names or rate on another person's behalf.
+
+Let each of the three real reviewers finish independently on this Mac. Avoid
+reading one another's responses or the existing evaluation while rating.
+Team results unlock after three reviewers submit. With three reviewers, a
+strict majority means at least two agree. Unclear cases and unresolved votes
+remain visible in the results; one submitted review is not a team majority.
+After the team finishes, use "View team results" and "Download round data".
+The three-iteration plan remains under the collapsed Evaluation plan section.
+
+KEEP THE EVIDENCE
+Drafts, submissions and frozen assets are saved under private/ratings/.
+Exports contain rating data and round information, not provider API keys.
+The round export preserves raw submitted ratings, the rubric, source mapping
+and image hashes. Keep it with the experiment record. Do not replace original
+ratings with a group-agreed answer after discussion; add interpretations in
+separate analysis instead. Reviewer names and observations are part of the
+export, so review the file before sharing it.
+
+USING THIS WORK TO START ITERATION 1
+Building the rating workflow starts BASELINE MEASUREMENT. It does not by itself
+complete an evaluation-driven development iteration or demonstrate improvement.
+
+Complete iteration 1 as a short evidence chain:
+1. Collect the three independent reviews of the frozen Maya baseline.
+2. Identify one repeated defect supported by those judgments, while inspecting
+   disagreements and unclear cases. Write one testable hypothesis.
+3. Change one relevant part of the generation pipeline. Keep the scene
+   requirements and other comparison conditions paired, and record all calls.
+4. Save the revised outputs as a new album, start a new frozen rating round,
+   and use the same rubric. Rate independently again without viewing scores.
+5. Compare identity, required objects, setting/action and generation cost.
+   Record improvements, regressions and uncertainty. Decide whether to keep
+   or reject the change. A failed hypothesis is still useful evidence.
+
+For the report, preserve: hypothesis; baseline round ID; exact change; revised
+round ID; comparison results; generation calls/runtime; and the final decision.
+The two rounds are a development comparison, not proof of broad generalization.
+Live generation must be available before generating revised outputs.
+
+THREE ITERATIONS: A FOCUSED PLAN
+Iteration 1: use these ratings to choose and test one specific consistency fix.
+Iteration 2: calibrate a face-score trigger on development labels, then compare
+            the same initial outputs with and without one bounded retry. If the
+            scores cannot support a reliable trigger, record that finding first.
+Iteration 3: use the remaining failures to choose one further focused change,
+            such as face preservation during edits or object-state instructions,
+            then run another paired human evaluation.
+
+These are planned cycles beyond the proposal, not three completed iterations.
+Each needs an actual change and comparable before/after evidence. Keep the
+rubric consistent; if it must change, record its version and explain which
+results are still comparable. Confirm the planned scope with the TA.
+
+LOCAL DATA
+Review records and frozen assets are stored in demo_site/private/ratings/,
+which is excluded from Git. Keep this folder to preserve your reviews when
+updating the website. The repository ships no actual or artificial reviewer
+submissions. Code changes can be reverted independently of these local records.

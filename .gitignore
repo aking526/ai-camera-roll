@@ -9,3 +9,11 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# Local demo records, credentials, and development artifacts
+demo_site/private/
+demo_site/backups/
+demo_site/verification/
+evaluation/model-cache/
+evaluation/preview/
+evaluation/results/rerun_*/

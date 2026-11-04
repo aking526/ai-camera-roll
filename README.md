@@ -5,6 +5,33 @@ story, then extracts a structured camera roll. Defaults: five years, ten photo
 ideas per year, and two LLM requests for the text stages. The text example saves
 readable YAML; a separate image pipeline generates references and scene images.
 
+## Story demo and consistency evaluation
+
+The [presentation website](demo_site/README.md) adds a camera roll, an inspectable
+pipeline, saved SCRFD/ArcFace face comparisons, and independent human ratings.
+From this repository's root:
+
+```bash
+uv sync
+uv run python demo_site/server.py
+```
+
+Open **http://127.0.0.1:5812/**. The included Maya album and face scores work
+without API keys or model downloads. Start with **Photos**, then **Pipeline →
+Generation passes → Scores & results**. **Rate photos** lets each reviewer rate
+a frozen set independently; create the local round first on a fresh checkout.
+Optional new-story generation uses the existing library and requires separately
+configured provider credentials. Opening saved views never generates images.
+
+[Offline face evaluation](evaluation/README.md) includes the scorer, saved
+results, face crops, tests, and model provenance. Scores are exploratory cosine
+similarities, not identity probabilities. A calibrated cutoff, CLIP scoring,
+automatic scoring of new albums, and a score-triggered retry are not implemented.
+No measured improvement in image quality or completed human study is claimed.
+Local credentials, generated runs, reviewer records, and pretrained weights are
+excluded from this repository. See the demo guide for limitations and AI-use
+attribution.
+
 ## Web visualizer
 
 Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/). From the project root,
