@@ -32,7 +32,7 @@
 \begin{frame}
 \begin{columns}[c,onlytextwidth]
 \begin{column}{.53\textwidth}
-{\small CIS 5810 TA check-in\par}
+{\small CIS 5810 TA check-in \textbar\ Group 30\par}
 \vspace{6mm}
 {\LARGE\bfseries Making character\\consistency measurable\par}
 \vspace{5mm}
@@ -82,6 +82,27 @@ Human evaluation plan and proposed automated metrics & Frozen rating rounds, ind
 \par\alert{Human review checks whether score changes reflect identity changes.}
 \source{Sources: \href{https://arxiv.org/abs/2105.04714}{SCRFD paper}; \href{https://arxiv.org/abs/1801.07698}{ArcFace paper}; \repo{evaluation/score_faces.py}{local evaluator}.}
 \note{SCRFD is the face detector. Its efficient design makes local evaluation practical, and its landmarks support repeatable alignment. ArcFace is the recognition method: its pretrained network learns facial features useful for distinguishing identities. We chose face-specific comparison because character identity is the target, rather than overall scene similarity. Both are available together through InsightFace and require no generation API calls to score the saved images. The local setup uses SCRFD-10GF and ArcFace ResNet50 from buffalo\_l, with 112 by 112 aligned crops. Cosine similarity compares the learned numerical descriptions. The evaluator builds all reference-to-candidate comparisons and chooses a one-to-one assignment. Assigned candidates can still be weak matches. Scores are not identity probabilities, and we have no calibrated identity cutoff. Pose, visibility and alignment can affect them. Neither model was specifically trained or validated here for synthetic character identity.}
+\end{frame}
+
+\begin{frame}{The two models at a glance}
+\begin{columns}[t,onlytextwidth]
+\begin{column}{.47\textwidth}
+\textbf{SCRFD} \quad {\small Face detection}\par
+\vspace{4mm}
+Finds faces in an image and estimates facial landmarks, including the eyes and nose.\par
+\vspace{4mm}
+\textbf{In our pipeline:} locate, crop and align each face before scoring.
+\end{column}
+\begin{column}{.47\textwidth}
+\textbf{ArcFace} \quad {\small Face recognition}\par
+\vspace{4mm}
+Encodes an aligned face as a numerical representation designed to distinguish identities.\par
+\vspace{4mm}
+\textbf{In our pipeline:} compare the candidate and reference representations using cosine similarity.
+\end{column}
+\end{columns}
+\source{Sources: \href{https://arxiv.org/abs/2105.04714}{SCRFD paper}; \href{https://arxiv.org/abs/1801.07698}{ArcFace paper}.}
+\note{SCRFD provides bounding boxes and landmarks; the landmarks allow consistent face alignment. ArcFace maps aligned faces into an embedding space where cosine similarity can be used to compare them. The resulting score is a model similarity, not a probability of identity.}
 \end{frame}
 
 \begin{frame}{Maya's score falls in all four edited scenes}

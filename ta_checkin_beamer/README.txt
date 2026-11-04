@@ -1,6 +1,6 @@
 CIS 5810 TA check-in -- editable Beamer source
 
-The deck has eight slides. The course-expectation slide and three-cycle roadmap
+The deck has nine slides. The course-expectation slide and three-cycle roadmap
 from the previous deck have been removed. The scoring slide now explains SCRFD,
 ArcFace, the numerical comparison and the reasons for choosing these tools.
 The final slide proposes one experiment; subsequent changes depend on its results.
