@@ -54,8 +54,13 @@ def generate_object_prompt(
     )
 
 
-def reference_passes(result: GenerationResult, photo_index: int) -> list[list[str]]:
-    """Four assets initially; later passes reserve slot zero for the current scene."""
+def reference_passes(
+    result: GenerationResult,
+    photo_index: int,
+    *,
+    retain_protagonist_reference: bool = False,
+) -> list[list[str]]:
+    """Four assets initially; optionally retain an established protagonist on edits."""
     photo = result.camera_roll.photos[photo_index]
     ids = list(
         dict.fromkeys(
@@ -63,11 +68,25 @@ def reference_passes(result: GenerationResult, photo_index: int) -> list[list[st
             + [obj.object_id for obj in photo.objects]
         )
     )
-    return [ids[:4]] + [ids[start : start + 3] for start in range(4, len(ids), 3)]
+    groups = [ids[:4]]
+    remaining = ids[4:]
+    established = set(groups[0])
+    protagonist = result.camera_roll.protagonist_id
+    while remaining:
+        anchor = retain_protagonist_reference and protagonist in established
+        capacity = 2 if anchor else 3  # Slot zero holds the previous scene.
+        new_ids, remaining = remaining[:capacity], remaining[capacity:]
+        groups.append(new_ids + ([protagonist] if anchor else []))
+        established.update(new_ids)
+    return groups
 
 
 def generate_scene_prompts(
-    result: GenerationResult, photo_index: int, *, llm: LLM
+    result: GenerationResult,
+    photo_index: int,
+    *,
+    llm: LLM,
+    retain_protagonist_reference: bool = False,
 ) -> ScenePromptPlan:
     photo = result.camera_roll.photos[photo_index]
     people = {p.id: p for p in result.camera_roll.people}
@@ -76,7 +95,10 @@ def generate_scene_prompts(
     appearances.update({obj.object_id: obj.appearance for obj in photo.objects})
     passes = []
     established = []
-    for index, ids in enumerate(reference_passes(result, photo_index)):
+    groups = reference_passes(
+        result, photo_index, retain_protagonist_reference=retain_protagonist_reference
+    )
+    for index, ids in enumerate(groups):
         inputs = []
         if index:
             inputs.append(
@@ -85,6 +107,7 @@ def generate_scene_prompts(
                     "role": "current scene from the previous pass",
                 }
             )
+        new_ids = [identifier for identifier in ids if identifier not in established]
         for position, identifier in enumerate(ids, start=1 if index else 0):
             record = people.get(identifier) or objects[identifier]
             inputs.append(
@@ -95,16 +118,26 @@ def generate_scene_prompts(
                     "appearance": appearances[identifier],
                 }
             )
+            if identifier in established:
+                inputs[-1]["role"] = "identity reference for an already present person"
         passes.append(
             {
                 "inputs": inputs,
                 "already_established_ids": established.copy(),
-                "new_ids": ids,
+                "new_ids": new_ids,
             }
         )
-        established.extend(ids)
+        established.extend(new_ids)
+    system = instruction("scene")
+    if retain_protagonist_reference:
+        system += (
+            "\nAn input marked as an identity reference for an already present person "
+            "repeats their canonical portrait. Use it to preserve that existing person's "
+            "facial identity, while retaining the scene's pose and appearance. It is not "
+            "a new person to add. Only new_ids should introduce entities."
+        )
     plan = llm.generate(
-        system=instruction("scene"),
+        system=system,
         prompt=json.dumps(
             {
                 "story": {

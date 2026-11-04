@@ -1,0 +1,228 @@
+[
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:12:35.605331+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 2071050917,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "88726de6161230106da60e2bbc59f3cbd2a5ba03cfd8cc49121caf397d7dcb3c",
+    "input_sha256": [
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3",
+      "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c",
+      "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592",
+      "f59a8a60fadb519f5a2bdf779ea1d18752f7c5ac52023a008617f433ec439d59"
+    ],
+    "status": "completed",
+    "seconds": 9.789518124998722,
+    "output_sha256": "8ffc9bc810f15da259fe82b14c6bf1a8aa0ad85ef43a2877d79a8d778acf10fc"
+  },
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:12:45.505621+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 3481668843,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "5e860ed8d8c2e7a4f44dc47f32bbadebba936d914a0411c1c64c54a056221ca6",
+    "input_sha256": [
+      "a60598fa884fae4723ec4ab3354ac6a8079afe24bfbb2eb93249d05500f0905a",
+      "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87"
+    ],
+    "status": "completed",
+    "seconds": 7.847722040998633,
+    "output_sha256": "7b80331be0aa94fe957df2518352b0cdbb2a6c714335321408a99b273946b915"
+  },
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:12:53.465507+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 102351684,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "26965a29430cb921ab51ff6052d0ad665c0dfa288fad36b08a5f7462632ac483",
+    "input_sha256": [
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3",
+      "33e30fa12567d68b355ab031a173a481136ea879be91fdf96b529410c64ca670",
+      "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c",
+      "9c2b46032e402dcb88911ae2fa0120b8d509844611916d0d9016875d5ddf4c9c"
+    ],
+    "status": "completed",
+    "seconds": 8.0380803750013,
+    "output_sha256": "5a706a606a8be9dd2000d1b0411e1dd668588e4bda8a1e2f2f98e2688715169a"
+  },
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:13:01.617313+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 1572146500,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "1da1ef1ded9f059c146d014c927f9c062cc98051520dddb71f99a58769a4f129",
+    "input_sha256": [
+      "6ef0020ea837e8321236150c71b1f8e58d1f5ff6156bb9d30dadb4239827117f",
+      "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87"
+    ],
+    "status": "completed",
+    "seconds": 6.835832917000516,
+    "output_sha256": "14e10337de1be0d6ff603fd8725557216c459e36b76ca637e51c817be0686ef9"
+  },
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:13:08.564691+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 254067404,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "10f969231f82858dccf4ede9fbb7a16e40ed17d0b18c64fd0e6d2c7dc34d2a95",
+    "input_sha256": [
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3",
+      "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c",
+      "93d25ad1b16c3701dd661a7aa60d508f439a678afe39a9fde2571af93879a173",
+      "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592"
+    ],
+    "status": "completed",
+    "seconds": 9.611086666001938,
+    "output_sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196"
+  },
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:13:18.285411+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 68420788,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "dc6265f562c5192bfd0e3830fc4cab40d810b0a3abae9a50b86d9b3d324bd295",
+    "input_sha256": [
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3",
+      "33e30fa12567d68b355ab031a173a481136ea879be91fdf96b529410c64ca670",
+      "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c",
+      "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592"
+    ],
+    "status": "completed",
+    "seconds": 9.526298958000552,
+    "output_sha256": "ad1a5d73257a83dfc686220b4ef080a2938d445db69a38fb3586a351b0538606"
+  },
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:13:27.928767+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 4048585532,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "ceb6b593c55ea276c615c72282a61ea8a9d90a69253e351ad11f8aa70d330ce7",
+    "input_sha256": [
+      "4db0183d3213a2deddc50358dc9284504e305647240de12564017d989f8b3f7a",
+      "93d25ad1b16c3701dd661a7aa60d508f439a678afe39a9fde2571af93879a173",
+      "f59a8a60fadb519f5a2bdf779ea1d18752f7c5ac52023a008617f433ec439d59"
+    ],
+    "status": "completed",
+    "seconds": 6.359601791002206,
+    "output_sha256": "a7b5a4dd77bd98d4a45622dd319b3f7fec1750a61c5bc60c379d89d01080cff7"
+  },
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:13:34.408843+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 4196222530,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "37fee82cf444b669eabc6ad63474b9aa999bb76c619c1dc65d1cd8e34b20d5a9",
+    "input_sha256": [
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3",
+      "33e30fa12567d68b355ab031a173a481136ea879be91fdf96b529410c64ca670",
+      "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c",
+      "9c2b46032e402dcb88911ae2fa0120b8d509844611916d0d9016875d5ddf4c9c"
+    ],
+    "status": "completed",
+    "seconds": 107.72174475000065,
+    "output_sha256": "2deb8209b51fd53eada1c2699c1add17164811d1dc588b6d580b153cff0a9daa"
+  },
+  {
+    "condition": "control",
+    "started_at": "2026-11-04T18:19:34.115956+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 3888579059,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "d9fd8573e5489cfa5a2d0c04e47a874f32fe77a616d2c2cf73e0b0cadffde51d",
+    "input_sha256": [
+      "e3e1116d9e967ccd54e25431b5438e8213a7c1b8f42f6b5135dcd157b24e826e",
+      "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87",
+      "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592"
+    ],
+    "status": "completed",
+    "seconds": 5.093887417002406,
+    "output_sha256": "6b2df39a4e885333c38b987b36c4160117af210a43b5f2eed79e5fad0b059aa1"
+  },
+  {
+    "condition": "portrait_reference",
+    "started_at": "2026-11-04T18:19:39.988848+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 3481668843,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "1a4d86fcd0b30b0acc6be6f03fe1ec6eb5de86540944614ac3a7085b35986add",
+    "input_sha256": [
+      "a60598fa884fae4723ec4ab3354ac6a8079afe24bfbb2eb93249d05500f0905a",
+      "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87",
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3"
+    ],
+    "status": "completed",
+    "seconds": 7.023630167001102,
+    "output_sha256": "8506f7fbe59e1eb16497b06b55f06414211fe7e020b3dbe8f1feb5ef55c1195d"
+  },
+  {
+    "condition": "portrait_reference",
+    "started_at": "2026-11-04T18:19:47.185664+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 1572146500,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "f820bd24ba94add15b2b7db253e0dc987ba20b23900833a7506a897a7b24d7a5",
+    "input_sha256": [
+      "6ef0020ea837e8321236150c71b1f8e58d1f5ff6156bb9d30dadb4239827117f",
+      "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87",
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3"
+    ],
+    "status": "completed",
+    "seconds": 6.570304374999978,
+    "output_sha256": "390cd5d8e48687ef8b96da680bc0c107d77bf8c43860fd83b9c88ef07a10ac1f"
+  },
+  {
+    "condition": "portrait_reference",
+    "started_at": "2026-11-04T18:19:53.988275+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 4048585532,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "aacc7c9204e5d72f4ed2636977c4f030977b0d98aa1b4fc7d53fcbf254034786",
+    "input_sha256": [
+      "4db0183d3213a2deddc50358dc9284504e305647240de12564017d989f8b3f7a",
+      "93d25ad1b16c3701dd661a7aa60d508f439a678afe39a9fde2571af93879a173",
+      "f59a8a60fadb519f5a2bdf779ea1d18752f7c5ac52023a008617f433ec439d59",
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3"
+    ],
+    "status": "completed",
+    "seconds": 6.511861083999975,
+    "output_sha256": "3d85a0bd8680ac9ce23bc12bb4f6c6891eb36eb6fabc43d825b7139508cb257f"
+  },
+  {
+    "condition": "portrait_reference",
+    "started_at": "2026-11-04T18:20:00.689113+00:00",
+    "model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "seed": 3888579059,
+    "width": 1024,
+    "height": 1024,
+    "prompt_sha256": "72fd09960eddaddf98361e12ec6c6c0a04cc4892473d2f0b904f6687781b2fb1",
+    "input_sha256": [
+      "e3e1116d9e967ccd54e25431b5438e8213a7c1b8f42f6b5135dcd157b24e826e",
+      "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87",
+      "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592",
+      "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3"
+    ],
+    "status": "completed",
+    "seconds": 5.286833750000369,
+    "output_sha256": "157fb47cb20d26d19ce3d6243fa73c92ab1a7cae99acb8a8050a7e29daa82e19"
+  }
+]

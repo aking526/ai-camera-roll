@@ -1,0 +1,1349 @@
+{
+  "description": "Original paths map to byte-identical packaged files; identical images are stored once.",
+  "assets": {
+    "repository/output/images/references/people/000_person_maya.png": {
+      "path": "images/references/person_maya_original.png",
+      "sha256": "eb6b68fe16b5d25554d350fc62d209faf0d1f005d04543a3a1672eb00447891f"
+    },
+    "repository/output/images/references/people/000_person_maya_input.png": {
+      "path": "images/references/person_maya_conditioning.png",
+      "sha256": "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3"
+    },
+    "repository/output/images/references/people/001_person_priya.png": {
+      "path": "images/references/person_priya_original.png",
+      "sha256": "3b59f54e949ff8892effc593e98c13a64761f7b828911fec5a68e690d3af98b3"
+    },
+    "repository/output/images/references/people/001_person_priya_input.png": {
+      "path": "images/references/person_priya_conditioning.png",
+      "sha256": "33e30fa12567d68b355ab031a173a481136ea879be91fdf96b529410c64ca670"
+    },
+    "repository/output/images/references/people/002_person_jonah.png": {
+      "path": "images/references/person_jonah_original.png",
+      "sha256": "72db9fc35377df81d247538dbe0b838916f1e6c7b48463a0f8f76c91c634337a"
+    },
+    "repository/output/images/references/people/002_person_jonah_input.png": {
+      "path": "images/references/person_jonah_conditioning.png",
+      "sha256": "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c"
+    },
+    "repository/output/images/references/objects/000_object_green_cap.png": {
+      "path": "images/references/object_green_cap_original.png",
+      "sha256": "146466f1719a82118dc4d73f8d12c5cb5a08a9ac570964e404f8bdb08249277e"
+    },
+    "repository/output/images/references/objects/000_object_green_cap_input.png": {
+      "path": "images/references/object_green_cap_conditioning.png",
+      "sha256": "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592"
+    },
+    "repository/output/images/references/objects/001_object_blue_bike.png": {
+      "path": "images/references/object_blue_bike_original.png",
+      "sha256": "e9fb09659b7b425ee6211a7fd293f66f4071fd70a70a91aba946a05b1fe1ea5c"
+    },
+    "repository/output/images/references/objects/001_object_blue_bike_input.png": {
+      "path": "images/references/object_blue_bike_conditioning.png",
+      "sha256": "93d25ad1b16c3701dd661a7aa60d508f439a678afe39a9fde2571af93879a173"
+    },
+    "repository/output/images/references/objects/002_object_sketchbook.png": {
+      "path": "images/references/object_sketchbook_original.png",
+      "sha256": "a93c6f63c4a4e8f7e8de8ea77793cde978e9298174162acb5fbb7d190655f336"
+    },
+    "repository/output/images/references/objects/002_object_sketchbook_input.png": {
+      "path": "images/references/object_sketchbook_conditioning.png",
+      "sha256": "f59a8a60fadb519f5a2bdf779ea1d18752f7c5ac52023a008617f433ec439d59"
+    },
+    "repository/output/images/references/objects/003_object_cast_iron_skillet.png": {
+      "path": "images/references/object_cast_iron_skillet_original.png",
+      "sha256": "56117f4b02487e63edd84afb5ab22c741705876208b2d826991e80fd0a79d6fd"
+    },
+    "repository/output/images/references/objects/003_object_cast_iron_skillet_input.png": {
+      "path": "images/references/object_cast_iron_skillet_conditioning.png",
+      "sha256": "9c2b46032e402dcb88911ae2fa0120b8d509844611916d0d9016875d5ddf4c9c"
+    },
+    "repository/output/images/references/objects/004_object_blue_mug.png": {
+      "path": "images/references/object_blue_mug_original.png",
+      "sha256": "e51b4cf9dfef12b8b1cc325045aaeea954b95f625e558b4236645589e3bdbbc8"
+    },
+    "repository/output/images/references/objects/004_object_blue_mug_input.png": {
+      "path": "images/references/object_blue_mug_conditioning.png",
+      "sha256": "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87"
+    },
+    "repository/output/images/photos/000/pass_00.png": {
+      "path": "images/historical/january_pass_1.png",
+      "sha256": "25cc58c1b63691c01ccf1236641dc5f9529fe143d5eaffaca36d4863b8eaf632"
+    },
+    "repository/output/images/photos/000/pass_01.png": {
+      "path": "images/historical/january_pass_2.png",
+      "sha256": "6aabcfee397eaeeb2bd0c4f73798bf7bd0e22803f522ade8d801d49102feae06"
+    },
+    "repository/output/images/photos/000_year_1_month_01.png": {
+      "path": "images/historical/january_pass_2.png",
+      "sha256": "6aabcfee397eaeeb2bd0c4f73798bf7bd0e22803f522ade8d801d49102feae06"
+    },
+    "repository/output/images/photos/001/pass_00.png": {
+      "path": "images/historical/february_pass_1.png",
+      "sha256": "fdc7fef7ad102dfa7442184993232b9892f82d302021921d77ebf6c8f8156dbf"
+    },
+    "repository/output/images/photos/001/pass_01.png": {
+      "path": "images/historical/february_pass_2.png",
+      "sha256": "c68ed3e40d54b43213b2c0d915f5abbe534b19498c847834e2f521d7a081063d"
+    },
+    "repository/output/images/photos/001_year_1_month_02.png": {
+      "path": "images/historical/february_pass_2.png",
+      "sha256": "c68ed3e40d54b43213b2c0d915f5abbe534b19498c847834e2f521d7a081063d"
+    },
+    "repository/output/images/photos/002/pass_00.png": {
+      "path": "images/historical/may_pass_1.png",
+      "sha256": "6924aff52154ca1ea44b79478d48b915e09a269f2226c8d8032d5fbc2db2c3f4"
+    },
+    "repository/output/images/photos/002_year_1_month_05.png": {
+      "path": "images/historical/may_pass_1.png",
+      "sha256": "6924aff52154ca1ea44b79478d48b915e09a269f2226c8d8032d5fbc2db2c3f4"
+    },
+    "repository/output/images/photos/003/pass_00.png": {
+      "path": "images/historical/august_pass_1.png",
+      "sha256": "a8b1b18f279f5842b7459f51092f30cf238b2eae9fc0a45e2f16f6e88f562fd0"
+    },
+    "repository/output/images/photos/003/pass_01.png": {
+      "path": "images/historical/august_pass_2.png",
+      "sha256": "dd5655b51ccbcb0faba24f7153cb14a6e2f75c6d450a2cf35fdcc55dcc560ab0"
+    },
+    "repository/output/images/photos/003_year_1_month_08.png": {
+      "path": "images/historical/august_pass_2.png",
+      "sha256": "dd5655b51ccbcb0faba24f7153cb14a6e2f75c6d450a2cf35fdcc55dcc560ab0"
+    },
+    "repository/output/images/photos/004/pass_00.png": {
+      "path": "images/historical/october_pass_1.png",
+      "sha256": "2526d9812750cacdf5cd3e236fccc964083738cf3ff1c0ad228fa5d0061adf09"
+    },
+    "repository/output/images/photos/004/pass_01.png": {
+      "path": "images/historical/october_pass_2.png",
+      "sha256": "428c45b127fd9ac63df93d7e9e43df5e08bfc9947806cb66229c99255be0b562"
+    },
+    "repository/output/images/photos/004_year_1_month_10.png": {
+      "path": "images/historical/october_pass_2.png",
+      "sha256": "428c45b127fd9ac63df93d7e9e43df5e08bfc9947806cb66229c99255be0b562"
+    },
+    "repository/output/images/manifest.yaml": {
+      "path": "records/historical_generation_manifest.yaml",
+      "sha256": "7fe9202b1640aae3265c213c5f0010d20563029392410a014ef265625d35baca"
+    },
+    "experiment/control/images/references/people/000_person_maya.png": {
+      "path": "images/references/person_maya_original.png",
+      "sha256": "eb6b68fe16b5d25554d350fc62d209faf0d1f005d04543a3a1672eb00447891f"
+    },
+    "experiment/control/images/references/people/000_person_maya_input.png": {
+      "path": "images/references/person_maya_conditioning.png",
+      "sha256": "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3"
+    },
+    "experiment/control/images/references/people/001_person_priya.png": {
+      "path": "images/references/person_priya_original.png",
+      "sha256": "3b59f54e949ff8892effc593e98c13a64761f7b828911fec5a68e690d3af98b3"
+    },
+    "experiment/control/images/references/people/001_person_priya_input.png": {
+      "path": "images/references/person_priya_conditioning.png",
+      "sha256": "33e30fa12567d68b355ab031a173a481136ea879be91fdf96b529410c64ca670"
+    },
+    "experiment/control/images/references/people/002_person_jonah.png": {
+      "path": "images/references/person_jonah_original.png",
+      "sha256": "72db9fc35377df81d247538dbe0b838916f1e6c7b48463a0f8f76c91c634337a"
+    },
+    "experiment/control/images/references/people/002_person_jonah_input.png": {
+      "path": "images/references/person_jonah_conditioning.png",
+      "sha256": "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c"
+    },
+    "experiment/control/images/references/objects/000_object_green_cap.png": {
+      "path": "images/references/object_green_cap_original.png",
+      "sha256": "146466f1719a82118dc4d73f8d12c5cb5a08a9ac570964e404f8bdb08249277e"
+    },
+    "experiment/control/images/references/objects/000_object_green_cap_input.png": {
+      "path": "images/references/object_green_cap_conditioning.png",
+      "sha256": "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592"
+    },
+    "experiment/control/images/references/objects/001_object_blue_bike.png": {
+      "path": "images/references/object_blue_bike_original.png",
+      "sha256": "e9fb09659b7b425ee6211a7fd293f66f4071fd70a70a91aba946a05b1fe1ea5c"
+    },
+    "experiment/control/images/references/objects/001_object_blue_bike_input.png": {
+      "path": "images/references/object_blue_bike_conditioning.png",
+      "sha256": "93d25ad1b16c3701dd661a7aa60d508f439a678afe39a9fde2571af93879a173"
+    },
+    "experiment/control/images/references/objects/002_object_sketchbook.png": {
+      "path": "images/references/object_sketchbook_original.png",
+      "sha256": "a93c6f63c4a4e8f7e8de8ea77793cde978e9298174162acb5fbb7d190655f336"
+    },
+    "experiment/control/images/references/objects/002_object_sketchbook_input.png": {
+      "path": "images/references/object_sketchbook_conditioning.png",
+      "sha256": "f59a8a60fadb519f5a2bdf779ea1d18752f7c5ac52023a008617f433ec439d59"
+    },
+    "experiment/control/images/references/objects/003_object_cast_iron_skillet.png": {
+      "path": "images/references/object_cast_iron_skillet_original.png",
+      "sha256": "56117f4b02487e63edd84afb5ab22c741705876208b2d826991e80fd0a79d6fd"
+    },
+    "experiment/control/images/references/objects/003_object_cast_iron_skillet_input.png": {
+      "path": "images/references/object_cast_iron_skillet_conditioning.png",
+      "sha256": "9c2b46032e402dcb88911ae2fa0120b8d509844611916d0d9016875d5ddf4c9c"
+    },
+    "experiment/control/images/references/objects/004_object_blue_mug.png": {
+      "path": "images/references/object_blue_mug_original.png",
+      "sha256": "e51b4cf9dfef12b8b1cc325045aaeea954b95f625e558b4236645589e3bdbbc8"
+    },
+    "experiment/control/images/references/objects/004_object_blue_mug_input.png": {
+      "path": "images/references/object_blue_mug_conditioning.png",
+      "sha256": "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87"
+    },
+    "experiment/control/images/photos/000/pass_00.png": {
+      "path": "images/control/january_pass_1.png",
+      "sha256": "8ffc9bc810f15da259fe82b14c6bf1a8aa0ad85ef43a2877d79a8d778acf10fc"
+    },
+    "experiment/control/images/photos/000/pass_01.png": {
+      "path": "images/control/january_pass_2.png",
+      "sha256": "7b80331be0aa94fe957df2518352b0cdbb2a6c714335321408a99b273946b915"
+    },
+    "experiment/control/images/photos/000_year_1_month_01.png": {
+      "path": "images/control/january_pass_2.png",
+      "sha256": "7b80331be0aa94fe957df2518352b0cdbb2a6c714335321408a99b273946b915"
+    },
+    "experiment/control/images/photos/001/pass_00.png": {
+      "path": "images/control/february_pass_1.png",
+      "sha256": "5a706a606a8be9dd2000d1b0411e1dd668588e4bda8a1e2f2f98e2688715169a"
+    },
+    "experiment/control/images/photos/001/pass_01.png": {
+      "path": "images/control/february_pass_2.png",
+      "sha256": "14e10337de1be0d6ff603fd8725557216c459e36b76ca637e51c817be0686ef9"
+    },
+    "experiment/control/images/photos/001_year_1_month_02.png": {
+      "path": "images/control/february_pass_2.png",
+      "sha256": "14e10337de1be0d6ff603fd8725557216c459e36b76ca637e51c817be0686ef9"
+    },
+    "experiment/control/images/photos/002/pass_00.png": {
+      "path": "images/control/may_pass_1.png",
+      "sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196"
+    },
+    "experiment/control/images/photos/002_year_1_month_05.png": {
+      "path": "images/control/may_pass_1.png",
+      "sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196"
+    },
+    "experiment/control/images/photos/003/pass_00.png": {
+      "path": "images/control/august_pass_1.png",
+      "sha256": "ad1a5d73257a83dfc686220b4ef080a2938d445db69a38fb3586a351b0538606"
+    },
+    "experiment/control/images/photos/003/pass_01.png": {
+      "path": "images/control/august_pass_2.png",
+      "sha256": "a7b5a4dd77bd98d4a45622dd319b3f7fec1750a61c5bc60c379d89d01080cff7"
+    },
+    "experiment/control/images/photos/003_year_1_month_08.png": {
+      "path": "images/control/august_pass_2.png",
+      "sha256": "a7b5a4dd77bd98d4a45622dd319b3f7fec1750a61c5bc60c379d89d01080cff7"
+    },
+    "experiment/control/images/photos/004/pass_00.png": {
+      "path": "images/control/october_pass_1.png",
+      "sha256": "2deb8209b51fd53eada1c2699c1add17164811d1dc588b6d580b153cff0a9daa"
+    },
+    "experiment/control/images/photos/004/pass_01.png": {
+      "path": "images/control/october_pass_2.png",
+      "sha256": "6b2df39a4e885333c38b987b36c4160117af210a43b5f2eed79e5fad0b059aa1"
+    },
+    "experiment/control/images/photos/004_year_1_month_10.png": {
+      "path": "images/control/october_pass_2.png",
+      "sha256": "6b2df39a4e885333c38b987b36c4160117af210a43b5f2eed79e5fad0b059aa1"
+    },
+    "experiment/control/images/manifest.yaml": {
+      "path": "records/control_generation_manifest.yaml",
+      "sha256": "374ae051e9d4a2b8749b8fa71800d0a4d6b8764386acdd536aed49e1c34a59b4"
+    },
+    "experiment/portrait_reference/images/references/people/000_person_maya.png": {
+      "path": "images/references/person_maya_original.png",
+      "sha256": "eb6b68fe16b5d25554d350fc62d209faf0d1f005d04543a3a1672eb00447891f"
+    },
+    "experiment/portrait_reference/images/references/people/000_person_maya_input.png": {
+      "path": "images/references/person_maya_conditioning.png",
+      "sha256": "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3"
+    },
+    "experiment/portrait_reference/images/references/people/001_person_priya.png": {
+      "path": "images/references/person_priya_original.png",
+      "sha256": "3b59f54e949ff8892effc593e98c13a64761f7b828911fec5a68e690d3af98b3"
+    },
+    "experiment/portrait_reference/images/references/people/001_person_priya_input.png": {
+      "path": "images/references/person_priya_conditioning.png",
+      "sha256": "33e30fa12567d68b355ab031a173a481136ea879be91fdf96b529410c64ca670"
+    },
+    "experiment/portrait_reference/images/references/people/002_person_jonah.png": {
+      "path": "images/references/person_jonah_original.png",
+      "sha256": "72db9fc35377df81d247538dbe0b838916f1e6c7b48463a0f8f76c91c634337a"
+    },
+    "experiment/portrait_reference/images/references/people/002_person_jonah_input.png": {
+      "path": "images/references/person_jonah_conditioning.png",
+      "sha256": "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c"
+    },
+    "experiment/portrait_reference/images/references/objects/000_object_green_cap.png": {
+      "path": "images/references/object_green_cap_original.png",
+      "sha256": "146466f1719a82118dc4d73f8d12c5cb5a08a9ac570964e404f8bdb08249277e"
+    },
+    "experiment/portrait_reference/images/references/objects/000_object_green_cap_input.png": {
+      "path": "images/references/object_green_cap_conditioning.png",
+      "sha256": "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592"
+    },
+    "experiment/portrait_reference/images/references/objects/001_object_blue_bike.png": {
+      "path": "images/references/object_blue_bike_original.png",
+      "sha256": "e9fb09659b7b425ee6211a7fd293f66f4071fd70a70a91aba946a05b1fe1ea5c"
+    },
+    "experiment/portrait_reference/images/references/objects/001_object_blue_bike_input.png": {
+      "path": "images/references/object_blue_bike_conditioning.png",
+      "sha256": "93d25ad1b16c3701dd661a7aa60d508f439a678afe39a9fde2571af93879a173"
+    },
+    "experiment/portrait_reference/images/references/objects/002_object_sketchbook.png": {
+      "path": "images/references/object_sketchbook_original.png",
+      "sha256": "a93c6f63c4a4e8f7e8de8ea77793cde978e9298174162acb5fbb7d190655f336"
+    },
+    "experiment/portrait_reference/images/references/objects/002_object_sketchbook_input.png": {
+      "path": "images/references/object_sketchbook_conditioning.png",
+      "sha256": "f59a8a60fadb519f5a2bdf779ea1d18752f7c5ac52023a008617f433ec439d59"
+    },
+    "experiment/portrait_reference/images/references/objects/003_object_cast_iron_skillet.png": {
+      "path": "images/references/object_cast_iron_skillet_original.png",
+      "sha256": "56117f4b02487e63edd84afb5ab22c741705876208b2d826991e80fd0a79d6fd"
+    },
+    "experiment/portrait_reference/images/references/objects/003_object_cast_iron_skillet_input.png": {
+      "path": "images/references/object_cast_iron_skillet_conditioning.png",
+      "sha256": "9c2b46032e402dcb88911ae2fa0120b8d509844611916d0d9016875d5ddf4c9c"
+    },
+    "experiment/portrait_reference/images/references/objects/004_object_blue_mug.png": {
+      "path": "images/references/object_blue_mug_original.png",
+      "sha256": "e51b4cf9dfef12b8b1cc325045aaeea954b95f625e558b4236645589e3bdbbc8"
+    },
+    "experiment/portrait_reference/images/references/objects/004_object_blue_mug_input.png": {
+      "path": "images/references/object_blue_mug_conditioning.png",
+      "sha256": "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87"
+    },
+    "experiment/portrait_reference/images/photos/000/pass_00.png": {
+      "path": "images/control/january_pass_1.png",
+      "sha256": "8ffc9bc810f15da259fe82b14c6bf1a8aa0ad85ef43a2877d79a8d778acf10fc"
+    },
+    "experiment/portrait_reference/images/photos/000/pass_01.png": {
+      "path": "images/portrait_reference/january_pass_2.png",
+      "sha256": "8506f7fbe59e1eb16497b06b55f06414211fe7e020b3dbe8f1feb5ef55c1195d"
+    },
+    "experiment/portrait_reference/images/photos/000_year_1_month_01.png": {
+      "path": "images/portrait_reference/january_pass_2.png",
+      "sha256": "8506f7fbe59e1eb16497b06b55f06414211fe7e020b3dbe8f1feb5ef55c1195d"
+    },
+    "experiment/portrait_reference/images/photos/001/pass_00.png": {
+      "path": "images/control/february_pass_1.png",
+      "sha256": "5a706a606a8be9dd2000d1b0411e1dd668588e4bda8a1e2f2f98e2688715169a"
+    },
+    "experiment/portrait_reference/images/photos/001/pass_01.png": {
+      "path": "images/portrait_reference/february_pass_2.png",
+      "sha256": "390cd5d8e48687ef8b96da680bc0c107d77bf8c43860fd83b9c88ef07a10ac1f"
+    },
+    "experiment/portrait_reference/images/photos/001_year_1_month_02.png": {
+      "path": "images/portrait_reference/february_pass_2.png",
+      "sha256": "390cd5d8e48687ef8b96da680bc0c107d77bf8c43860fd83b9c88ef07a10ac1f"
+    },
+    "experiment/portrait_reference/images/photos/002/pass_00.png": {
+      "path": "images/control/may_pass_1.png",
+      "sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196"
+    },
+    "experiment/portrait_reference/images/photos/002_year_1_month_05.png": {
+      "path": "images/control/may_pass_1.png",
+      "sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196"
+    },
+    "experiment/portrait_reference/images/photos/003/pass_00.png": {
+      "path": "images/control/august_pass_1.png",
+      "sha256": "ad1a5d73257a83dfc686220b4ef080a2938d445db69a38fb3586a351b0538606"
+    },
+    "experiment/portrait_reference/images/photos/003/pass_01.png": {
+      "path": "images/portrait_reference/august_pass_2.png",
+      "sha256": "3d85a0bd8680ac9ce23bc12bb4f6c6891eb36eb6fabc43d825b7139508cb257f"
+    },
+    "experiment/portrait_reference/images/photos/003_year_1_month_08.png": {
+      "path": "images/portrait_reference/august_pass_2.png",
+      "sha256": "3d85a0bd8680ac9ce23bc12bb4f6c6891eb36eb6fabc43d825b7139508cb257f"
+    },
+    "experiment/portrait_reference/images/photos/004/pass_00.png": {
+      "path": "images/control/october_pass_1.png",
+      "sha256": "2deb8209b51fd53eada1c2699c1add17164811d1dc588b6d580b153cff0a9daa"
+    },
+    "experiment/portrait_reference/images/photos/004/pass_01.png": {
+      "path": "images/portrait_reference/october_pass_2.png",
+      "sha256": "157fb47cb20d26d19ce3d6243fa73c92ab1a7cae99acb8a8050a7e29daa82e19"
+    },
+    "experiment/portrait_reference/images/photos/004_year_1_month_10.png": {
+      "path": "images/portrait_reference/october_pass_2.png",
+      "sha256": "157fb47cb20d26d19ce3d6243fa73c92ab1a7cae99acb8a8050a7e29daa82e19"
+    },
+    "experiment/portrait_reference/images/manifest.yaml": {
+      "path": "records/portrait_reference_generation_manifest.yaml",
+      "sha256": "bf778490fe7e2aca2b481a6bff724a3b20bd37bfcac43ca682dd99385bc54528"
+    },
+    "experiment/historical_scores/crops/person_jonah_face_0.png": {
+      "path": "evidence/face_historical/crops/person_jonah_face_0.png",
+      "sha256": "6e53295932f48bf14c4a81693cda34f2578e9c561f611822bc2bed611a38431f"
+    },
+    "experiment/historical_scores/crops/person_maya_face_0.png": {
+      "path": "evidence/face_historical/crops/person_maya_face_0.png",
+      "sha256": "e7724d0a5b46f40f1512571e1ada164289ecc6718cbde97b4092d3d985e0db94"
+    },
+    "experiment/historical_scores/crops/person_priya_face_0.png": {
+      "path": "evidence/face_historical/crops/person_priya_face_0.png",
+      "sha256": "b2462d7866069e1327ad61dc32015aa7681fd597ac4d606b9bc9ac5680858cbd"
+    },
+    "experiment/historical_scores/crops/scene_0_pass_0_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_0_pass_0_face_0.png",
+      "sha256": "c65b31ef859df90c8473547d9add06ebdc40f6b21b4ce07c9022128af5b00e47"
+    },
+    "experiment/historical_scores/crops/scene_0_pass_0_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_0_pass_0_face_1.png",
+      "sha256": "f57070eae38e34717cd41e3f45fb65b5e4326e14db9d8bb07bbcc3d0bdc0282b"
+    },
+    "experiment/historical_scores/crops/scene_0_pass_1_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_0_pass_1_face_0.png",
+      "sha256": "305e4398ac4b11a660178b1db82c41f5dcdd8df42a39f881ce3cd4e068fc8436"
+    },
+    "experiment/historical_scores/crops/scene_0_pass_1_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_0_pass_1_face_1.png",
+      "sha256": "4f1914477bfcf34d404838867b5c274db5a9832c8498cdf12c357e50b1b70fc1"
+    },
+    "experiment/historical_scores/crops/scene_1_pass_0_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_1_pass_0_face_0.png",
+      "sha256": "ec959a1fdff8bb1d50f76cdff1ab57ec1064579757afad427116e7b25b8a1225"
+    },
+    "experiment/historical_scores/crops/scene_1_pass_0_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_1_pass_0_face_1.png",
+      "sha256": "f883aa85e55aac2dfa73c350cde9129302739d62be973dda430436f19f307609"
+    },
+    "experiment/historical_scores/crops/scene_1_pass_0_face_2.png": {
+      "path": "evidence/face_historical/crops/scene_1_pass_0_face_2.png",
+      "sha256": "1f2a502fc5d53592bc5ca9dd4f1535c82672705420a1289bcedf25770cfc7e5d"
+    },
+    "experiment/historical_scores/crops/scene_1_pass_1_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_1_pass_1_face_0.png",
+      "sha256": "7bcf6c51e81f07758c19bab0ebcd529ba054d948bf41e272667f71b8c839c7e6"
+    },
+    "experiment/historical_scores/crops/scene_1_pass_1_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_1_pass_1_face_1.png",
+      "sha256": "74587ae9611a109a87007dcdfb822365d4627648346aaa55c543c1229472b2ea"
+    },
+    "experiment/historical_scores/crops/scene_1_pass_1_face_2.png": {
+      "path": "evidence/face_historical/crops/scene_1_pass_1_face_2.png",
+      "sha256": "b89205ca8d094f30364cd28cb907fb8831b74382cf11ad7aadcb87d55214fbc4"
+    },
+    "experiment/historical_scores/crops/scene_2_pass_0_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_2_pass_0_face_0.png",
+      "sha256": "570f38fec53082719ea58deca2da1f7f8d7e740834422c54cc88cb550c2beb7f"
+    },
+    "experiment/historical_scores/crops/scene_2_pass_0_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_2_pass_0_face_1.png",
+      "sha256": "1f321ca8ec9a5078a285d7467302dcca1d4f93181addb7c3add103e016e7a080"
+    },
+    "experiment/historical_scores/crops/scene_3_pass_0_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_3_pass_0_face_0.png",
+      "sha256": "d393ded84481089b3c741911bdceebaa03378728029d931ed75d216c93e643a3"
+    },
+    "experiment/historical_scores/crops/scene_3_pass_0_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_3_pass_0_face_1.png",
+      "sha256": "36d35e684b630181340bbc74c15b4200fb7bf3663b7b62347478eeadeea610ad"
+    },
+    "experiment/historical_scores/crops/scene_3_pass_0_face_2.png": {
+      "path": "evidence/face_historical/crops/scene_3_pass_0_face_2.png",
+      "sha256": "bbd05d230a105699afd659aaa61f2f88d5c4dfc3eef8de5d73fbe2320586c985"
+    },
+    "experiment/historical_scores/crops/scene_3_pass_1_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_3_pass_1_face_0.png",
+      "sha256": "7dd03512b730e40d1009d433ab0d46fa2a9efe73e0290e5ef5175aaf79bdc2cf"
+    },
+    "experiment/historical_scores/crops/scene_3_pass_1_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_3_pass_1_face_1.png",
+      "sha256": "d081811f699b7266a8165d64aba86af6cb4da282762573d6e2847bf227941752"
+    },
+    "experiment/historical_scores/crops/scene_3_pass_1_face_2.png": {
+      "path": "evidence/face_historical/crops/scene_3_pass_1_face_2.png",
+      "sha256": "3c825e0d0b842f71ed7d9d3401225f97553b79127b6914be13cc29401a5cdd9a"
+    },
+    "experiment/historical_scores/crops/scene_4_pass_0_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_4_pass_0_face_0.png",
+      "sha256": "8728aeb8f6bfe648e31ccaff423849c394e8a4abb1c1692e2c24541c565098db"
+    },
+    "experiment/historical_scores/crops/scene_4_pass_0_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_4_pass_0_face_1.png",
+      "sha256": "30a302ca3c4bddf75d7015c1b3bb8a14396af226d8187319ccdc8279fcae32c4"
+    },
+    "experiment/historical_scores/crops/scene_4_pass_1_face_0.png": {
+      "path": "evidence/face_historical/crops/scene_4_pass_1_face_0.png",
+      "sha256": "1df0b31c7f0ed599e39ed6e4dd481bd44c0171f6e55d85c5574f068951846ad0"
+    },
+    "experiment/historical_scores/crops/scene_4_pass_1_face_1.png": {
+      "path": "evidence/face_historical/crops/scene_4_pass_1_face_1.png",
+      "sha256": "c744477260f4e6708021753803372e309dc4a33a64ef4fa514d379da1d41d742"
+    },
+    "experiment/historical_scores/person_jonah_detections.jpg": {
+      "path": "evidence/face_historical/person_jonah_detections.jpg",
+      "sha256": "7e279b11769f44a549a53d800e7ab5fcf0ac040266e3e3a896ec0d1ab7013df2"
+    },
+    "experiment/historical_scores/person_maya_detections.jpg": {
+      "path": "evidence/face_historical/person_maya_detections.jpg",
+      "sha256": "f9bee6dac01b2108fbaf507ee5afe06a113f6473251276c8ba4cf95a849fc6a0"
+    },
+    "experiment/historical_scores/person_priya_detections.jpg": {
+      "path": "evidence/face_historical/person_priya_detections.jpg",
+      "sha256": "b8a9874a5859c2f598a1087bf27cbf3d0341753c975506e8c7f41289b5dcb59e"
+    },
+    "experiment/historical_scores/scene_0_pass_0_detections.jpg": {
+      "path": "evidence/face_historical/scene_0_pass_0_detections.jpg",
+      "sha256": "b923902a7e3229737da7a2785a32ca024cd74ed42139af3abea22dffc8afd8c1"
+    },
+    "experiment/historical_scores/scene_0_pass_1_detections.jpg": {
+      "path": "evidence/face_historical/scene_0_pass_1_detections.jpg",
+      "sha256": "ca081b1c4eaec2e28f436ce6ea196eb3a07231fdb4d3d0241ecf009f703a5156"
+    },
+    "experiment/historical_scores/scene_1_pass_0_detections.jpg": {
+      "path": "evidence/face_historical/scene_1_pass_0_detections.jpg",
+      "sha256": "d987645c3605f1168c579f243df4be67fa84bc78724de216ed9ff38cbe7d4690"
+    },
+    "experiment/historical_scores/scene_1_pass_1_detections.jpg": {
+      "path": "evidence/face_historical/scene_1_pass_1_detections.jpg",
+      "sha256": "d3e119b109297bf6194cd65afea53cc222c582894959feffa6fc55318353518c"
+    },
+    "experiment/historical_scores/scene_2_pass_0_detections.jpg": {
+      "path": "evidence/face_historical/scene_2_pass_0_detections.jpg",
+      "sha256": "8e59516e41d221d8d35adc6b3a8952915890151518178bcbad9a7bd842fa52e3"
+    },
+    "experiment/historical_scores/scene_3_pass_0_detections.jpg": {
+      "path": "evidence/face_historical/scene_3_pass_0_detections.jpg",
+      "sha256": "29c2d7d0f8e43ec628548115b91e4e0f72dd8d8b8dae4e3d57c4332eaf64fa7e"
+    },
+    "experiment/historical_scores/scene_3_pass_1_detections.jpg": {
+      "path": "evidence/face_historical/scene_3_pass_1_detections.jpg",
+      "sha256": "c0783daf245e811a87e94757362e54280146ef77158c11e2fcca8d65dc055fbc"
+    },
+    "experiment/historical_scores/scene_4_pass_0_detections.jpg": {
+      "path": "evidence/face_historical/scene_4_pass_0_detections.jpg",
+      "sha256": "5cf3c0141d792ac3c360b9b3b0ab0ae726795e3eb2c368de7be0ebb8f407b9e0"
+    },
+    "experiment/historical_scores/scene_4_pass_1_detections.jpg": {
+      "path": "evidence/face_historical/scene_4_pass_1_detections.jpg",
+      "sha256": "7004c0358fc3dd668e7b40018bd7f45a27a977808541879c35d31930386e838e"
+    },
+    "experiment/control/scores/crops/person_jonah_face_0.png": {
+      "path": "evidence/face_historical/crops/person_jonah_face_0.png",
+      "sha256": "6e53295932f48bf14c4a81693cda34f2578e9c561f611822bc2bed611a38431f"
+    },
+    "experiment/control/scores/crops/person_maya_face_0.png": {
+      "path": "evidence/face_historical/crops/person_maya_face_0.png",
+      "sha256": "e7724d0a5b46f40f1512571e1ada164289ecc6718cbde97b4092d3d985e0db94"
+    },
+    "experiment/control/scores/crops/person_priya_face_0.png": {
+      "path": "evidence/face_historical/crops/person_priya_face_0.png",
+      "sha256": "b2462d7866069e1327ad61dc32015aa7681fd597ac4d606b9bc9ac5680858cbd"
+    },
+    "experiment/control/scores/crops/scene_0_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_0_pass_0_face_0.png",
+      "sha256": "4ef5872ebc62043ad6de889e222f21e48084924bea1f8f75ed3d3d862193cbaf"
+    },
+    "experiment/control/scores/crops/scene_0_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_0_pass_0_face_1.png",
+      "sha256": "a3119983aad385f2bae0c86068ae3558ce05596218a4f4e59bed33c679948a75"
+    },
+    "experiment/control/scores/crops/scene_0_pass_1_face_0.png": {
+      "path": "evidence/face_control/crops/scene_0_pass_1_face_0.png",
+      "sha256": "ed64fba3dd9bc4ef59341cc4bf03c9c48f90018a16684c9d5ef6a6342947f3d0"
+    },
+    "experiment/control/scores/crops/scene_0_pass_1_face_1.png": {
+      "path": "evidence/face_control/crops/scene_0_pass_1_face_1.png",
+      "sha256": "255b8bed143ccff76c3066fd1c6bfa64b9a957a671029185b681a19635d6ef44"
+    },
+    "experiment/control/scores/crops/scene_1_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_0_face_0.png",
+      "sha256": "23d7f89c0f76c6a210c1d1a5a95191412479971c73173a99e431e58a564264bf"
+    },
+    "experiment/control/scores/crops/scene_1_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_0_face_1.png",
+      "sha256": "2ccc5ae3fc4663ab62b6c037de52a2bcd397ce8618f2d05d175aa139bd98da5a"
+    },
+    "experiment/control/scores/crops/scene_1_pass_0_face_2.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_0_face_2.png",
+      "sha256": "ab9083abe733e4ef41cdcf810dfadef42614e1a6834060bcad139345cdc1b235"
+    },
+    "experiment/control/scores/crops/scene_1_pass_1_face_0.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_1_face_0.png",
+      "sha256": "70aca1b18075b9920853bc3ba898301188ad378e8d267a08babed59c5b712ac9"
+    },
+    "experiment/control/scores/crops/scene_1_pass_1_face_1.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_1_face_1.png",
+      "sha256": "4862395fa887e72217bfb0f160245aded09bba1af0f1c249b39e63275d084094"
+    },
+    "experiment/control/scores/crops/scene_1_pass_1_face_2.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_1_face_2.png",
+      "sha256": "dab09dd936902280ac59e6fc8704dfea677904d115835dba02e3e62391289ccf"
+    },
+    "experiment/control/scores/crops/scene_2_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_2_pass_0_face_0.png",
+      "sha256": "16745b4c4ff40b613ad6b152f8052c6a449aaba1529bad29c3ce2541222f64a9"
+    },
+    "experiment/control/scores/crops/scene_2_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_2_pass_0_face_1.png",
+      "sha256": "d0191c4ff137967924d8953269fb41d61ab23327226582ea0810b0be52f3f319"
+    },
+    "experiment/control/scores/crops/scene_3_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_0_face_0.png",
+      "sha256": "6800fa8572223fbe3e021af392189153503889f5d651aa713adf431c4cef3041"
+    },
+    "experiment/control/scores/crops/scene_3_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_0_face_1.png",
+      "sha256": "45febec450b7924b6f58fd447d0b5ca0d70881a31a44d4608f15892cf0d35f3d"
+    },
+    "experiment/control/scores/crops/scene_3_pass_0_face_2.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_0_face_2.png",
+      "sha256": "938ff63d4ea70b26163340c7f7b85e98bedc5e3a3606a72fe8e0cf66610eb7ba"
+    },
+    "experiment/control/scores/crops/scene_3_pass_1_face_0.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_1_face_0.png",
+      "sha256": "91b8e9263bf6478a75738eb601182a2cf91cb38f63524a990ea3ae86c1dd390c"
+    },
+    "experiment/control/scores/crops/scene_3_pass_1_face_1.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_1_face_1.png",
+      "sha256": "b0fc39e0629528d31c976e9c60e7445119a34490886e1b706b53399130f7f5cd"
+    },
+    "experiment/control/scores/crops/scene_3_pass_1_face_2.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_1_face_2.png",
+      "sha256": "5cd81adb8433102d7169b8b78f7604720d99cb811add107a4ceac0ab8506dca1"
+    },
+    "experiment/control/scores/crops/scene_4_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_0_face_0.png",
+      "sha256": "b72bf3213041c278c3f9e17b50b7a065811d3bb8948eea9429bf3a6b01735a41"
+    },
+    "experiment/control/scores/crops/scene_4_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_0_face_1.png",
+      "sha256": "0948a39ac2aee2cb241f0933ce3feeebdfc43ef3583cb38dfe1adcb43a30af18"
+    },
+    "experiment/control/scores/crops/scene_4_pass_0_face_2.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_0_face_2.png",
+      "sha256": "5bed67fdbdfeeb29a2988af986555d66deadb685b5b14ad3da74cd91c09ad5ef"
+    },
+    "experiment/control/scores/crops/scene_4_pass_1_face_0.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_1_face_0.png",
+      "sha256": "3d97582dc69fd13fff2e1bd98622bfd3659970e40bcee188e9566e95f1dd02ab"
+    },
+    "experiment/control/scores/crops/scene_4_pass_1_face_1.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_1_face_1.png",
+      "sha256": "67e80c96b3a72fef216a0097251dbbfed0b4cdf1c20defcc56a8f050c274df86"
+    },
+    "experiment/control/scores/crops/scene_4_pass_1_face_2.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_1_face_2.png",
+      "sha256": "273a3e14f4d088c8d6daf9ad32819430975477ccacd8c63869345e5de240ebdd"
+    },
+    "experiment/control/scores/person_jonah_detections.jpg": {
+      "path": "evidence/face_historical/person_jonah_detections.jpg",
+      "sha256": "7e279b11769f44a549a53d800e7ab5fcf0ac040266e3e3a896ec0d1ab7013df2"
+    },
+    "experiment/control/scores/person_maya_detections.jpg": {
+      "path": "evidence/face_historical/person_maya_detections.jpg",
+      "sha256": "f9bee6dac01b2108fbaf507ee5afe06a113f6473251276c8ba4cf95a849fc6a0"
+    },
+    "experiment/control/scores/person_priya_detections.jpg": {
+      "path": "evidence/face_historical/person_priya_detections.jpg",
+      "sha256": "b8a9874a5859c2f598a1087bf27cbf3d0341753c975506e8c7f41289b5dcb59e"
+    },
+    "experiment/control/scores/scene_0_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_0_pass_0_detections.jpg",
+      "sha256": "8794a4cbf89adfe7281dd07f6548a5492f9e78fdc87cfb455d61a412b25ba1ac"
+    },
+    "experiment/control/scores/scene_0_pass_1_detections.jpg": {
+      "path": "evidence/face_control/scene_0_pass_1_detections.jpg",
+      "sha256": "3cbab10d3c705b03c2fb838e84caed601fb3ac8014f9a8e15b291e651c37bd7a"
+    },
+    "experiment/control/scores/scene_1_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_1_pass_0_detections.jpg",
+      "sha256": "9bc7cae3e99f3aa4af4f03e7dce5a387e0df3e278918c9e7d449a57cb650905f"
+    },
+    "experiment/control/scores/scene_1_pass_1_detections.jpg": {
+      "path": "evidence/face_control/scene_1_pass_1_detections.jpg",
+      "sha256": "63608dbd494b43f8a19ecc021fd167a254a95a638049a63019f29cc35a6db655"
+    },
+    "experiment/control/scores/scene_2_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_2_pass_0_detections.jpg",
+      "sha256": "d8c3e94cd2d9de4b913f02986327f5cf6e6678e57f67c4c41b752a1330aa5301"
+    },
+    "experiment/control/scores/scene_3_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_3_pass_0_detections.jpg",
+      "sha256": "d2ceaaa17a2cbf934a985710804874c642ee955af4b24caf27ddfa9daeb77e1f"
+    },
+    "experiment/control/scores/scene_3_pass_1_detections.jpg": {
+      "path": "evidence/face_control/scene_3_pass_1_detections.jpg",
+      "sha256": "4be2a67fbf29b49dc54475c02c1da6891a3c8513f7f09020c1c7f16fc4d26043"
+    },
+    "experiment/control/scores/scene_4_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_4_pass_0_detections.jpg",
+      "sha256": "101723a7dc3a26295d4f1c10a8ee1314ae7d223d1fb94346365e0a2bcf6887d8"
+    },
+    "experiment/control/scores/scene_4_pass_1_detections.jpg": {
+      "path": "evidence/face_control/scene_4_pass_1_detections.jpg",
+      "sha256": "a86ffd02c93e16a7a6ace3128e5a61a8118170a2fffc2cdc41395ea1e08e17c8"
+    },
+    "experiment/portrait_reference/scores/crops/person_jonah_face_0.png": {
+      "path": "evidence/face_historical/crops/person_jonah_face_0.png",
+      "sha256": "6e53295932f48bf14c4a81693cda34f2578e9c561f611822bc2bed611a38431f"
+    },
+    "experiment/portrait_reference/scores/crops/person_maya_face_0.png": {
+      "path": "evidence/face_historical/crops/person_maya_face_0.png",
+      "sha256": "e7724d0a5b46f40f1512571e1ada164289ecc6718cbde97b4092d3d985e0db94"
+    },
+    "experiment/portrait_reference/scores/crops/person_priya_face_0.png": {
+      "path": "evidence/face_historical/crops/person_priya_face_0.png",
+      "sha256": "b2462d7866069e1327ad61dc32015aa7681fd597ac4d606b9bc9ac5680858cbd"
+    },
+    "experiment/portrait_reference/scores/crops/scene_0_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_0_pass_0_face_0.png",
+      "sha256": "4ef5872ebc62043ad6de889e222f21e48084924bea1f8f75ed3d3d862193cbaf"
+    },
+    "experiment/portrait_reference/scores/crops/scene_0_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_0_pass_0_face_1.png",
+      "sha256": "a3119983aad385f2bae0c86068ae3558ce05596218a4f4e59bed33c679948a75"
+    },
+    "experiment/portrait_reference/scores/crops/scene_0_pass_1_face_0.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_0_pass_1_face_0.png",
+      "sha256": "2aa9e7fbabd2baf3f070814f4078b1aae96c6d059b5b145d1649f4aea14fea07"
+    },
+    "experiment/portrait_reference/scores/crops/scene_0_pass_1_face_1.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_0_pass_1_face_1.png",
+      "sha256": "920e8e1d97f2ff2daacd48849e227e161ca7959cd7cf77d899169fd40d942d08"
+    },
+    "experiment/portrait_reference/scores/crops/scene_1_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_0_face_0.png",
+      "sha256": "23d7f89c0f76c6a210c1d1a5a95191412479971c73173a99e431e58a564264bf"
+    },
+    "experiment/portrait_reference/scores/crops/scene_1_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_0_face_1.png",
+      "sha256": "2ccc5ae3fc4663ab62b6c037de52a2bcd397ce8618f2d05d175aa139bd98da5a"
+    },
+    "experiment/portrait_reference/scores/crops/scene_1_pass_0_face_2.png": {
+      "path": "evidence/face_control/crops/scene_1_pass_0_face_2.png",
+      "sha256": "ab9083abe733e4ef41cdcf810dfadef42614e1a6834060bcad139345cdc1b235"
+    },
+    "experiment/portrait_reference/scores/crops/scene_1_pass_1_face_0.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_1_pass_1_face_0.png",
+      "sha256": "655c395a9a66400f797ae08aafac8ed080467932a0aa8e4831e23c8e6ed3148b"
+    },
+    "experiment/portrait_reference/scores/crops/scene_1_pass_1_face_1.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_1_pass_1_face_1.png",
+      "sha256": "6881289bc7203c93ad47b725bbecac725b543a197d82d185717e0cf8a6871c45"
+    },
+    "experiment/portrait_reference/scores/crops/scene_1_pass_1_face_2.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_1_pass_1_face_2.png",
+      "sha256": "3ba87b00686209cbc07b8608897626cdaf1f6d7899c24ad70eb92f4594e8b1b2"
+    },
+    "experiment/portrait_reference/scores/crops/scene_2_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_2_pass_0_face_0.png",
+      "sha256": "16745b4c4ff40b613ad6b152f8052c6a449aaba1529bad29c3ce2541222f64a9"
+    },
+    "experiment/portrait_reference/scores/crops/scene_2_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_2_pass_0_face_1.png",
+      "sha256": "d0191c4ff137967924d8953269fb41d61ab23327226582ea0810b0be52f3f319"
+    },
+    "experiment/portrait_reference/scores/crops/scene_3_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_0_face_0.png",
+      "sha256": "6800fa8572223fbe3e021af392189153503889f5d651aa713adf431c4cef3041"
+    },
+    "experiment/portrait_reference/scores/crops/scene_3_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_0_face_1.png",
+      "sha256": "45febec450b7924b6f58fd447d0b5ca0d70881a31a44d4608f15892cf0d35f3d"
+    },
+    "experiment/portrait_reference/scores/crops/scene_3_pass_0_face_2.png": {
+      "path": "evidence/face_control/crops/scene_3_pass_0_face_2.png",
+      "sha256": "938ff63d4ea70b26163340c7f7b85e98bedc5e3a3606a72fe8e0cf66610eb7ba"
+    },
+    "experiment/portrait_reference/scores/crops/scene_3_pass_1_face_0.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_3_pass_1_face_0.png",
+      "sha256": "7bceab0e31e84b280037588c9c348f7e014f09a9c6573a903a89266d9c543727"
+    },
+    "experiment/portrait_reference/scores/crops/scene_3_pass_1_face_1.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_3_pass_1_face_1.png",
+      "sha256": "fc7b0be5f1ba13f33246397a1eef2c7bf365670b8def8ba69fe53a29c7b8bfe4"
+    },
+    "experiment/portrait_reference/scores/crops/scene_3_pass_1_face_2.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_3_pass_1_face_2.png",
+      "sha256": "db6a79892aef7327f7fd48ad84bfcc2da982c6f46dfb62b028fc51b49dcb72f3"
+    },
+    "experiment/portrait_reference/scores/crops/scene_4_pass_0_face_0.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_0_face_0.png",
+      "sha256": "b72bf3213041c278c3f9e17b50b7a065811d3bb8948eea9429bf3a6b01735a41"
+    },
+    "experiment/portrait_reference/scores/crops/scene_4_pass_0_face_1.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_0_face_1.png",
+      "sha256": "0948a39ac2aee2cb241f0933ce3feeebdfc43ef3583cb38dfe1adcb43a30af18"
+    },
+    "experiment/portrait_reference/scores/crops/scene_4_pass_0_face_2.png": {
+      "path": "evidence/face_control/crops/scene_4_pass_0_face_2.png",
+      "sha256": "5bed67fdbdfeeb29a2988af986555d66deadb685b5b14ad3da74cd91c09ad5ef"
+    },
+    "experiment/portrait_reference/scores/crops/scene_4_pass_1_face_0.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_4_pass_1_face_0.png",
+      "sha256": "43bf34edc9bfe5a7c9385c7319e36d35c51e26df0768f0ddbab95abcbaf38b55"
+    },
+    "experiment/portrait_reference/scores/crops/scene_4_pass_1_face_1.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_4_pass_1_face_1.png",
+      "sha256": "b70429a868b5d123887e6d835f1476ee6755598c7382c0dee552462754b03670"
+    },
+    "experiment/portrait_reference/scores/crops/scene_4_pass_1_face_2.png": {
+      "path": "evidence/face_portrait_reference/crops/scene_4_pass_1_face_2.png",
+      "sha256": "a91a5f13afb4c972e87bc8da055081db502a8de68f7e186f9189614480f993fc"
+    },
+    "experiment/portrait_reference/scores/person_jonah_detections.jpg": {
+      "path": "evidence/face_historical/person_jonah_detections.jpg",
+      "sha256": "7e279b11769f44a549a53d800e7ab5fcf0ac040266e3e3a896ec0d1ab7013df2"
+    },
+    "experiment/portrait_reference/scores/person_maya_detections.jpg": {
+      "path": "evidence/face_historical/person_maya_detections.jpg",
+      "sha256": "f9bee6dac01b2108fbaf507ee5afe06a113f6473251276c8ba4cf95a849fc6a0"
+    },
+    "experiment/portrait_reference/scores/person_priya_detections.jpg": {
+      "path": "evidence/face_historical/person_priya_detections.jpg",
+      "sha256": "b8a9874a5859c2f598a1087bf27cbf3d0341753c975506e8c7f41289b5dcb59e"
+    },
+    "experiment/portrait_reference/scores/scene_0_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_0_pass_0_detections.jpg",
+      "sha256": "8794a4cbf89adfe7281dd07f6548a5492f9e78fdc87cfb455d61a412b25ba1ac"
+    },
+    "experiment/portrait_reference/scores/scene_0_pass_1_detections.jpg": {
+      "path": "evidence/face_portrait_reference/scene_0_pass_1_detections.jpg",
+      "sha256": "85e5a25dc026d130693e66a936c5a4c39861e3714ba8cb19ed7af40d6c03cb6b"
+    },
+    "experiment/portrait_reference/scores/scene_1_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_1_pass_0_detections.jpg",
+      "sha256": "9bc7cae3e99f3aa4af4f03e7dce5a387e0df3e278918c9e7d449a57cb650905f"
+    },
+    "experiment/portrait_reference/scores/scene_1_pass_1_detections.jpg": {
+      "path": "evidence/face_portrait_reference/scene_1_pass_1_detections.jpg",
+      "sha256": "131fd07ab37c4bf37c97da1d97374331e44f1548e0e972b1d60e9a3f49e78997"
+    },
+    "experiment/portrait_reference/scores/scene_2_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_2_pass_0_detections.jpg",
+      "sha256": "d8c3e94cd2d9de4b913f02986327f5cf6e6678e57f67c4c41b752a1330aa5301"
+    },
+    "experiment/portrait_reference/scores/scene_3_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_3_pass_0_detections.jpg",
+      "sha256": "d2ceaaa17a2cbf934a985710804874c642ee955af4b24caf27ddfa9daeb77e1f"
+    },
+    "experiment/portrait_reference/scores/scene_3_pass_1_detections.jpg": {
+      "path": "evidence/face_portrait_reference/scene_3_pass_1_detections.jpg",
+      "sha256": "3e296711fa616d1c90c1f08be25e263a6e05dfabc96bf84ae8e135890c6626b1"
+    },
+    "experiment/portrait_reference/scores/scene_4_pass_0_detections.jpg": {
+      "path": "evidence/face_control/scene_4_pass_0_detections.jpg",
+      "sha256": "101723a7dc3a26295d4f1c10a8ee1314ae7d223d1fb94346365e0a2bcf6887d8"
+    },
+    "experiment/portrait_reference/scores/scene_4_pass_1_detections.jpg": {
+      "path": "evidence/face_portrait_reference/scene_4_pass_1_detections.jpg",
+      "sha256": "7b3d80d02628f0397e3345cc19a359455e594f0c250ef56f6e5b5171df90fbb1"
+    },
+    "experiment/object_evaluation/assets/control_0_detections.jpg": {
+      "path": "evidence/objects/control_0_detections.jpg",
+      "sha256": "169dd877b3026d79ddda4ea6b77517bdf835a597cc9b26dcd5b3a351b7a06b17"
+    },
+    "experiment/object_evaluation/assets/control_0_object_blue_mug_0.png": {
+      "path": "evidence/objects/control_0_object_blue_mug_0.png",
+      "sha256": "8c70288ac2d42d906a1eecaa97796fbf08fd30e335cf37ad1b28bad552c7a67a"
+    },
+    "experiment/object_evaluation/assets/control_0_object_blue_mug_1.png": {
+      "path": "evidence/objects/control_0_object_blue_mug_1.png",
+      "sha256": "9cad9c1f209ced3a1392fc1ba216d0b3118cb1e7158690be4061da2611226041"
+    },
+    "experiment/object_evaluation/assets/control_0_object_blue_mug_2.png": {
+      "path": "evidence/objects/control_0_object_blue_mug_2.png",
+      "sha256": "33bd7cdd0fa943ca69f273a12c294e65dbced25c76e93c6b5617ddccf2c63113"
+    },
+    "experiment/object_evaluation/assets/control_0_object_blue_mug_3.png": {
+      "path": "evidence/objects/control_0_object_blue_mug_3.png",
+      "sha256": "2d5724f18077265e63a28222044b7d6c9597107632ed1a1d901bf23a1d4acc05"
+    },
+    "experiment/object_evaluation/assets/control_0_object_green_cap_0.png": {
+      "path": "evidence/objects/control_0_object_green_cap_0.png",
+      "sha256": "743da60fb7de7f3540222c375fc3a2d940d10ac35dd50fa4b9e374b379d2e46d"
+    },
+    "experiment/object_evaluation/assets/control_0_object_sketchbook_0.png": {
+      "path": "evidence/objects/control_0_object_sketchbook_0.png",
+      "sha256": "cee52bf298cb614d0f4ebc21c1fb4c1c17ff42e6b7147c92d3c47d7a381b4051"
+    },
+    "experiment/object_evaluation/assets/control_0_photo.png": {
+      "path": "images/control/january_pass_2.png",
+      "sha256": "7b80331be0aa94fe957df2518352b0cdbb2a6c714335321408a99b273946b915"
+    },
+    "experiment/object_evaluation/assets/control_1_detections.jpg": {
+      "path": "evidence/objects/control_1_detections.jpg",
+      "sha256": "f901a529052b663d173e6abe1078db302e1b73954f05ffdc2a897455c73561e3"
+    },
+    "experiment/object_evaluation/assets/control_1_object_blue_mug_0.png": {
+      "path": "evidence/objects/control_1_object_blue_mug_0.png",
+      "sha256": "8a85258affff30d6c5e8063f18b7265e59c177b144b0e509980781e542132dfd"
+    },
+    "experiment/object_evaluation/assets/control_1_object_blue_mug_1.png": {
+      "path": "evidence/objects/control_1_object_blue_mug_1.png",
+      "sha256": "cccaa48b4e6fe552e734e255f69fd4b7fa25d5e5edf34474e1ff63ec1a502691"
+    },
+    "experiment/object_evaluation/assets/control_1_object_cast_iron_skillet_0.png": {
+      "path": "evidence/objects/control_1_object_cast_iron_skillet_0.png",
+      "sha256": "8b55fb2b63c7178fbbd211fa9b56d0aaf9472fe6a9e3202edd3f5b9efe79f846"
+    },
+    "experiment/object_evaluation/assets/control_1_object_cast_iron_skillet_1.png": {
+      "path": "evidence/objects/control_1_object_cast_iron_skillet_1.png",
+      "sha256": "e5649a025c9ea76b0c65c8d10a2d7b87e27346a6a2df3e4272c3f27ecd2c5632"
+    },
+    "experiment/object_evaluation/assets/control_1_photo.png": {
+      "path": "images/control/february_pass_2.png",
+      "sha256": "14e10337de1be0d6ff603fd8725557216c459e36b76ca637e51c817be0686ef9"
+    },
+    "experiment/object_evaluation/assets/control_2_detections.jpg": {
+      "path": "evidence/objects/control_2_detections.jpg",
+      "sha256": "5f61bf93aa5b516193b7ce9446335884f7247b5aa90cc3c1d81d8fd14ddc79e2"
+    },
+    "experiment/object_evaluation/assets/control_2_object_blue_bike_0.png": {
+      "path": "evidence/objects/control_2_object_blue_bike_0.png",
+      "sha256": "71f37a9f188672eebaa884ebb84f8d299b997ec4870d385eaa446151e2bfea6f"
+    },
+    "experiment/object_evaluation/assets/control_2_object_green_cap_0.png": {
+      "path": "evidence/objects/control_2_object_green_cap_0.png",
+      "sha256": "027d53a8f42bbe3c0c0578033e2357c279b8726cdb9c0ee81def75f65622dcfe"
+    },
+    "experiment/object_evaluation/assets/control_2_photo.png": {
+      "path": "images/control/may_pass_1.png",
+      "sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196"
+    },
+    "experiment/object_evaluation/assets/control_3_detections.jpg": {
+      "path": "evidence/objects/control_3_detections.jpg",
+      "sha256": "458dc35b83379efc5e621e04be02e08842bd2caa2cf940caf5f2b09beafa7d9f"
+    },
+    "experiment/object_evaluation/assets/control_3_object_blue_bike_0.png": {
+      "path": "evidence/objects/control_3_object_blue_bike_0.png",
+      "sha256": "1c155cc58b876458251a2deef08b7278e5d29499721633953ef7deff5ff8d6d6"
+    },
+    "experiment/object_evaluation/assets/control_3_object_green_cap_0.png": {
+      "path": "evidence/objects/control_3_object_green_cap_0.png",
+      "sha256": "9aaf88091fa8d0afbcbbccc7f4faa2a18e210706cdea8514f3740bba7381aa9f"
+    },
+    "experiment/object_evaluation/assets/control_3_object_sketchbook_0.png": {
+      "path": "evidence/objects/control_3_object_sketchbook_0.png",
+      "sha256": "ca4ce483ef856fbe998e329237993456648202d38547d7e792ae8ff7d87fa7e1"
+    },
+    "experiment/object_evaluation/assets/control_3_photo.png": {
+      "path": "images/control/august_pass_2.png",
+      "sha256": "a7b5a4dd77bd98d4a45622dd319b3f7fec1750a61c5bc60c379d89d01080cff7"
+    },
+    "experiment/object_evaluation/assets/control_4_detections.jpg": {
+      "path": "evidence/objects/control_4_detections.jpg",
+      "sha256": "7dffc4713773035745d788134cc7a56f531c2adef1d0a8d0506519e709d20eba"
+    },
+    "experiment/object_evaluation/assets/control_4_object_blue_mug_0.png": {
+      "path": "evidence/objects/control_4_object_blue_mug_0.png",
+      "sha256": "43cfdd4f44c8d0a87227147869069e4f127848d8207f47d34617e718fe3cb6a7"
+    },
+    "experiment/object_evaluation/assets/control_4_object_blue_mug_1.png": {
+      "path": "evidence/objects/control_4_object_blue_mug_1.png",
+      "sha256": "28fb3847931153900553ad036e869c201eaab00d8dc8cc5969cec85c08586e76"
+    },
+    "experiment/object_evaluation/assets/control_4_object_blue_mug_2.png": {
+      "path": "evidence/objects/control_4_object_blue_mug_2.png",
+      "sha256": "bebcd7bd242f1ff4b41f05ae1c73b925d7749bb05226dca37c71195669647401"
+    },
+    "experiment/object_evaluation/assets/control_4_object_blue_mug_3.png": {
+      "path": "evidence/objects/control_4_object_blue_mug_3.png",
+      "sha256": "3bd9a7b1a3d3ec14849907cf341dfba1bc4da4b1d7047ef5a5168943e9b46cc6"
+    },
+    "experiment/object_evaluation/assets/control_4_object_blue_mug_4.png": {
+      "path": "evidence/objects/control_4_object_blue_mug_4.png",
+      "sha256": "d9a82c03962ebe4519945c563ef1e45807749675db17d12ac8598266bbe83893"
+    },
+    "experiment/object_evaluation/assets/control_4_object_cast_iron_skillet_0.png": {
+      "path": "evidence/objects/control_4_object_cast_iron_skillet_0.png",
+      "sha256": "075cc15f4ac5817653c6f4f637e771701063917a3a6ece7beede2e484782967a"
+    },
+    "experiment/object_evaluation/assets/control_4_photo.png": {
+      "path": "images/control/october_pass_2.png",
+      "sha256": "6b2df39a4e885333c38b987b36c4160117af210a43b5f2eed79e5fad0b059aa1"
+    },
+    "experiment/object_evaluation/assets/historical_0_detections.jpg": {
+      "path": "evidence/objects/historical_0_detections.jpg",
+      "sha256": "f9cd21180a3508f30fd8b821dc56c06f3457de432eb85b5553e23df72b54fe7d"
+    },
+    "experiment/object_evaluation/assets/historical_0_object_blue_mug_0.png": {
+      "path": "evidence/objects/historical_0_object_blue_mug_0.png",
+      "sha256": "e923abb7ea079ff71df18d340c353e37cd891e17297f6defc2eaeeaf00957ce1"
+    },
+    "experiment/object_evaluation/assets/historical_0_object_blue_mug_1.png": {
+      "path": "evidence/objects/historical_0_object_blue_mug_1.png",
+      "sha256": "598105a20fab3ad74c3010b0c771ab1432db48d274f2f08c8a40e2f18970e478"
+    },
+    "experiment/object_evaluation/assets/historical_0_object_blue_mug_2.png": {
+      "path": "evidence/objects/historical_0_object_blue_mug_2.png",
+      "sha256": "19d44f2e35386ab17633f67ca29d4da6106ebd40799f9ae7f0a22a68453118e2"
+    },
+    "experiment/object_evaluation/assets/historical_0_object_blue_mug_3.png": {
+      "path": "evidence/objects/historical_0_object_blue_mug_3.png",
+      "sha256": "d2d75ac2a485a77921807dafcf333ad8195f88015f6e7dea2647cf4ad24b234e"
+    },
+    "experiment/object_evaluation/assets/historical_0_object_green_cap_0.png": {
+      "path": "evidence/objects/historical_0_object_green_cap_0.png",
+      "sha256": "868528f37cb121cacf919a4a6a3882d624ae3c09b2c24d4cf8e95ff5b513ab14"
+    },
+    "experiment/object_evaluation/assets/historical_0_object_sketchbook_0.png": {
+      "path": "evidence/objects/historical_0_object_sketchbook_0.png",
+      "sha256": "0eb73405db7a229fcd020a3a59b98301e68d6ab99eb9045b58cc265f1f1956c7"
+    },
+    "experiment/object_evaluation/assets/historical_0_photo.png": {
+      "path": "images/historical/january_pass_2.png",
+      "sha256": "6aabcfee397eaeeb2bd0c4f73798bf7bd0e22803f522ade8d801d49102feae06"
+    },
+    "experiment/object_evaluation/assets/historical_1_detections.jpg": {
+      "path": "evidence/objects/historical_1_detections.jpg",
+      "sha256": "f75f81a671eca7a71afc7ca0e54c0f1c5a2a0fa6c1db1f0ac37751c01f59a8a6"
+    },
+    "experiment/object_evaluation/assets/historical_1_object_blue_mug_0.png": {
+      "path": "evidence/objects/historical_1_object_blue_mug_0.png",
+      "sha256": "fe90a6651ad50d8da31024d7bbfa4ffc7006a31d4cd1a3832fe5bf2d9959e84d"
+    },
+    "experiment/object_evaluation/assets/historical_1_object_blue_mug_1.png": {
+      "path": "evidence/objects/historical_1_object_blue_mug_1.png",
+      "sha256": "c27b493f6a92747331cfe87d98cc5260da6ba882f3e9d284c49b15cb3c90b2a4"
+    },
+    "experiment/object_evaluation/assets/historical_1_object_cast_iron_skillet_0.png": {
+      "path": "evidence/objects/historical_1_object_cast_iron_skillet_0.png",
+      "sha256": "5e5336e4a6508d03a71f3efce1492f8de9696dc8870b734bf0806f011f239728"
+    },
+    "experiment/object_evaluation/assets/historical_1_photo.png": {
+      "path": "images/historical/february_pass_2.png",
+      "sha256": "c68ed3e40d54b43213b2c0d915f5abbe534b19498c847834e2f521d7a081063d"
+    },
+    "experiment/object_evaluation/assets/historical_2_detections.jpg": {
+      "path": "evidence/objects/historical_2_detections.jpg",
+      "sha256": "f737c618247487d482b2110ba9efe6c525c24580727f568210d5606b0b63e917"
+    },
+    "experiment/object_evaluation/assets/historical_2_object_blue_bike_0.png": {
+      "path": "evidence/objects/historical_2_object_blue_bike_0.png",
+      "sha256": "2b607349df0d02d3527878d17834988d81a9e4b5930f01112d553b0afd631510"
+    },
+    "experiment/object_evaluation/assets/historical_2_object_green_cap_0.png": {
+      "path": "evidence/objects/historical_2_object_green_cap_0.png",
+      "sha256": "508394f3fee5b3d361328d38a41de9afb23d3836f721cbb7131c2ffb35cd90b8"
+    },
+    "experiment/object_evaluation/assets/historical_2_photo.png": {
+      "path": "images/historical/may_pass_1.png",
+      "sha256": "6924aff52154ca1ea44b79478d48b915e09a269f2226c8d8032d5fbc2db2c3f4"
+    },
+    "experiment/object_evaluation/assets/historical_3_detections.jpg": {
+      "path": "evidence/objects/historical_3_detections.jpg",
+      "sha256": "c0060b5f2057c15b98bdbcd95e79e202bade0e981977e08bc94443c30ec6e811"
+    },
+    "experiment/object_evaluation/assets/historical_3_object_blue_bike_0.png": {
+      "path": "evidence/objects/historical_3_object_blue_bike_0.png",
+      "sha256": "47c87b142fb1ccdf3542556f06b128d10a359649052ff1a1e1bea74e5500aebb"
+    },
+    "experiment/object_evaluation/assets/historical_3_object_green_cap_0.png": {
+      "path": "evidence/objects/historical_3_object_green_cap_0.png",
+      "sha256": "aacf35ed77dec9cbcc4edf3df06a750d74d6b4f22e8e55bea0364090de0ca0b1"
+    },
+    "experiment/object_evaluation/assets/historical_3_object_sketchbook_0.png": {
+      "path": "evidence/objects/historical_3_object_sketchbook_0.png",
+      "sha256": "98e3e7bb5c512e8ae2f268b96038b15c80773f6f0aa8e9614b35a46d93928322"
+    },
+    "experiment/object_evaluation/assets/historical_3_photo.png": {
+      "path": "images/historical/august_pass_2.png",
+      "sha256": "dd5655b51ccbcb0faba24f7153cb14a6e2f75c6d450a2cf35fdcc55dcc560ab0"
+    },
+    "experiment/object_evaluation/assets/historical_4_detections.jpg": {
+      "path": "evidence/objects/historical_4_detections.jpg",
+      "sha256": "6bf9756e520f287f7b8ae0d769c848e8145ddc40c96faea2a883dd5d9cfe2df1"
+    },
+    "experiment/object_evaluation/assets/historical_4_object_blue_mug_0.png": {
+      "path": "evidence/objects/historical_4_object_blue_mug_0.png",
+      "sha256": "364cec95f62b213d159cc11ec4003d099b71853fb0bfaf6dc49015f03dd1add2"
+    },
+    "experiment/object_evaluation/assets/historical_4_object_blue_mug_1.png": {
+      "path": "evidence/objects/historical_4_object_blue_mug_1.png",
+      "sha256": "edcc7fe352c945ab554afcff28562eb84847afad82073101efd0490179a11426"
+    },
+    "experiment/object_evaluation/assets/historical_4_object_cast_iron_skillet_0.png": {
+      "path": "evidence/objects/historical_4_object_cast_iron_skillet_0.png",
+      "sha256": "6332511cc72d92a2821eab46b02f2a09b9acef88398669ae5d2f23d871fbf095"
+    },
+    "experiment/object_evaluation/assets/historical_4_object_green_cap_0.png": {
+      "path": "evidence/objects/historical_4_object_green_cap_0.png",
+      "sha256": "cb8e85b1dd7d3ff57e2ebe45a750f6c3b8c428804dc9823bbbec2199375c3c63"
+    },
+    "experiment/object_evaluation/assets/historical_4_photo.png": {
+      "path": "images/historical/october_pass_2.png",
+      "sha256": "428c45b127fd9ac63df93d7e9e43df5e08bfc9947806cb66229c99255be0b562"
+    },
+    "experiment/object_evaluation/assets/object_blue_bike_reference.png": {
+      "path": "evidence/objects/object_blue_bike_reference.png",
+      "sha256": "8829f8217170e76225b7552f63de9ed65b4a39a3284ec498ce4111b72a2c177c"
+    },
+    "experiment/object_evaluation/assets/object_blue_mug_reference.png": {
+      "path": "evidence/objects/object_blue_mug_reference.png",
+      "sha256": "597e0eda70e7518d90a8c9f22a1163cd81199d24c5a0a9f1b227549ac196c9c6"
+    },
+    "experiment/object_evaluation/assets/object_cast_iron_skillet_reference.png": {
+      "path": "evidence/objects/object_cast_iron_skillet_reference.png",
+      "sha256": "d3d58f4b842cf1930a672bdea6ef2104508f1376b414aa04eeb520678a683fa9"
+    },
+    "experiment/object_evaluation/assets/object_green_cap_reference.png": {
+      "path": "evidence/objects/object_green_cap_reference.png",
+      "sha256": "3199018d2fdece666e643c9d593dff175701f14be9e86197a64af1b1b6096782"
+    },
+    "experiment/object_evaluation/assets/object_sketchbook_reference.png": {
+      "path": "evidence/objects/object_sketchbook_reference.png",
+      "sha256": "93da253d6cd38928ad3c4033bd4f90b43c43bf862e4e8a02131a6841bd8ee5d6"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_0_detections.jpg": {
+      "path": "evidence/objects/portrait_reference_0_detections.jpg",
+      "sha256": "7a341dc973e154ecbc9a50f3226a89ba5999f3af28808539eb569c2f6559f587"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_0_object_blue_mug_0.png": {
+      "path": "evidence/objects/portrait_reference_0_object_blue_mug_0.png",
+      "sha256": "6e3329808fc3deba553f6287cc8c27c5bc6feb85ef554b375a100dbaa4a25727"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_0_object_blue_mug_1.png": {
+      "path": "evidence/objects/portrait_reference_0_object_blue_mug_1.png",
+      "sha256": "ccc930ac99fcdd844f082c487cefd9c52bc88f7ba8746a1ba7378f313fc41acd"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_0_object_blue_mug_2.png": {
+      "path": "evidence/objects/portrait_reference_0_object_blue_mug_2.png",
+      "sha256": "be52827044386187377f701f777e6fce29e8537be6ce85ba8ea8317836e90167"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_0_object_green_cap_0.png": {
+      "path": "evidence/objects/portrait_reference_0_object_green_cap_0.png",
+      "sha256": "6ee2b17c33f754b8afef238be493bff2b54d4014b1b0b0e6bc51d0112893d312"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_0_object_sketchbook_0.png": {
+      "path": "evidence/objects/portrait_reference_0_object_sketchbook_0.png",
+      "sha256": "b90a31e9198010cadcaf5b16f202d7c403d7fabe409cbb32a8c30d16aadeacdf"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_0_photo.png": {
+      "path": "images/portrait_reference/january_pass_2.png",
+      "sha256": "8506f7fbe59e1eb16497b06b55f06414211fe7e020b3dbe8f1feb5ef55c1195d"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_1_detections.jpg": {
+      "path": "evidence/objects/portrait_reference_1_detections.jpg",
+      "sha256": "e3bc2aaf22a67c914921656a8cc068741bd9f11bd7c943a03ab7906d85b8b723"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_1_object_blue_mug_0.png": {
+      "path": "evidence/objects/portrait_reference_1_object_blue_mug_0.png",
+      "sha256": "c65afe3e85230bdcbeadf8c9f1bc952550b3511120c54cca5a3d7b72b1827c0b"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_1_object_cast_iron_skillet_0.png": {
+      "path": "evidence/objects/portrait_reference_1_object_cast_iron_skillet_0.png",
+      "sha256": "530b25bc6fa4955c7cac81dc6759dd835153b750629ea61167ed556d24e3fb8f"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_1_photo.png": {
+      "path": "images/portrait_reference/february_pass_2.png",
+      "sha256": "390cd5d8e48687ef8b96da680bc0c107d77bf8c43860fd83b9c88ef07a10ac1f"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_2_detections.jpg": {
+      "path": "evidence/objects/control_2_detections.jpg",
+      "sha256": "5f61bf93aa5b516193b7ce9446335884f7247b5aa90cc3c1d81d8fd14ddc79e2"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_2_object_blue_bike_0.png": {
+      "path": "evidence/objects/control_2_object_blue_bike_0.png",
+      "sha256": "71f37a9f188672eebaa884ebb84f8d299b997ec4870d385eaa446151e2bfea6f"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_2_object_green_cap_0.png": {
+      "path": "evidence/objects/control_2_object_green_cap_0.png",
+      "sha256": "027d53a8f42bbe3c0c0578033e2357c279b8726cdb9c0ee81def75f65622dcfe"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_2_photo.png": {
+      "path": "images/control/may_pass_1.png",
+      "sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_3_detections.jpg": {
+      "path": "evidence/objects/portrait_reference_3_detections.jpg",
+      "sha256": "6dfcfcb061564e3ca330d18b1041ddb98d8dd23d94c3eaec8ee08f58387746c5"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_3_object_blue_bike_0.png": {
+      "path": "evidence/objects/portrait_reference_3_object_blue_bike_0.png",
+      "sha256": "eee23adc4c8b34cb1c1856b9d420bcd2b92fe5b2c7b8b6f5e368fe91764a9c3d"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_3_object_green_cap_0.png": {
+      "path": "evidence/objects/portrait_reference_3_object_green_cap_0.png",
+      "sha256": "a7d314f28f4c03d45c393fc8d1f9ba9999eeb5dcf41089c405cea3626a023265"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_3_object_sketchbook_0.png": {
+      "path": "evidence/objects/portrait_reference_3_object_sketchbook_0.png",
+      "sha256": "17cc828cb9b39a35d667d7958cff82a2333aed1683066a69f2d0fd5c68e18d87"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_3_photo.png": {
+      "path": "images/portrait_reference/august_pass_2.png",
+      "sha256": "3d85a0bd8680ac9ce23bc12bb4f6c6891eb36eb6fabc43d825b7139508cb257f"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_4_detections.jpg": {
+      "path": "evidence/objects/portrait_reference_4_detections.jpg",
+      "sha256": "26e1a81ca38f68459d3fb040ed8c98dba97a89bf4640fe20bf695b3527c368e4"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_4_object_blue_mug_0.png": {
+      "path": "evidence/objects/portrait_reference_4_object_blue_mug_0.png",
+      "sha256": "a481b128b44f6f991074a0b73ead8dc5010a2e81c592407d1ef1c0dff6d74bdf"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_4_object_blue_mug_1.png": {
+      "path": "evidence/objects/portrait_reference_4_object_blue_mug_1.png",
+      "sha256": "8d67674b1f89fad8dde6da8526cf20a370ad4be1a34ec528e00a663beeed56dd"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_4_object_blue_mug_2.png": {
+      "path": "evidence/objects/portrait_reference_4_object_blue_mug_2.png",
+      "sha256": "387d3c9319569536606d6421bac3d8837e0f0f44dda13d497fefc0397d752835"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_4_object_blue_mug_3.png": {
+      "path": "evidence/objects/portrait_reference_4_object_blue_mug_3.png",
+      "sha256": "0e96656294b277338a11ad97673b999bd451697e6b044ec14396afd00d7c72d6"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_4_object_cast_iron_skillet_0.png": {
+      "path": "evidence/objects/portrait_reference_4_object_cast_iron_skillet_0.png",
+      "sha256": "585cc25255e1e8f895d8eb0e7cce9e872396b3ecf1f25662751aec65e66f7bf8"
+    },
+    "experiment/object_evaluation/assets/portrait_reference_4_photo.png": {
+      "path": "images/portrait_reference/october_pass_2.png",
+      "sha256": "157fb47cb20d26d19ce3d6243fa73c92ab1a7cae99acb8a8050a7e29daa82e19"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_detections.jpg": {
+      "path": "evidence/objects_first_pass/scene_0_detections.jpg",
+      "sha256": "0dc53357002ab37ed1f24dd7f723ccce1fc1033ddbc762f07fa5ef5cd7edc8f1"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_object_blue_mug_0.png": {
+      "path": "evidence/objects_first_pass/scene_0_object_blue_mug_0.png",
+      "sha256": "2bd4ac86b07779e640aadd4be678fafdf43a91dc7406d590bc9b4e32b00c3ecc"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_object_blue_mug_1.png": {
+      "path": "evidence/objects_first_pass/scene_0_object_blue_mug_1.png",
+      "sha256": "37bb571bf79bd6a578a7edb98024ed66a4800a440ef17ee676513bb7029f1a64"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_object_blue_mug_2.png": {
+      "path": "evidence/objects_first_pass/scene_0_object_blue_mug_2.png",
+      "sha256": "549e6aa42109b4412ecbde18cf4234d2445d4b216655e895daf123aa2c5e6b45"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_object_green_cap_0.png": {
+      "path": "evidence/objects_first_pass/scene_0_object_green_cap_0.png",
+      "sha256": "8c0d37e258472704dcfa0f985d784abc414340e7ac171b67c422380b049b4b39"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_object_sketchbook_0.png": {
+      "path": "evidence/objects_first_pass/scene_0_object_sketchbook_0.png",
+      "sha256": "b6cb16e727ff06a037ba0d182316b490892023a1fa08ffbab020e5cfd89e2724"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_object_sketchbook_1.png": {
+      "path": "evidence/objects_first_pass/scene_0_object_sketchbook_1.png",
+      "sha256": "22804d0bc66f69e2b1b8bc73ece4054c0f50cdd124b2a80d2c86e91eb277366f"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_object_sketchbook_2.png": {
+      "path": "evidence/objects_first_pass/scene_0_object_sketchbook_2.png",
+      "sha256": "5cbfb26503ad3ec88e8357c3c2694ea9705a630cdfc2d0f1149aaea432ad561c"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_0_pass_1.png": {
+      "path": "images/control/january_pass_1.png",
+      "sha256": "8ffc9bc810f15da259fe82b14c6bf1a8aa0ad85ef43a2877d79a8d778acf10fc"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_1_detections.jpg": {
+      "path": "evidence/objects_first_pass/scene_1_detections.jpg",
+      "sha256": "f236f25a602aac875b90e8baa69a63d910d6c8ca22cd477e1ad6fc46d3ca629a"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_1_object_blue_mug_0.png": {
+      "path": "evidence/objects_first_pass/scene_1_object_blue_mug_0.png",
+      "sha256": "af66974022a6544289e007136ea48dc013a3cb43ba3678a7136f71c876cefd40"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_1_object_cast_iron_skillet_0.png": {
+      "path": "evidence/objects_first_pass/scene_1_object_cast_iron_skillet_0.png",
+      "sha256": "5407035e5d38067b59b9d893170ec094e11c67cd8a6c12c3bac8fb50f0a93dae"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_1_pass_1.png": {
+      "path": "images/control/february_pass_1.png",
+      "sha256": "5a706a606a8be9dd2000d1b0411e1dd668588e4bda8a1e2f2f98e2688715169a"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_2_detections.jpg": {
+      "path": "evidence/objects/control_2_detections.jpg",
+      "sha256": "5f61bf93aa5b516193b7ce9446335884f7247b5aa90cc3c1d81d8fd14ddc79e2"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_2_object_blue_bike_0.png": {
+      "path": "evidence/objects/control_2_object_blue_bike_0.png",
+      "sha256": "71f37a9f188672eebaa884ebb84f8d299b997ec4870d385eaa446151e2bfea6f"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_2_object_green_cap_0.png": {
+      "path": "evidence/objects/control_2_object_green_cap_0.png",
+      "sha256": "027d53a8f42bbe3c0c0578033e2357c279b8726cdb9c0ee81def75f65622dcfe"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_2_pass_1.png": {
+      "path": "images/control/may_pass_1.png",
+      "sha256": "86279eea9387d2f5da3618757c8d855045d28281291e67abbc2ae56b8fef9196"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_3_detections.jpg": {
+      "path": "evidence/objects_first_pass/scene_3_detections.jpg",
+      "sha256": "d6601f24b28d629ecbee04cb79647fe951d6d14fbf2844f2cacbdcd1c164762a"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_3_object_green_cap_0.png": {
+      "path": "evidence/objects_first_pass/scene_3_object_green_cap_0.png",
+      "sha256": "17f8c8b2334df2b4d4b36eb188b2da20f3263601ba46eb31a123805938ba9d36"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_3_pass_1.png": {
+      "path": "images/control/august_pass_1.png",
+      "sha256": "ad1a5d73257a83dfc686220b4ef080a2938d445db69a38fb3586a351b0538606"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_4_detections.jpg": {
+      "path": "evidence/objects_first_pass/scene_4_detections.jpg",
+      "sha256": "e3435c8154fa283d2f1de5f2ee8c16954899d361f2175271649d6c083adf187d"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_4_object_blue_mug_0.png": {
+      "path": "evidence/objects_first_pass/scene_4_object_blue_mug_0.png",
+      "sha256": "3c26a76519cbd4baccefa72da6c1f5796fe655198024c9f66cb6a45d22f21a6a"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_4_object_blue_mug_1.png": {
+      "path": "evidence/objects_first_pass/scene_4_object_blue_mug_1.png",
+      "sha256": "e6f437267220651731a4d4784d3921fac20f827d5a8b715f1416cc02d07bad31"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_4_object_cast_iron_skillet_0.png": {
+      "path": "evidence/objects_first_pass/scene_4_object_cast_iron_skillet_0.png",
+      "sha256": "b50bb2a1e749754ffcfc341d0c1f66c3c4cb9886d2d0a362a8e25453ce0164fe"
+    },
+    "experiment/object_evaluation/first_pass_assets/scene_4_pass_1.png": {
+      "path": "images/control/october_pass_1.png",
+      "sha256": "2deb8209b51fd53eada1c2699c1add17164811d1dc588b6d580b153cff0a9daa"
+    },
+    "experiment/historical_scores/scores.json": {
+      "path": "results/raw/faces_historical.json",
+      "sha256": "df5e3caa5e8bdd679276ae30362cc588c50f2af2841ac187f4f73e4f5cc2a134"
+    },
+    "experiment/control/scores/scores.json": {
+      "path": "results/raw/faces_control.json",
+      "sha256": "3234abf5aa51105c4087b8e9b021c0d25a71b1e8d16bed9ec8c69c087992ba22"
+    },
+    "experiment/portrait_reference/scores/scores.json": {
+      "path": "results/raw/faces_portrait_reference.json",
+      "sha256": "bf6adb3b602550595b9def81ad4364350e6d76cd9563e8f0fdcf6d11d854c412"
+    },
+    "experiment/object_evaluation/scores.json": {
+      "path": "results/raw/objects_final.json",
+      "sha256": "f3b6577f5817b3720dddea954014265c784da86ace533b6d7bb3aff61e8e946c"
+    },
+    "experiment/object_evaluation/first_pass_scores.json": {
+      "path": "results/raw/objects_first_pass.json",
+      "sha256": "3c2d742fd5714034fa3bb694bc52fcc83f4f96b786b5a530b539a9481259cc45"
+    },
+    "experiment/object_evaluation/targets.json": {
+      "path": "records/object_targets.json",
+      "sha256": "9e40133c6b4eaa54d485c9d57cc867b5c9ca6a257d1065a1f32d09eed8e14e6a"
+    },
+    "experiment/plan.json": {
+      "path": "records/experiment_plan.json",
+      "sha256": "22dda0c03917f6bdfd42bfb3df8bb6577fc1dc2a2958297c049334031ab445c1"
+    },
+    "experiment/requests.json": {
+      "path": "records/image_requests.json",
+      "sha256": "0662f0871354dc8115cded50f876fe45b11c38da81b0a9521d9df65d808e322e"
+    },
+    "experiment/frozen_source.yaml": {
+      "path": "records/frozen_source.yaml",
+      "sha256": "d198ad4423328e964895b565cc3098abfd669b6725446d10edfd13aceaba404d"
+    },
+    "experiment/assistant_observations.json": {
+      "path": "records/assistant_observations.json",
+      "sha256": "e9506d683b31d6cbfd8916547482e9691564f73db2beb749830b03b618102b38"
+    },
+    "experiment/object_evaluation/verification.json": {
+      "path": "records/object_verification.json",
+      "sha256": "d5e38f4ee6924f30c50c772e221efa3b34251514e9945b1fd00462f02f0bf8bd"
+    },
+    "repository/output/camera_roll.yaml": {
+      "path": "records/frozen_source.yaml",
+      "sha256": "d198ad4423328e964895b565cc3098abfd669b6725446d10edfd13aceaba404d"
+    }
+  }
+}

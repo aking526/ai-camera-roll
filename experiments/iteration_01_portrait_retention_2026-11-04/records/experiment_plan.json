@@ -1,0 +1,74 @@
+{
+  "hypothesis": "Resupplying the protagonist portrait during later edits preserves identity.",
+  "source_sha256": {
+    "source": "d198ad4423328e964895b565cc3098abfd669b6725446d10edfd13aceaba404d",
+    "manifest": "7fe9202b1640aae3265c213c5f0010d20563029392410a014ef265625d35baca",
+    "references/people/000_person_maya.png": "eb6b68fe16b5d25554d350fc62d209faf0d1f005d04543a3a1672eb00447891f",
+    "references/people/000_person_maya_input.png": "0de5d21da1441ab422e2efb925b513dd36dcf78dad25787163a1f0f7278102a3",
+    "references/people/001_person_priya.png": "3b59f54e949ff8892effc593e98c13a64761f7b828911fec5a68e690d3af98b3",
+    "references/people/001_person_priya_input.png": "33e30fa12567d68b355ab031a173a481136ea879be91fdf96b529410c64ca670",
+    "references/people/002_person_jonah.png": "72db9fc35377df81d247538dbe0b838916f1e6c7b48463a0f8f76c91c634337a",
+    "references/people/002_person_jonah_input.png": "551b2d4e8f1d9cebcdc88a36896720479005d7eb3f0c328c27b19fc3e82ad59c",
+    "references/objects/000_object_green_cap.png": "146466f1719a82118dc4d73f8d12c5cb5a08a9ac570964e404f8bdb08249277e",
+    "references/objects/000_object_green_cap_input.png": "271369902b15d6469f6246842583007cbefb2a2707894450712d9c46f56b3592",
+    "references/objects/001_object_blue_bike.png": "e9fb09659b7b425ee6211a7fd293f66f4071fd70a70a91aba946a05b1fe1ea5c",
+    "references/objects/001_object_blue_bike_input.png": "93d25ad1b16c3701dd661a7aa60d508f439a678afe39a9fde2571af93879a173",
+    "references/objects/002_object_sketchbook.png": "a93c6f63c4a4e8f7e8de8ea77793cde978e9298174162acb5fbb7d190655f336",
+    "references/objects/002_object_sketchbook_input.png": "f59a8a60fadb519f5a2bdf779ea1d18752f7c5ac52023a008617f433ec439d59",
+    "references/objects/003_object_cast_iron_skillet.png": "56117f4b02487e63edd84afb5ab22c741705876208b2d826991e80fd0a79d6fd",
+    "references/objects/003_object_cast_iron_skillet_input.png": "9c2b46032e402dcb88911ae2fa0120b8d509844611916d0d9016875d5ddf4c9c",
+    "references/objects/004_object_blue_mug.png": "e51b4cf9dfef12b8b1cc325045aaeea954b95f625e558b4236645589e3bdbbc8",
+    "references/objects/004_object_blue_mug_input.png": "e527f773b20f002af9b27b76157149ff931080624e74ee68db1f14ba5e322f87"
+  },
+  "protagonist_id": "person_maya",
+  "model": "@cf/black-forest-labs/flux-2-klein-4b",
+  "source_settings": {
+    "source_sha256": "810c96842c51e77d28de088e23288ed15d8035917db146bd3f3d5d2e0428a262",
+    "llm_adapter": "OpenCodeGoLLM",
+    "llm_model": "deepseek-v4.1-flash",
+    "image_adapter": "CloudflareImageModel",
+    "image_model": "@cf/black-forest-labs/flux-2-klein-4b",
+    "instructions_sha256": "d7f99d7745d4b3f58958de76c4e59816477a3ee39609329be7e0c07f9f8bf83b",
+    "seed": 42,
+    "width": 1024,
+    "height": 1024,
+    "reference_size": 448,
+    "pipeline_version": 1
+  },
+  "photos_per_condition": 5,
+  "maximum_image_attempts": 13,
+  "changes": [
+    {
+      "photo_index": 0,
+      "pass_index": 1,
+      "added_slot": 2,
+      "entity_id": "person_maya",
+      "prompt_appendix": "Image 2 is the canonical portrait of Maya Chen, who is already present in image 0. Use it as the facial identity reference for that existing person while carrying out the edit above; do not add another person or change the requested scene."
+    },
+    {
+      "photo_index": 1,
+      "pass_index": 1,
+      "added_slot": 2,
+      "entity_id": "person_maya",
+      "prompt_appendix": "Image 2 is the canonical portrait of Maya Chen, who is already present in image 0. Use it as the facial identity reference for that existing person while carrying out the edit above; do not add another person or change the requested scene."
+    },
+    {
+      "photo_index": 3,
+      "pass_index": 1,
+      "added_slot": 3,
+      "entity_id": "person_maya",
+      "prompt_appendix": "Image 3 is the canonical portrait of Maya Chen, who is already present in image 0. Use it as the facial identity reference for that existing person while carrying out the edit above; do not add another person or change the requested scene."
+    },
+    {
+      "photo_index": 4,
+      "pass_index": 1,
+      "added_slot": 3,
+      "entity_id": "person_maya",
+      "prompt_appendix": "Image 3 is the canonical portrait of Maya Chen, who is already present in image 0. Use it as the facial identity reference for that existing person while carrying out the edit above; do not add another person or change the requested scene."
+    }
+  ],
+  "text_calls": 0,
+  "reference_generation_calls": 0,
+  "comparison": "Fresh control and portrait-reference albums share identical newly generated first passes. Single-pass scenes are shared controls, not treatment improvements.",
+  "evaluation": "Unchanged SCRFD/ArcFace scorer, all expected characters and missing assignments reported. Human identity and scene/object review remain required."
+}

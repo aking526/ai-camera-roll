@@ -1,0 +1,73 @@
+condition,month,pass,person,similarity,face_index,image
+historical,1,1,Maya Chen,0.4455871328864703,0,images/historical/january_pass_1.png
+historical,1,1,Jonah,0.15193154187864094,1,images/historical/january_pass_1.png
+historical,1,2,Maya Chen,0.14525147558402593,0,images/historical/january_pass_2.png
+historical,1,2,Jonah,0.12157575290815173,1,images/historical/january_pass_2.png
+historical,2,1,Maya Chen,0.30807495358305204,0,images/historical/february_pass_1.png
+historical,2,1,Priya,0.09574330459477019,1,images/historical/february_pass_1.png
+historical,2,1,Jonah,0.18801845696843256,2,images/historical/february_pass_1.png
+historical,2,2,Maya Chen,0.06178808040049918,0,images/historical/february_pass_2.png
+historical,2,2,Priya,-0.08744552028414711,1,images/historical/february_pass_2.png
+historical,2,2,Jonah,0.13763010301233541,2,images/historical/february_pass_2.png
+historical,5,1,Maya Chen,0.30976651626174007,0,images/historical/may_pass_1.png
+historical,5,1,Jonah,0.30274964670663324,1,images/historical/may_pass_1.png
+historical,8,1,Maya Chen,0.34181872034847716,0,images/historical/august_pass_1.png
+historical,8,1,Priya,0.201900603582445,1,images/historical/august_pass_1.png
+historical,8,1,Jonah,0.007209693796488122,2,images/historical/august_pass_1.png
+historical,8,2,Maya Chen,0.22305779596064895,0,images/historical/august_pass_2.png
+historical,8,2,Priya,0.0008129868744878414,1,images/historical/august_pass_2.png
+historical,8,2,Jonah,0.023399536684058565,2,images/historical/august_pass_2.png
+historical,10,1,Maya Chen,0.10911143299338712,0,images/historical/october_pass_1.png
+historical,10,1,Priya,,,images/historical/october_pass_1.png
+historical,10,1,Jonah,0.12232976532518251,1,images/historical/october_pass_1.png
+historical,10,2,Maya Chen,0.05748159883324351,0,images/historical/october_pass_2.png
+historical,10,2,Priya,,,images/historical/october_pass_2.png
+historical,10,2,Jonah,0.011134796737350624,1,images/historical/october_pass_2.png
+control,1,1,Maya Chen,0.3118621695228616,0,images/control/january_pass_1.png
+control,1,1,Jonah,0.3829882975577295,1,images/control/january_pass_1.png
+control,1,2,Maya Chen,0.15537906047585245,0,images/control/january_pass_2.png
+control,1,2,Jonah,0.33151263726212754,1,images/control/january_pass_2.png
+control,2,1,Maya Chen,0.1973150026638934,0,images/control/february_pass_1.png
+control,2,1,Priya,0.19839834159718822,1,images/control/february_pass_1.png
+control,2,1,Jonah,0.19594128713746456,2,images/control/february_pass_1.png
+control,2,2,Maya Chen,0.09096824172979402,0,images/control/february_pass_2.png
+control,2,2,Priya,0.14774595832586915,1,images/control/february_pass_2.png
+control,2,2,Jonah,0.13722964737607368,2,images/control/february_pass_2.png
+control,5,1,Maya Chen,0.16105177109264016,0,images/control/may_pass_1.png
+control,5,1,Jonah,0.2826694273893933,1,images/control/may_pass_1.png
+control,8,1,Maya Chen,0.10020492282191648,0,images/control/august_pass_1.png
+control,8,1,Priya,0.21816140144767576,1,images/control/august_pass_1.png
+control,8,1,Jonah,0.08139641513160728,2,images/control/august_pass_1.png
+control,8,2,Maya Chen,0.07256926295122199,0,images/control/august_pass_2.png
+control,8,2,Priya,0.11648037555289462,1,images/control/august_pass_2.png
+control,8,2,Jonah,0.01562187397444701,2,images/control/august_pass_2.png
+control,10,1,Maya Chen,0.12768024673705022,0,images/control/october_pass_1.png
+control,10,1,Priya,0.29731112576521646,1,images/control/october_pass_1.png
+control,10,1,Jonah,0.19424308096145412,2,images/control/october_pass_1.png
+control,10,2,Maya Chen,0.1283839719038638,0,images/control/october_pass_2.png
+control,10,2,Priya,0.08254955461750865,1,images/control/october_pass_2.png
+control,10,2,Jonah,-0.004890926317161256,2,images/control/october_pass_2.png
+portrait_reference,1,1,Maya Chen,0.3118621695228616,0,images/control/january_pass_1.png
+portrait_reference,1,1,Jonah,0.3829882975577295,1,images/control/january_pass_1.png
+portrait_reference,1,2,Maya Chen,0.24963688007191842,0,images/portrait_reference/january_pass_2.png
+portrait_reference,1,2,Jonah,0.22839828721385735,1,images/portrait_reference/january_pass_2.png
+portrait_reference,2,1,Maya Chen,0.1973150026638934,0,images/control/february_pass_1.png
+portrait_reference,2,1,Priya,0.19839834159718822,1,images/control/february_pass_1.png
+portrait_reference,2,1,Jonah,0.19594128713746456,2,images/control/february_pass_1.png
+portrait_reference,2,2,Maya Chen,0.17432939860925273,0,images/portrait_reference/february_pass_2.png
+portrait_reference,2,2,Priya,0.06863563408573745,1,images/portrait_reference/february_pass_2.png
+portrait_reference,2,2,Jonah,0.19291231501290254,2,images/portrait_reference/february_pass_2.png
+portrait_reference,5,1,Maya Chen,0.16105177109264016,0,images/control/may_pass_1.png
+portrait_reference,5,1,Jonah,0.2826694273893933,1,images/control/may_pass_1.png
+portrait_reference,8,1,Maya Chen,0.10020492282191648,0,images/control/august_pass_1.png
+portrait_reference,8,1,Priya,0.21816140144767576,1,images/control/august_pass_1.png
+portrait_reference,8,1,Jonah,0.08139641513160728,2,images/control/august_pass_1.png
+portrait_reference,8,2,Maya Chen,0.11064988667342518,0,images/portrait_reference/august_pass_2.png
+portrait_reference,8,2,Priya,0.04347636322436319,2,images/portrait_reference/august_pass_2.png
+portrait_reference,8,2,Jonah,0.04713677920991947,1,images/portrait_reference/august_pass_2.png
+portrait_reference,10,1,Maya Chen,0.12768024673705022,0,images/control/october_pass_1.png
+portrait_reference,10,1,Priya,0.29731112576521646,1,images/control/october_pass_1.png
+portrait_reference,10,1,Jonah,0.19424308096145412,2,images/control/october_pass_1.png
+portrait_reference,10,2,Maya Chen,0.20385121101415873,1,images/portrait_reference/october_pass_2.png
+portrait_reference,10,2,Priya,0.05962712531224963,0,images/portrait_reference/october_pass_2.png
+portrait_reference,10,2,Jonah,0.013806892615226538,2,images/portrait_reference/october_pass_2.png

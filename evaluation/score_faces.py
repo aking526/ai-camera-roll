@@ -1,5 +1,6 @@
 """Score saved synthetic faces locally; no generation or identity pass/fail gate."""
 
+import argparse
 import hashlib
 import json
 import time
@@ -39,17 +40,40 @@ def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def main():
+def parse_args(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--project-root", type=Path, default=PROJECT,
+                        help="Root used for portable input hashes and default input paths.")
+    parser.add_argument("--source", type=Path,
+                        help="Saved camera-roll YAML (default: PROJECT_ROOT/output/camera_roll.yaml).")
+    parser.add_argument("--images", type=Path,
+                        help="Image directory with manifest.yaml (default: PROJECT_ROOT/output/images).")
+    parser.add_argument("--output", type=Path, default=HERE / "results",
+                        help="Directory for scores and face crops (default: evaluation/results).")
+    args = parser.parse_args(argv)
+    args.project_root = args.project_root.resolve()
+    args.source = (args.source or args.project_root / "output/camera_roll.yaml").resolve()
+    args.images = (args.images or args.project_root / "output/images").resolve()
+    args.output = args.output.resolve()
+    for name in ("source", "images"):
+        if not getattr(args, name).is_relative_to(args.project_root):
+            parser.error(f"--{name} must be inside --project-root so input hashes remain portable.")
+    return args
+
+
+def main(argv=None):
+    args = parse_args(argv)
     from insightface.app import FaceAnalysis
     from insightface.utils.face_align import norm_crop
 
     started = time.perf_counter()
-    source = PROJECT / "output/camera_roll.yaml"
-    images = PROJECT / "output/images"
+    project = args.project_root
+    source = args.source
+    images = args.images
     manifest_path = images / "manifest.yaml"
     roll = yaml.safe_load(source.read_text())["camera_roll"]
     manifest = yaml.safe_load(manifest_path.read_text())
-    output = HERE / "results"
+    output = args.output
     crops = output / "crops"
     crops.mkdir(parents=True, exist_ok=True)
     models = HERE / "model-cache/models/buffalo_l"
@@ -63,12 +87,12 @@ def main():
         providers=["CPUExecutionProvider"],
     )
     app.prepare(ctx_id=-1, det_size=(640, 640), det_thresh=0.5)
-    references, embeddings, inputs = [], [], {source.relative_to(PROJECT).as_posix(): sha256(source)}
-    inputs[manifest_path.relative_to(PROJECT).as_posix()] = sha256(manifest_path)
+    references, embeddings, inputs = [], [], {source.relative_to(project).as_posix(): sha256(source)}
+    inputs[manifest_path.relative_to(project).as_posix()] = sha256(manifest_path)
 
     def detect(relative, label):
         path = images / relative
-        inputs[path.relative_to(PROJECT).as_posix()] = sha256(path)
+        inputs[path.relative_to(project).as_posix()] = sha256(path)
         image = cv2.imread(str(path))
         if image is None:
             raise ValueError(f"Cannot read image: {path}")
@@ -128,7 +152,7 @@ def main():
                   f"{len(faces)} detected faces / {len(expected)} expected people", flush=True)
         # The displayed final file must really be the last scored pass.
         final = images / item["final_path"]
-        inputs[final.relative_to(PROJECT).as_posix()] = sha256(final)
+        inputs[final.relative_to(project).as_posix()] = sha256(final)
         if sha256(final) != sha256(images / item["passes"][-1]["path"]):
             raise ValueError("Final photo differs from last saved pass.")
         scenes.append({"photo_index": item["photo_index"], "month": photo["month"],

@@ -1,0 +1,43 @@
+{
+  "status": "Assistant visual review only; not independent human ratings.",
+  "scenes": [
+    {
+      "month": 1,
+      "observations": [
+        "Two people, studio, cap and one blue mug remain visible in both versions.",
+        "Sketchbook remains closed in both despite requested open pages.",
+        "The face-score increase alone does not establish a large visible identity gain."
+      ]
+    },
+    {
+      "month": 2,
+      "observations": [
+        "Control places the blue mug on the radiator as requested. Treatment moves it to Maya's hand, conflicting with the requested location.",
+        "Three people and the broad dinner setting remain."
+      ]
+    },
+    {
+      "month": 5,
+      "observations": [
+        "Single-pass control shared byte-for-byte. No treatment applied."
+      ]
+    },
+    {
+      "month": 8,
+      "observations": [
+        "Both show a closed sketchbook rather than the requested open pages. Treatment appears to contain two overlapping dark books; this requires human confirmation.",
+        "Supporting-character candidate assignments switch between Priya and Jonah, so their score changes are especially difficult to interpret."
+      ]
+    },
+    {
+      "month": 10,
+      "observations": [
+        "Requested Maya is the left braided/aproned cook; Priya is the center person in scrubs.",
+        "Treatment adds round glasses to the center person. The Maya assignment switches from face 0 to face 1.",
+        "Maya-reference similarity for the left cook falls from 0.1284 to 0.0696. This position-based check is post-hoc, not the preregistered assignment metric.",
+        "The green cap near the door is visible in control but not clearly visible in treatment."
+      ]
+    }
+  ],
+  "decision": "Keep the portrait-retention option experimental. Collect independent identity/role and object-state judgments before adopting it as the default."
+}

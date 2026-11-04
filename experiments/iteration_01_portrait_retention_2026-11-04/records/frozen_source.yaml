@@ -1,0 +1,194 @@
+story:
+  background: 'Maya Chen is 24 at the start of this year, a second-year Master of Architecture student
+    at Temple University in Philadelphia. She lives on the third floor of a narrow walk-up on Susquehanna
+    Avenue in Fishtown with her roommate Priya, a night-shift nurse who leaves cryptic notes on the fridge.
+    Maya has dark hair she usually tucks under a faded green cap with a mountain patch, wire-rimmed glasses,
+    and fingers often stained with graphite or model glue. She is patient, observant, and quietly stubborn,
+    with a habit of narrating buildings to herself as she passes them. She works part-time at a bakery
+    on Girard and picks up occasional hours in the architecture model shop. On weekends she rides an old
+    blue Schwinn along the Schuylkill, sketches rowhouses in a black hardcover sketchbook, and cooks big,
+    unfussy meals for friends. Her people include Priya; Jonah, a classmate who shares her studio desk;
+    and her older brother Eli, who lives in Chicago. Her possessions are modest but specific: the green
+    cap, the blue bike, the sketchbook, a cast-iron skillet inherited from her grandmother, and a chipped
+    blue mug she refuses to replace.'
+  years:
+  - year: 1
+    narrative: 'Year 1 begins in January, when Philadelphia is gray and salt-stained. Maya is 24, and
+      her days settle into a winter rhythm: bakery shifts before dawn, studio until late, the blue Schwinn
+      parked in the hallway because the basement lock freezes. She wears the green cap under her bike
+      helmet on weekends, riding to Penn Treaty Park and back, then sketching rowhouse cornices with numb
+      fingers. In February, she cooks a pot of braised white beans and cornbread in the cast-iron skillet
+      for Priya and Jonah; they eat at the coffee table because the kitchen table is covered in chipboard
+      models. March brings midterms and a bike tune-up—new brake pads, a grease smudge on the cap''s brim
+      that she tries, and fails, to wash out. Spring studio focuses on adaptive reuse of a corner store
+      on Front Street. She visits the site at different hours, photographing light on the brick, and fills
+      half a sketchbook. In May, after final review, she celebrates with a long ride to Manayunk and a
+      quiet beer with Jonah. Summer is hot and slower. She interns at a small firm in Center City, commuting
+      by bike in the early cool, keeping the chipped blue mug on her desk. Evenings are for cold sesame
+      noodles, porch dinners with Priya, and dusk rides along the river. In August she turns 25 and marks
+      it with a picnic at Penn Treaty Park; Priya brings a cake, Jonah brings a frisbee, and Maya wears
+      the green cap the whole time. Fall returns her to studio. She sketches under streetlights on Frankford
+      Avenue, cooks chili for a crowd in October, and rides through November''s bare trees. By December
+      she is tired but steady, the cap more faded, the sketchbook nearly full, the blue bike leaning against
+      the hallway wall like a patient friend.'
+  seed: Maya is a 24-year-old architecture student in Philadelphia. She loves weekend bike rides, cooking
+    for friends, and sketching neighborhood buildings. She wears a faded green cap with a mountain patch.
+camera_roll:
+  protagonist_id: person_maya
+  people:
+  - id: person_maya
+    name: Maya Chen
+    relationship: self
+    age_at_start: 24
+    visual_description: Chinese-American woman, 24, with shoulder-length dark hair, wire-rimmed round
+      glasses, and a slender build. Her fingers are often stained with graphite or model glue. She typically
+      wears casual studio clothes.
+  - id: person_priya
+    name: Priya
+    relationship: roommate
+    age_at_start: 25
+    visual_description: Indian-American woman, 25, with long wavy black hair, warm brown skin, and a tired
+      but warm smile. Often in scrubs or comfortable loungewear.
+  - id: person_jonah
+    name: Jonah
+    relationship: classmate and studio desk partner
+    age_at_start: 26
+    visual_description: White man, 26, with tousled sandy-brown hair, a short beard, and a lanky build.
+      Usually in flannel shirts, jeans, and sneakers.
+  objects:
+  - id: object_green_cap
+    name: Faded green cap
+    visual_description: A faded olive-green baseball cap with a small embroidered mountain patch on the
+      front, a slightly curved brim, and a sweat-stained inner band. The fabric is worn soft and the color
+      muted from washing.
+    significance: Maya's everyday signature, worn under her bike helmet and on sketches; feels like part
+      of her identity.
+  - id: object_blue_bike
+    name: Blue Schwinn bicycle
+    visual_description: A vintage blue Schwinn road bike with a steel frame, slightly rusted chrome handlebars,
+      a worn brown leather saddle, and a rear rack. A small bell on the left handlebar and a faded sticker
+      from a Philadelphia bike shop on the down tube.
+    significance: Her main transportation and weekend escape; she rides along the Schuylkill and parks
+      it in the hallway.
+  - id: object_sketchbook
+    name: Black hardcover sketchbook
+    visual_description: A black hardcover sketchbook, roughly A5 size, with a black elastic closure and
+      a ribbon bookmark. The cover is scuffed, and the corners are slightly bent from being carried in
+      a bag.
+    significance: Where she sketches rowhouses, cornices, and ideas; nearly full by December.
+  - id: object_cast_iron_skillet
+    name: Cast-iron skillet
+    visual_description: A heavy, black cast-iron skillet with a short handle and a small pour spout on
+      one side. The surface is seasoned and slightly uneven, with a faint rust spot near the handle from
+      age.
+    significance: Inherited from her grandmother; used for cooking big meals for friends, like braised
+      white beans and cornbread.
+  - id: object_blue_mug
+    name: Chipped blue mug
+    visual_description: A ceramic mug with a deep blue glaze, a chip on the rim, and a small handle. The
+      glaze is slightly crazed, and the bottom has a faded maker's mark.
+    significance: Maya refuses to replace it; kept on her desk at the internship and used for coffee during
+      late studio nights.
+  photos:
+  - year: 1
+    month: 1
+    description: Late night in the architecture studio. Under fluorescent lights, Maya sits at a cluttered
+      desk, green cap pulled low, wire-rimmed glasses reflecting her laptop screen. An open black sketchbook
+      shows a half-finished rowhouse cornice. A chipped blue mug of cold coffee sits beside a chipboard
+      model. Jonah leans back in his chair, rubbing his eyes.
+    story_context: 'Winter rhythm: bakery shifts before dawn, studio until late. Maya is a second-year
+      Master of Architecture student at Temple.'
+    people:
+    - person_id: person_maya
+      appearance: Wearing the faded green cap, wire-rimmed glasses, and a gray hoodie; graphite smudge
+        on her cheek, fingers stained.
+    - person_id: person_jonah
+      appearance: In a flannel shirt and jeans, hair messy, leaning back in his chair with tired eyes.
+    objects:
+    - object_id: object_green_cap
+      appearance: On Maya's head, brim slightly dusty, mountain patch visible.
+    - object_id: object_sketchbook
+      appearance: Open on the desk, pages showing pencil sketches of a cornice.
+    - object_id: object_blue_mug
+      appearance: On the desk beside a chipboard model, half-full of dark coffee, chip on rim visible.
+  - year: 1
+    month: 2
+    description: In the cramped Fishtown apartment, Maya spoons braised white beans from a black cast-iron
+      skillet onto plates balanced on the coffee table. Priya, in scrubs, sits cross-legged on the floor,
+      and Jonah reaches for a wedge of cornbread. Behind them, the kitchen table is buried under chipboard
+      models. A chipped blue mug sits on the radiator.
+    story_context: 'February: Maya cooks for Priya and Jonah; they eat at the coffee table because the
+      kitchen table is covered in models.'
+    people:
+    - person_id: person_maya
+      appearance: Hair loose, no cap, wearing an oversized sweater, holding a serving spoon.
+    - person_id: person_priya
+      appearance: In blue scrubs, hair in a messy bun, tired smile, sitting cross-legged.
+    - person_id: person_jonah
+      appearance: In a flannel shirt, sitting on the floor, reaching for cornbread.
+    objects:
+    - object_id: object_cast_iron_skillet
+      appearance: On the coffee table, holding braised white beans, handle wrapped in a towel.
+    - object_id: object_blue_mug
+      appearance: On the radiator, steaming, chip on rim visible.
+  - year: 1
+    month: 5
+    description: Late afternoon along the Schuylkill River Trail in Manayunk. Maya's blue Schwinn leans
+      against a brick wall outside a small brewery. She sits on a picnic bench, green cap on, grease smudge
+      visible on the brim, holding a glass of beer. Jonah sits across from her, laughing. The river glints
+      behind them.
+    story_context: 'May: after final review, Maya celebrates with a long ride to Manayunk and a quiet
+      beer with Jonah.'
+    people:
+    - person_id: person_maya
+      appearance: Wearing the green cap with a dark grease smudge on the brim, wire-rimmed glasses, denim
+        jacket, relaxed smile.
+    - person_id: person_jonah
+      appearance: In a flannel shirt, stubble, holding a beer glass, laughing.
+    objects:
+    - object_id: object_blue_bike
+      appearance: Leaning against a brick wall, rear wheel slightly askew, bell catching the light.
+    - object_id: object_green_cap
+      appearance: On Maya's head, brim has a dark grease smudge from the March bike tune-up.
+  - year: 1
+    month: 8
+    description: Golden hour at Penn Treaty Park. Maya sits on a checkered blanket, green cap on, laughing
+      as Priya presents a slightly lopsided chocolate cake with a single candle. Jonah is mid-throw with
+      a frisbee in the background. The blue Schwinn is parked nearby against a tree, and a half-open sketchbook
+      rests on the grass.
+    story_context: 'August: Maya turns 25 and marks it with a picnic at Penn Treaty Park; Priya brings
+      cake, Jonah brings a frisbee.'
+    people:
+    - person_id: person_maya
+      appearance: Wearing the green cap and a summer dress, sunburn on shoulders, laughing.
+    - person_id: person_priya
+      appearance: In a sundress, hair down, holding a chocolate cake with a candle.
+    - person_id: person_jonah
+      appearance: In a t-shirt and shorts, barefoot, mid-throw with a frisbee.
+    objects:
+    - object_id: object_green_cap
+      appearance: On Maya's head, slightly faded, faint grease smudge on brim, mountain patch visible.
+    - object_id: object_blue_bike
+      appearance: Leaning against a tree, rear rack empty.
+    - object_id: object_sketchbook
+      appearance: On the grass, open to a sketch of the park's trees.
+  - year: 1
+    month: 10
+    description: In the apartment kitchen, Maya stirs a big pot of chili while a cast-iron skillet of
+      cornbread cools on the stove. Priya and Jonah crowd around the coffee table, bowls in hand. The
+      chipped blue mug sits on the windowsill. Maya's green cap hangs on a hook by the door.
+    story_context: 'October: fall studio returns; Maya cooks chili for a crowd.'
+    people:
+    - person_id: person_maya
+      appearance: Hair in a braid, apron over a sweater, stirring the chili.
+    - person_id: person_priya
+      appearance: In scrubs, holding a bowl, smiling.
+    - person_id: person_jonah
+      appearance: In a flannel shirt, sitting on the floor with a bowl.
+    objects:
+    - object_id: object_cast_iron_skillet
+      appearance: On the stove, cornbread golden, handle slightly greasy.
+    - object_id: object_blue_mug
+      appearance: On the windowsill, empty, chip on rim visible.
+    - object_id: object_green_cap
+      appearance: Hanging on a hook by the door, faded, faint grease smudge on brim, mountain patch visible.
