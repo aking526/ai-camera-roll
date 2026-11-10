@@ -40,6 +40,24 @@ Scoring uses the CPU and overwrites the derived files in `evaluation/results/`. 
 
 After recomputing scores, rebuild the website's saved data with the demo setup command documented in [demo_site](../demo_site/). Model inference and human identity validation remain separate steps.
 
+## How much the score moves when identity does not
+
+A raw cosine has no calibrated threshold, so a change between two runs cannot be
+attributed to identity without knowing the metric's own sensitivity. Two follow-up
+measurements cover that, and both run offline on CPU with no generation calls:
+
+- [FACE_INVARIANCE.md](FACE_INVARIANCE.md) perturbs canonical portraits along pose,
+  illumination, resolution, blur, JPEG and occlusion — identity is unchanged by
+  construction, so every movement is metric sensitivity. Result: `T` ≈ 0.30, about 40 %
+  of a full identity swap.
+- [ADAFACE_AB.md](ADAFACE_AB.md) swaps the embedder for AdaFace while holding detection,
+  alignment and pairing fixed. Result: lateral, not a fix; identical conclusions.
+- [face_metric_results.ipynb](face_metric_results.ipynb) renders both as tables and plots.
+  Requires `notebook-requirements.txt`; reads committed results and needs no weights.
+
+The backlog of un-implemented options (matched baseline, quality gating, patch-token
+object features, disentangled decomposition) is in [FUTURE_WORK.md](FUTURE_WORK.md).
+
 ## Attribution
 
 The generator, source story, and saved synthetic images are from this repository. Codex assisted with the evaluator, tests, and draft visual observations. Recognition uses the existing ArcFace model bundled with InsightFace; this project does not train a new recognition model.

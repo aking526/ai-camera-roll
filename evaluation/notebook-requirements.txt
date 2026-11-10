@@ -1,0 +1,14 @@
+# Notebook tooling for evaluation/face_metric_results.ipynb
+#
+# Install into the existing scoring environment, not a new one:
+#   uv pip install --python evaluation/.venv -r evaluation/notebook-requirements.txt
+#
+# These add the viewer/plot stack only. The notebook reads committed result files
+# and runs no model inference, so insightface and onnxruntime are not required to
+# view it — but they are already present in evaluation/.venv from requirements.txt.
+matplotlib==3.11.2
+jupyterlab==4.6.6
+ipykernel==7.4.0
+nbformat==5.11.1
+nbclient==0.11.0
+nbconvert==7.17.2
