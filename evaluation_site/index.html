@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Evaluation inputs → scores</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Evaluation inputs → scores</h1>
+  <p class="lede">
+    Each scorer compares a canonical reference image with a crop taken from a generated photo.
+    Every row below shows the exact pair that produced the number, plus the detector's view of the scene.
+    Click any image to see it larger.
+  </p>
+  <p class="caveat">
+    Similarity is cosine similarity from −1 to 1. It is not a probability or a percentage,
+    and no threshold has been calibrated, so these numbers do not decide whether an identity or an object is correct.
+  </p>
+  <div class="switch">
+    <span class="switch-label">Condition</span>
+    <div id="conditions" role="group" aria-label="Condition"></div>
+    <p id="condition-note" class="switch-note"></p>
+  </div>
+</header>
+
+<main>
+  <section id="faces" aria-labelledby="faces-title">
+    <div class="section-head">
+      <h2 id="faces-title">Face consistency</h2>
+      <p class="count" id="faces-count"></p>
+    </div>
+    <ol class="steps" id="faces-steps"></ol>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Scene</th>
+            <th scope="col">Pass</th>
+            <th scope="col">Requested character</th>
+            <th scope="col">Reference <span class="sub">aligned crop</span></th>
+            <th scope="col">Detected <span class="sub">aligned crop</span></th>
+            <th scope="col" class="score-col">Similarity</th>
+          </tr>
+        </thead>
+        <tbody id="faces-body"></tbody>
+      </table>
+    </div>
+    <p class="foot">
+      One-to-one pairing maximises total similarity across the characters requested for that photo,
+      so a weak match is still assigned. A row without a detected crop means no face was paired with that character;
+      a row named “Unassigned face” is a detected face left over after pairing.
+    </p>
+  </section>
+
+  <section id="objects" aria-labelledby="objects-title">
+    <div class="section-head">
+      <h2 id="objects-title">Object appearance</h2>
+      <p class="count" id="objects-count"></p>
+    </div>
+    <ol class="steps" id="objects-steps"></ol>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Scene</th>
+            <th scope="col">Requested object</th>
+            <th scope="col">Reference <span class="sub">detector crop</span></th>
+            <th scope="col">Detected <span class="sub">detector crop</span></th>
+            <th scope="col" class="score-col">Similarity</th>
+          </tr>
+        </thead>
+        <tbody id="objects-body"></tbody>
+      </table>
+    </div>
+    <p class="foot">
+      The detector receives only a generic noun query, never the colour or description. The highest-confidence
+      box is scored, not the most similar one, so an image full of competing objects is not rewarded.
+      A missing crop is <em>not detected</em>, which is different from a similarity of zero.
+    </p>
+  </section>
+</main>
+
+<footer>
+  <p id="built"></p>
+  <p>
+    Generated from the saved experiment <code id="experiment"></code>.
+    No model inference and no API calls are made by this page.
+  </p>
+</footer>
+
+<dialog id="modal" aria-labelledby="modal-title">
+  <div class="modal-inner">
+    <div class="modal-head">
+      <h3 id="modal-title"></h3>
+      <div class="modal-nav">
+        <button type="button" id="prev" aria-label="Previous row">←</button>
+        <button type="button" id="next" aria-label="Next row">→</button>
+        <button type="button" id="close">Close</button>
+      </div>
+    </div>
+    <div id="modal-body"></div>
+  </div>
+</dialog>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

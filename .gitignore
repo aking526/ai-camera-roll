@@ -17,3 +17,6 @@ demo_site/verification/
 evaluation/model-cache
 evaluation/preview/
 evaluation/results/rerun_*/
+
+# Generated output of the evaluation inputs viewer
+evaluation_site/dist/
