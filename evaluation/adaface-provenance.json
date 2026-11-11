@@ -1,0 +1,20 @@
+{
+  "model": "AdaFace IR-101 (WebFace12M)",
+  "file": "model-cache/adaface/adaface_ir_101.onnx",
+  "sha256": "f2eb07d03de0af560a82e1214df799fec5e09375d43521e2868f9dc387e5a43e",
+  "upstream_url": "https://huggingface.co/yakhyo/uniface-weights",
+  "upstream_file": "adaface_ir_101.onnx",
+  "derived_from": "Official AdaFace pretrained weights, exported to ONNX and hosted in the yakhyo/uniface-weights repository.",
+  "paper": {
+    "title": "AdaFace: Quality Adaptive Margin for Face Recognition",
+    "venue": "CVPR 2022",
+    "arxiv": "2204.00964"
+  },
+  "backbone": "IR-101 (input 112x112)",
+  "training_data": "WebFace12M",
+  "embedding_dim": 512,
+  "input": "float32 NCHW [batch, 3, 112, 112]; the graph has no input Sub/Mul node, so normalisation is applied outside the model (validated preprocessing: RGB, (x - 127.5) / 127.5).",
+  "output": "512-d unit-length vector; the graph ends in ReduceL2 + Div, so the raw output already has L2 norm 1.",
+  "license": "Research use only. The AdaFace project releases its code under the MIT licence and states that the pretrained models are for non-commercial research purposes; this record repeats that restriction rather than asserting any additional grant. Treat these weights like the buffalo_l weights: do not redistribute them or present their scores as a commercial identity system.",
+  "license_source": "AdaFace project README (github.com/mk-minchul/AdaFace). Recorded from the project's own statement; not an independent legal review."
+}

@@ -17,3 +17,11 @@ demo_site/verification/
 evaluation/model-cache
 evaluation/preview/
 evaluation/results/rerun_*/
+
+# Regenerable diagnostic tiles (~17 MB of perturbation contact sheets).
+# The numeric results beside them (invariance.json, curves.csv, *_verdicts.csv) are
+# committed; re-run evaluation/face_invariance.py to rebuild the tiles.
+evaluation/results_invariance/contact_sheets/
+
+# Generated output of the evaluation inputs viewer
+evaluation_site/dist/
