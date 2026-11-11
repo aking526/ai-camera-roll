@@ -54,6 +54,9 @@ measurements cover that, and both run offline on CPU with no generation calls:
   alignment and pairing fixed. Result: lateral, not a fix; identical conclusions.
 - [face_metric_results.ipynb](face_metric_results.ipynb) renders both as tables and plots.
   Requires `notebook-requirements.txt`; reads committed results and needs no weights.
+- [report/index.html](report/index.html) is a standalone, code-free write-up of both
+  measurements with figures and example images. Open it directly in a browser; no server,
+  no network. Rebuild with `evaluation/.venv/bin/python evaluation/build_report.py`.
 
 The backlog of un-implemented options (matched baseline, quality gating, patch-token
 object features, disentangled decomposition) is in [FUTURE_WORK.md](FUTURE_WORK.md).
